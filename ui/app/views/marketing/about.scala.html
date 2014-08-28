@@ -1,0 +1,38 @@
+@(title: String)
+
+@main(title) {
+
+    <div class="container">
+        <div class="row">
+            <h1>About us</h1>
+            <p>This is the <a href="http://github.com/michaelhawkins/playful-prelaunch" target="_blank">
+                Playful Prelaunch</a> Play Framework sample application.
+                You can find a working version of this app on
+                <a href="http://playful-prelaunch.herokuapp.com" target="_blank">Heroku</a>.
+            </p>
+            <form action="/insert" method="POST">
+                <input name="name" type="text" placeholder="name your feline friend"/>
+                <input name="color" type="text" placeholder="enter the color of this kitty cat"/>
+                <input type="submit"/>
+            </form>
+        </div>
+        <fieldset>
+            <form>
+                <label for="personName">Name:</label>
+                <input type="text" name="id" id="personId"/>
+                <input type="text" name="name" id="personName"/>
+                <input type="button" value="Create" id="createPerson"/>
+            </form>
+        </fieldset>
+        <ul id="peopleList"></ul>
+        <!-- sulta -->
+
+        <div id="dust_pan">
+        </div>
+
+        <img src="@routes.Assets.versioned("images/header1.jpg")" alt="Smiley face" height="42" width="42">
+
+        <script type="text/javascript" src="@routes.Person.javascriptRoutes"></script>
+        <script src="@routes.Assets.at("javascripts/person.js")"></script>
+    </div>
+}
