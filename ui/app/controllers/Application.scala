@@ -10,10 +10,11 @@ import play.api.libs.json.Json
 import play.api.mvc._
 import com.typesafe.plugin._
 import com.fasterxml.jackson._
+import scala.concurrent.ExecutionContext.Implicits.global._
 import play.api.Play.current
 import play.api.libs.ws._
 import scala.concurrent.Future
-import scala.concurrent.ExecutionContext.Implicits.global._
+
 
 object Application extends Controller {
 
@@ -38,25 +39,6 @@ object Application extends Controller {
   }
   def dashboard = Action {
     Ok(views.html.demo.dashboard("Home"))
-  }
-  //create an instance of the table
-  val cats = TableQuery[CatsTable] //see a way to architect your app in the computers-database-slick sample
-
-  //JSON read/write macro
-  implicit val catFormat = Json.format[Cat]
-
-  val catForm = Form(
-    mapping(
-      "name" -> text(),
-      "color" -> text()
-    )(Cat.apply)(Cat.unapply)
-  )
-
-  def insert = DBAction { implicit rs =>
-    val cat = catForm.bindFromRequest.get
-    cats.insert(cat)
-    Ok("assets")
-//    Redirect(routes.Application.index)
   }
 
 }
