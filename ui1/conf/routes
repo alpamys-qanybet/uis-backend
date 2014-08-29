@@ -3,13 +3,69 @@
 # ~~~~
 
 # Home page
-GET     /                                       Application.index
+GET           /                        Application.index
+
+# Demo
+GET           /demo/dashboard               Demo.dashboard
+GET           /demo/inbox                   Demo.inbox
+GET           /demo/flot                    Demo.flot
+GET           /demo/morris                  Demo.morris
+GET           /demo/inline_charts           Demo.inline_charts
+GET           /demo/dygraphs                Demo.dygraphs
+GET           /demo/table                   Demo.table
+GET           /demo/datatables              Demo.datatables
+GET           /demo/jqgrid                  Demo.jqgrid
+
+GET           /demo/form_elements           Demo.form_elements
+GET           /demo/form_templates          Demo.form_templates
+GET           /demo/validation              Demo.validation
+GET           /demo/bootstrap_forms         Demo.bootstrap_forms
+GET           /demo/plugins                 Demo.plugins
+GET           /demo/wizard                  Demo.wizard
+GET           /demo/other_editors           Demo.other_editors
+GET           /demo/dropzone                Demo.dropzone
+GET           /demo/image_editor            Demo.image_editor
+
+GET           /demo/general_elements        Demo.general_elements
+GET           /demo/buttons                 Demo.buttons
+GET           /demo/fa                      Demo.fa
+GET           /demo/glyph                   Demo.glyph
+GET           /demo/flags                   Demo.flags
+
+GET           /demo/grid                    Demo.grid
+GET           /demo/treeview                Demo.treeview
+GET           /demo/nestable_list           Demo.nestable_list
+GET           /demo/jqui                    Demo.jqui
+GET           /demo/typography              Demo.typography
+GET           /demo/calendar                Demo.calendar
+GET           /demo/widgets                 Demo.widgets
+GET           /demo/gallery                 Demo.gallery
+GET           /demo/gmap_xml                Demo.gmap_xml
+GET           /demo/forum                   Demo.forum
+GET           /demo/profile                 Demo.profile
+GET           /demo/timeline                Demo.timeline
+GET           /demo/pricing_table           Demo.pricing_table
+GET           /demo/invoice                 Demo.invoice
+GET           /demo/login                   Demo.login
+
+GET           /demo/register                Demo.register
+GET           /demo/lock                    Demo.lock
+GET           /demo/error500                Demo.error500
+GET           /demo/error404                Demo.error404
+GET           /demo/blank                   Demo.blank
+GET           /demo/email_template          Demo.email_template
+GET           /demo/search                  Demo.search
+GET           /demo/ckeditor                Demo.ckeditor
+GET           /demo/difver                  Demo.difver
+GET           /demo/applayout               Demo.applayout
+GET           /demo/forgotpassword          Demo.forgotpassword
+#GET          /demo/inbox_table            Demo.inbox_table
 
 # Ignore favicon requests
 GET     /favicon.ico                            404
 
-# Map static resources from the /app/public folder to the /public path
-GET     /public/                                staticDir:public
+# Map static resources from the /demo/app/demo/public folder to the /demo/public path
+GET     /public/demo/                                staticDir:public
 
 # Catch all
-*       /{controller}/{action}                  {controller}.{action}
+*       /{controller}/demo/{action}                  {controller}.{action}

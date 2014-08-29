@@ -1,0 +1,1987 @@
+#{extends 'Demo/maindev.html' /}
+@main(message) {
+    <div id="content" style="opacity: 1;"><div class="row">
+        <div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
+            <h1 class="page-title txt-color-blueDark">
+                <i class="fa fa-pencil-square-o fa-fw "></i>
+                Forms
+                <span>&gt;
+                    Form Plugins
+                </span>
+            </h1>
+        </div>
+        <div class="col-xs-12 col-sm-5 col-md-5 col-lg-8">
+            <ul id="sparks" class="">
+                <li class="sparks-info">
+                    <h5> My Income <span class="txt-color-blue">$47,171</span></h5>
+                    <div class="sparkline txt-color-blue hidden-mobile hidden-md hidden-sm"><canvas width="89" height="26" style="display: inline-block; width: 89px; height: 26px; vertical-align: top;"></canvas></div>
+                </li>
+                <li class="sparks-info">
+                    <h5> Site Traffic <span class="txt-color-purple"><i class="fa fa-arrow-circle-up" data-rel="bootstrap-tooltip" title="Increased"></i>&nbsp;45%</span></h5>
+                    <div class="sparkline txt-color-purple hidden-mobile hidden-md hidden-sm"><canvas width="82" height="26" style="display: inline-block; width: 82px; height: 26px; vertical-align: top;"></canvas></div>
+                </li>
+                <li class="sparks-info">
+                    <h5> Site Orders <span class="txt-color-greenDark"><i class="fa fa-shopping-cart"></i>&nbsp;2447</span></h5>
+                    <div class="sparkline txt-color-greenDark hidden-mobile hidden-md hidden-sm"><canvas width="82" height="26" style="display: inline-block; width: 82px; height: 26px; vertical-align: top;"></canvas></div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+            <!-- widget grid -->
+        <section id="widget-grid" class="">
+
+                <!-- row -->
+            <div class="row">
+
+                    <!-- NEW COL START -->
+                <article class="col-sm-12">
+
+                        <!-- Widget ID (each widget will need unique ID)-->
+                    <div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-0" data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-custombutton="false">
+                            <!-- widget options:
+				usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+
+				data-widget-colorbutton="false"
+				data-widget-editbutton="false"
+				data-widget-togglebutton="false"
+				data-widget-deletebutton="false"
+				data-widget-fullscreenbutton="false"
+				data-widget-custombutton="false"
+				data-widget-collapsed="true"
+				data-widget-sortable="false"
+
+				-->
+                        <header>
+                            <span class="widget-icon"> <i class="fa fa-edit"></i> </span>
+                            <h2>x-ediable </h2>
+
+                        </header>
+
+                            <!-- widget div-->
+                        <div>
+
+                                <!-- widget edit box -->
+                            <div class="jarviswidget-editbox">
+                                    <!-- This area used as dropdown edit box -->
+
+                            </div>
+                                <!-- end widget edit box -->
+
+                                <!-- widget content -->
+                            <div class="widget-body">
+                                <div class="widget-body-toolbar">
+
+                                    <div class="row">
+
+                                        <div class="col-sm-6">
+                                            <button id="enable" class="btn btn btn-default">
+                                                enable / disable
+                                            </button>
+                                        </div>
+                                        <div class="col-sm-6 text-right">
+
+                                            <div class="onoffswitch-container">
+                                                <span class="onoffswitch-title">Auto Open Next</span>
+                                                <span class="onoffswitch">
+                                                    <input type="checkbox" class="onoffswitch-checkbox" id="autoopen">
+                                                    <label class="onoffswitch-label" for="autoopen">
+                                                        <span class="onoffswitch-inner" data-swchon-text="ON" data-swchoff-text="OFF"></span>
+                                                        <span class="onoffswitch-switch"></span>
+                                                    </label>
+                                                </span>
+
+
+                                            </div>
+
+                                            <div class="onoffswitch-container">
+                                                <span class="onoffswitch-title">Open Inline</span>
+                                                <span class="onoffswitch">
+                                                    <input type="checkbox" class="onoffswitch-checkbox" id="inline">
+                                                    <label class="onoffswitch-label" for="inline">
+                                                        <span class="onoffswitch-inner" data-swchon-text="ON" data-swchoff-text="OFF"></span>
+                                                        <span class="onoffswitch-switch"></span>
+                                                    </label>
+                                                </span>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+
+                                </div>
+
+                                <table id="user" class="table table-bordered table-striped" style="clear: both">
+                                    <tbody>
+                                        <tr>
+                                            <td style="width:35%;">Simple text field</td>
+                                            <td style="width:65%"><a href="form-x-editable.html#" id="username" data-type="text" data-pk="1" data-original-title="Enter username" class="editable editable-click">superuser</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Empty text field, required</td>
+                                            <td><a href="form-x-editable.html#" id="firstname" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-original-title="Enter your firstname" class="editable editable-click editable-empty">Empty</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Select, local array, custom display</td>
+                                            <td><a href="form-x-editable.html#" id="sex" data-type="select" data-pk="1" data-value="" data-original-title="Select sex" class="editable editable-click" style="color: rgb(128, 128, 128);">not selected</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Select, remote array, no buttons</td>
+                                            <td><a href="form-x-editable.html#" id="group" data-type="select" data-pk="1" data-value="5" data-source="/groups" data-original-title="Select group" class="editable editable-click">Admin</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Select, error while loading</td>
+                                            <td><a href="form-x-editable.html#" id="status" data-type="select" data-pk="1" data-value="0" data-source="/status" data-original-title="Select status" class="editable editable-click">Active</a></td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>Datepicker</td>
+                                            <td><a href="#" id="vacation" data-type="date" data-viewformat="dd.mm.yyyy" data-pk="1" data-placement="right" data-original-title="When you want vacation to start?" class="editable editable-click">25.02.2013</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Combodate (date)</td>
+                                            <td><a href="form-x-editable.html#" id="dob" data-type="combodate" data-value="1984-05-15" data-format="YYYY-MM-DD" data-viewformat="DD/MM/YYYY" data-template="D / MMM / YYYY" data-pk="1" data-original-title="Select Date of birth" class="editable editable-click">15/05/1984</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Combodate (datetime)</td>
+                                            <td><a href="form-x-editable.html#" id="event" data-type="combodate" data-template="D MMM YYYY  HH:mm" data-format="YYYY-MM-DD HH:mm" data-viewformat="MMM D, YYYY, HH:mm" data-pk="1" data-original-title="Setup event date and time" class="editable editable-click editable-empty">Empty</a></td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>Textarea, buttons below. Submit by <i>ctrl+enter</i></td>
+                                            <td><a href="form-x-editable.html#" id="comments" data-type="textarea" data-pk="1" data-placeholder="Your comments here..." data-original-title="Enter comments" class="editable editable-pre-wrapped editable-click">awesome user!</a></td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>Twitter typeahead.js</td>
+                                            <td><a href="form-x-editable.html#" id="state2" data-type="typeaheadjs" data-pk="1" data-placement="right" data-original-title="Start typing State.." class="editable editable-click">California</a></td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>Checklist</td>
+                                            <td><a href="form-x-editable.html#" id="fruits" data-type="checklist" data-value="2,3" data-original-title="Select fruits" class="editable editable-click">peach<br>apple</a></td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>Select2 (tags mode)</td>
+                                            <td><a href="form-x-editable.html#" id="tags" data-type="select2" data-pk="1" data-original-title="Enter tags" class="editable editable-click">html, javascript</a></td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>Select2 (dropdown mode)</td>
+                                            <td><a href="form-x-editable.html#" id="country" data-type="select2" data-pk="1" data-select-search="true" data-value="BS" data-original-title="Select country" class="editable editable-click">Bahamas</a></td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>Custom input, several fields</td>
+                                            <td><a href="form-x-editable.html#" id="address" data-type="address" data-pk="1" data-original-title="Please, fill address" class="editable editable-click"><b>Moscow</b>, Lenina st., bld. 12</a></td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+
+                            </div>
+                                <!-- end widget content -->
+
+                        </div>
+                            <!-- end widget div -->
+
+                    </div>
+                        <!-- end widget -->
+
+                        <!-- Widget ID (each widget will need unique ID)-->
+                    <div class="jarviswidget jarviswidget-color-darken" id="wid-id-1" data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-custombutton="false">
+                            <!-- widget options:
+				usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+
+				data-widget-colorbutton="false"
+				data-widget-editbutton="false"
+				data-widget-togglebutton="false"
+				data-widget-deletebutton="false"
+				data-widget-fullscreenbutton="false"
+				data-widget-custombutton="false"
+				data-widget-collapsed="true"
+				data-widget-sortable="false"
+
+				-->
+                        <header>
+                            <span class="widget-icon"> <i class="fa fa-edit"></i> </span>
+                            <h2>Sliders </h2>
+
+                        </header>
+
+                            <!-- widget div-->
+                        <div>
+
+                                <!-- widget edit box -->
+                            <div class="jarviswidget-editbox">
+                                    <!-- This area used as dropdown edit box -->
+
+                            </div>
+                                <!-- end widget edit box -->
+
+                                <!-- widget content -->
+                            <div class="widget-body">
+
+                                <form>
+
+                                    <fieldset>
+                                        <legend>
+                                            Smart Scale Slider
+                                        </legend>
+                                        <div class="row">
+                                            <div class="col-sm-6">
+
+                                                <div class="form-group">
+                                                    <span class="irs irs-with-grid" id="irs-1"><span class="irs"><span class="irs-line"><span class="irs-line-left"></span><span class="irs-line-mid"></span><span class="irs-line-right"></span></span><span class="irs-min" style="display: block;">$0</span><span class="irs-max" style="display: block;">$5000</span><span class="irs-from" style="left: 81px; display: block;">$1000</span><span class="irs-to" style="left: 371px; display: block;">$4000</span><span class="irs-single" style="left: 203px; display: none;">$1000 — $4000</span><span class="irs-diapason" style="left: 101px; width: 290px;"></span><span class="irs-slider from" style="left: 97px;"></span><span class="irs-slider to" style="left: 387px;"></span></span><span class="irs-grid"><span class="irs-grid-pol small" style="left: 0px;"></span><span class="irs-grid-pol small" style="left: 24px;"></span><span class="irs-grid-pol small" style="left: 49px;"></span><span class="irs-grid-pol small" style="left: 73px;"></span><span class="irs-grid-pol small" style="left: 98px;"></span><span class="irs-grid-pol small" style="left: 123px;"></span><span class="irs-grid-pol small" style="left: 147px;"></span><span class="irs-grid-pol small" style="left: 172px;"></span><span class="irs-grid-pol small" style="left: 196px;"></span><span class="irs-grid-pol small" style="left: 221px;"></span><span class="irs-grid-pol small" style="left: 246px;"></span><span class="irs-grid-pol small" style="left: 270px;"></span><span class="irs-grid-pol small" style="left: 295px;"></span><span class="irs-grid-pol small" style="left: 319px;"></span><span class="irs-grid-pol small" style="left: 344px;"></span><span class="irs-grid-pol small" style="left: 369px;"></span><span class="irs-grid-pol small" style="left: 393px;"></span><span class="irs-grid-pol small" style="left: 418px;"></span><span class="irs-grid-pol small" style="left: 442px;"></span><span class="irs-grid-pol small" style="left: 467px;"></span><span class="irs-grid-pol small" style="left: 491px;"></span><span class="irs-grid-pol" style="left: 0px;"></span><span class="irs-grid-text" style="left: 0px; text-align: left;">0</span><span class="irs-grid-pol" style="left: 123px;"></span><span class="irs-grid-text" style="left: 73px;">1250</span><span class="irs-grid-pol" style="left: 246px;"></span><span class="irs-grid-text" style="left: 196px;">2500</span><span class="irs-grid-pol" style="left: 369px;"></span><span class="irs-grid-text" style="left: 319px;">3750</span><span class="irs-grid-pol" style="left: 491px;"></span><span class="irs-grid-text" style="left: 391px; text-align: right;">5000</span></span></span><input id="range-slider-1" type="text" name="range_1" value="1000;4000" style="display: none;">
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+
+                                                <div class="form-group">
+                                                    <span class="irs irs-with-grid" id="irs-2"><span class="irs"><span class="irs-line"><span class="irs-line-left"></span><span class="irs-line-mid"></span><span class="irs-line-right"></span></span><span class="irs-min" style="display: block;">1 000 €</span><span class="irs-max" style="display: none;">100 000 €</span><span class="irs-from" style="left: 120px; display: block;">30 000 €</span><span class="irs-to" style="left: 413px; display: block;">90 000 €</span><span class="irs-single" style="left: 242px; display: none;">30 000 — 90 000 €</span><span class="irs-diapason" style="left: 146px; width: 293px;"></span><span class="irs-slider from" style="left: 142px;"></span><span class="irs-slider to" style="left: 435px;"></span></span><span class="irs-grid"><span class="irs-grid-pol small" style="left: 0px;"></span><span class="irs-grid-pol small" style="left: 24px;"></span><span class="irs-grid-pol small" style="left: 49px;"></span><span class="irs-grid-pol small" style="left: 73px;"></span><span class="irs-grid-pol small" style="left: 98px;"></span><span class="irs-grid-pol small" style="left: 123px;"></span><span class="irs-grid-pol small" style="left: 147px;"></span><span class="irs-grid-pol small" style="left: 172px;"></span><span class="irs-grid-pol small" style="left: 196px;"></span><span class="irs-grid-pol small" style="left: 221px;"></span><span class="irs-grid-pol small" style="left: 246px;"></span><span class="irs-grid-pol small" style="left: 270px;"></span><span class="irs-grid-pol small" style="left: 295px;"></span><span class="irs-grid-pol small" style="left: 319px;"></span><span class="irs-grid-pol small" style="left: 344px;"></span><span class="irs-grid-pol small" style="left: 369px;"></span><span class="irs-grid-pol small" style="left: 393px;"></span><span class="irs-grid-pol small" style="left: 418px;"></span><span class="irs-grid-pol small" style="left: 442px;"></span><span class="irs-grid-pol small" style="left: 467px;"></span><span class="irs-grid-pol small" style="left: 491px;"></span><span class="irs-grid-pol" style="left: 0px;"></span><span class="irs-grid-text" style="left: 0px; text-align: left;">1 000</span><span class="irs-grid-pol" style="left: 123px;"></span><span class="irs-grid-text" style="left: 73px;">26 000</span><span class="irs-grid-pol" style="left: 246px;"></span><span class="irs-grid-text" style="left: 196px;">50 500</span><span class="irs-grid-pol" style="left: 369px;"></span><span class="irs-grid-text" style="left: 319px;">75 500</span><span class="irs-grid-pol" style="left: 491px;"></span><span class="irs-grid-text" style="left: 391px; text-align: right;">100 000</span></span></span><input id="range-slider-2" type="text" name="range_2" value="30000;90000" data-type="double" data-step="500" data-postfix=" €" data-from="30000" data-to="90000" data-hasgrid="true" style="display: none;">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-sm-6">
+
+                                                <div class="form-group">
+                                                    <span class="irs irs-with-grid" id="irs-3"><span class="irs"><span class="irs-line"><span class="irs-line-left"></span><span class="irs-line-mid"></span><span class="irs-line-right"></span></span><span class="irs-min" style="display: block;">0 mm</span><span class="irs-max" style="display: block;">10 mm</span><span class="irs-from" style="display: none;">0</span><span class="irs-to" style="display: none;">0</span><span class="irs-single" style="left: 92px;">2.3 mm</span><span class="irs-slider single" style="left: 111px;"></span></span><span class="irs-grid"><span class="irs-grid-pol small" style="left: 0px;"></span><span class="irs-grid-pol small" style="left: 24px;"></span><span class="irs-grid-pol small" style="left: 49px;"></span><span class="irs-grid-pol small" style="left: 73px;"></span><span class="irs-grid-pol small" style="left: 98px;"></span><span class="irs-grid-pol small" style="left: 123px;"></span><span class="irs-grid-pol small" style="left: 147px;"></span><span class="irs-grid-pol small" style="left: 172px;"></span><span class="irs-grid-pol small" style="left: 196px;"></span><span class="irs-grid-pol small" style="left: 221px;"></span><span class="irs-grid-pol small" style="left: 246px;"></span><span class="irs-grid-pol small" style="left: 270px;"></span><span class="irs-grid-pol small" style="left: 295px;"></span><span class="irs-grid-pol small" style="left: 319px;"></span><span class="irs-grid-pol small" style="left: 344px;"></span><span class="irs-grid-pol small" style="left: 369px;"></span><span class="irs-grid-pol small" style="left: 393px;"></span><span class="irs-grid-pol small" style="left: 418px;"></span><span class="irs-grid-pol small" style="left: 442px;"></span><span class="irs-grid-pol small" style="left: 467px;"></span><span class="irs-grid-pol small" style="left: 491px;"></span><span class="irs-grid-pol" style="left: 0px;"></span><span class="irs-grid-text" style="left: 0px; text-align: left;">0</span><span class="irs-grid-pol" style="left: 123px;"></span><span class="irs-grid-text" style="left: 73px;">2.5</span><span class="irs-grid-pol" style="left: 246px;"></span><span class="irs-grid-text" style="left: 196px;">5</span><span class="irs-grid-pol" style="left: 369px;"></span><span class="irs-grid-text" style="left: 319px;">7.5</span><span class="irs-grid-pol" style="left: 491px;"></span><span class="irs-grid-text" style="left: 391px; text-align: right;">10</span></span></span><input id="range-slider-3" type="text" name="range_2a" value="2" style="display: none;">
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+
+                                                <div class="form-group">
+                                                    <span class="irs irs-with-grid" id="irs-4"><span class="irs"><span class="irs-line"><span class="irs-line-left"></span><span class="irs-line-mid"></span><span class="irs-line-right"></span></span><span class="irs-min" style="display: block;">-50°</span><span class="irs-max" style="display: block;">50°</span><span class="irs-from" style="left: 260px; display: block;">5°</span><span class="irs-to" style="left: 354px; display: block;">25°</span><span class="irs-single" style="left: 294.5px; display: none;">5 — 25°</span><span class="irs-diapason" style="left: 270px; width: 97px;"></span><span class="irs-slider from" style="left: 266px;"></span><span class="irs-slider to" style="left: 363px;"></span></span><span class="irs-grid"><span class="irs-grid-pol small" style="left: 0px;"></span><span class="irs-grid-pol small" style="left: 24px;"></span><span class="irs-grid-pol small" style="left: 49px;"></span><span class="irs-grid-pol small" style="left: 73px;"></span><span class="irs-grid-pol small" style="left: 98px;"></span><span class="irs-grid-pol small" style="left: 123px;"></span><span class="irs-grid-pol small" style="left: 147px;"></span><span class="irs-grid-pol small" style="left: 172px;"></span><span class="irs-grid-pol small" style="left: 196px;"></span><span class="irs-grid-pol small" style="left: 221px;"></span><span class="irs-grid-pol small" style="left: 246px;"></span><span class="irs-grid-pol small" style="left: 270px;"></span><span class="irs-grid-pol small" style="left: 295px;"></span><span class="irs-grid-pol small" style="left: 319px;"></span><span class="irs-grid-pol small" style="left: 344px;"></span><span class="irs-grid-pol small" style="left: 369px;"></span><span class="irs-grid-pol small" style="left: 393px;"></span><span class="irs-grid-pol small" style="left: 418px;"></span><span class="irs-grid-pol small" style="left: 442px;"></span><span class="irs-grid-pol small" style="left: 467px;"></span><span class="irs-grid-pol small" style="left: 491px;"></span><span class="irs-grid-pol" style="left: 0px;"></span><span class="irs-grid-text" style="left: 0px; text-align: left;">-50</span><span class="irs-grid-pol" style="left: 123px;"></span><span class="irs-grid-text" style="left: 73px;">-25</span><span class="irs-grid-pol" style="left: 246px;"></span><span class="irs-grid-text" style="left: 196px;">0</span><span class="irs-grid-pol" style="left: 369px;"></span><span class="irs-grid-text" style="left: 319px;">25</span><span class="irs-grid-pol" style="left: 491px;"></span><span class="irs-grid-text" style="left: 391px; text-align: right;">50</span></span></span><input id="range-slider-4" type="text" name="range_4" value="5;25" style="display: none;">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-sm-12">
+
+                                                <div class="form-group">
+                                                    <span class="irs irs-with-grid" id="irs-5"><span class="irs"><span class="irs-line"><span class="irs-line-left"></span><span class="irs-line-mid"></span><span class="irs-line-right"></span></span><span class="irs-min" style="display: none;">0 mm</span><span class="irs-max" style="display: block;">10 mm</span><span class="irs-from" style="display: none;">0</span><span class="irs-to" style="display: none;">0</span><span class="irs-single" style="left: 0px;">0 mm</span><span class="irs-slider single" style="left: 0px;"></span></span><span class="irs-grid"><span class="irs-grid-pol small" style="left: 0px;"></span><span class="irs-grid-pol small" style="left: 50px;"></span><span class="irs-grid-pol small" style="left: 101px;"></span><span class="irs-grid-pol small" style="left: 151px;"></span><span class="irs-grid-pol small" style="left: 202px;"></span><span class="irs-grid-pol small" style="left: 252px;"></span><span class="irs-grid-pol small" style="left: 303px;"></span><span class="irs-grid-pol small" style="left: 353px;"></span><span class="irs-grid-pol small" style="left: 404px;"></span><span class="irs-grid-pol small" style="left: 454px;"></span><span class="irs-grid-pol small" style="left: 505px;"></span><span class="irs-grid-pol small" style="left: 555px;"></span><span class="irs-grid-pol small" style="left: 606px;"></span><span class="irs-grid-pol small" style="left: 656px;"></span><span class="irs-grid-pol small" style="left: 707px;"></span><span class="irs-grid-pol small" style="left: 757px;"></span><span class="irs-grid-pol small" style="left: 808px;"></span><span class="irs-grid-pol small" style="left: 858px;"></span><span class="irs-grid-pol small" style="left: 909px;"></span><span class="irs-grid-pol small" style="left: 959px;"></span><span class="irs-grid-pol small" style="left: 1009px;"></span><span class="irs-grid-pol" style="left: 0px;"></span><span class="irs-grid-text" style="left: 0px; text-align: left;">0</span><span class="irs-grid-pol" style="left: 252px;"></span><span class="irs-grid-text" style="left: 202px;">2.5</span><span class="irs-grid-pol" style="left: 505px;"></span><span class="irs-grid-text" style="left: 455px;">5</span><span class="irs-grid-pol" style="left: 757px;"></span><span class="irs-grid-text" style="left: 707px;">7.5</span><span class="irs-grid-pol" style="left: 1009px;"></span><span class="irs-grid-text" style="left: 909px; text-align: right;">10</span></span></span><input id="range-slider-5" type="text" name="range_5a" value="0" style="display: none;">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </fieldset>
+
+                                    <fieldset>
+                                        <legend>
+                                            noScale Slider
+                                        </legend>
+                                        <div class="row">
+                                            <div class="col-sm-6">
+
+                                                <div class="form-group">
+                                                    <label>Default</label>
+                                                    <div id="nouislider-1" class="noUiSlider noUi-target"><div class="noUi-base noUi-background noUi-connect-upper noUi-horizontal"><div class="noUi-origin noUi-origin-lower noUi-connect" style="left: 54.08163265306123%;"><div class="noUi-handle noUi-handle-lower"></div></div></div></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+
+                                                <div class="form-group">
+                                                    <label>Range slider (<span class="nouislider-value">20 - 60</span>)</label>
+                                                    <div id="nouislider-3" class="noUiSlider noUi-target"><div class="noUi-base noUi-background noUi-connect-upper noUi-horizontal"><div class="noUi-origin noUi-origin-lower noUi-connect" style="left: 26.400000000000002%;"><div class="noUi-handle noUi-handle-lower"></div></div><div class="noUi-origin noUi-origin-upper" style="left: 77.60000000000001%;"><div class="noUi-handle noUi-handle-upper"></div></div></div></div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+
+                                        <div class="row">
+                                            <div class="col-sm-6">
+
+                                                <div class="form-group">
+                                                    <label>Default Slider (disabled)</label>
+                                                    <div id="nouislider-4" class="noUiSlider noUi-target" disabled="disabled"><div class="noUi-base noUi-background noUi-horizontal"><div class="noUi-origin noUi-origin-lower" style="left: 50%;"><div class="noUi-handle noUi-handle-lower"></div></div></div></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+
+                                                <div class="form-group">
+                                                    <label>Skips a beat</label>
+                                                    <div id="nouislider-2" class="noUiSlider noUi-target"><div class="noUi-base noUi-background noUi-connect-upper noUi-horizontal"><div class="noUi-origin noUi-origin-lower noUi-connect" style="left: 20%;"><div class="noUi-handle noUi-handle-lower"></div></div><div class="noUi-origin noUi-origin-upper" style="left: 40%;"><div class="noUi-handle noUi-handle-upper"></div></div></div></div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </fieldset>
+
+                                    <fieldset class="margin-top-10">
+
+                                        <legend>
+                                            JQuery UI Slider
+                                        </legend>
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <label><code>.slider .slider-danger</code></label>
+                                                <div class="slider slider-horizontal" style="width: 179px;"><input type="text" class="slider slider-danger" id="sal" value="" data-slider-min="10" data-slider-max="1000" data-slider-step="1" data-slider-value="[50,450]" data-slider-handle="round"><div class="slider-track"><div class="slider-selection" style="left: 4.040404040404041%; width: 40.4040404040404%;"></div><div class="slider-handle round" style="left: 4.040404040404041%;"></div><div class="slider-handle round" style="left: 44.44444444444444%;"></div></div><div class="tooltip top" style="top: -34px; left: 89.27272727272728px;"><div class="tooltip-arrow"></div><div class="tooltip-inner">50 : 450</div></div></div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <label><code>.slider .slider-success</code></label>
+                                                <div class="slider slider-horizontal" style="width: 179px;"><input type="text" class="slider slider-success" id="sa2" value="" data-slider-min="10" data-slider-max="1000" data-slider-step="1" data-slider-value="[150,760]" data-slider-handle="triangle"><div class="slider-track"><div class="slider-selection" style="left: 14.141414141414142%; width: 61.616161616161605%;"></div><div class="slider-handle triangle" style="left: 14.141414141414142%;"></div><div class="slider-handle triangle" style="left: 75.75757575757575%;"></div></div><div class="tooltip top" style="top: -34px; left: 188.15151515151516px;"><div class="tooltip-arrow"></div><div class="tooltip-inner">150 : 760</div></div></div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <label><code>.slider .slider-warning</code></label>
+                                                <div class="slider slider-horizontal" style="width: 179px;"><input type="text" class="slider slider-warning" id="sa3" value="" data-slider-min="1" data-slider-max="300" data-slider-value="150" data-slider-selection="before" data-slider-handle="squar"><div class="slider-track"><div class="slider-selection" style="left: 0%; width: 49.83277591973244%;"></div><div class="slider-handle" style="left: 49.83277591973244%;"></div><div class="slider-handle hide" style="left: 0%;"></div></div><div class="tooltip top" style="top: -34px; left: 226.17725752508363px;"><div class="tooltip-arrow"></div><div class="tooltip-inner">150</div></div></div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <label><code>.slider .slider-info</code></label>
+                                                <div class="slider slider-horizontal" style="width: 179px;"><input type="text" class="slider slider-info" id="sa4" value="" data-slider-min="1" data-slider-max="300" data-slider-value="150" data-slider-selection="after" data-slider-handle="round"><div class="slider-track"><div class="slider-selection" style="left: 49.83277591973244%; width: 50.16722408026756%;"></div><div class="slider-handle round" style="left: 49.83277591973244%;"></div><div class="slider-handle round hide" style="left: 100%;"></div></div><div class="tooltip top" style="top: -34px; left: 226.17725752508363px;"><div class="tooltip-arrow"></div><div class="tooltip-inner">150</div></div></div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <label><code>.slider .slider-primary</code></label>
+                                                <div class="slider slider-horizontal" style="width: 179px;"><input type="text" class="slider slider-primary" id="sa5" value="" data-slider-min="1" data-slider-max="300" data-slider-value="150" data-slider-selection="before" data-slider-handle="round"><div class="slider-track"><div class="slider-selection" style="left: 0%; width: 49.83277591973244%;"></div><div class="slider-handle round" style="left: 49.83277591973244%;"></div><div class="slider-handle round hide" style="left: 0%;"></div></div><div class="tooltip top" style="top: -34px; left: 484.31103678929765px;"><div class="tooltip-arrow"></div><div class="tooltip-inner">150</div></div></div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+
+                                            <div class="col-sm-6">
+
+                                                <pre><strong class="margin-top-10 margin-bottom-10 font-lg">Usage</strong><br>
+                                                    <code><strong>&lt;input data-slider-min="10" ..  /&gt;</strong></code>
+                                                    data-slider-orientation="vertical" <span class="text-muted"> // vertical or horizontal</span>
+                                                    data-slider-step="1"               <span class="text-muted"> // increment step</span>
+                                                    data-slider-min="10"               <span class="text-muted"> // slider min value</span>
+                                                    data-slider-max="500"              <span class="text-muted"> // slider max value</span>
+                                                    data-slider-value="315"            <span class="text-muted"> // handler position on slider</span>
+                                                    data-slider-selection = "after"    <span class="text-muted"> // handler position on slider</span>
+                                                    data-slider-handle="round"         <span class="text-muted"> // round or square</span>
+                                                    data-slider-tooltip = "show"       <span class="text-muted"> // show or hide</span>
+                                                </pre>
+                                            </div>
+
+                                            <div class="col-sm-6">
+
+                                                <div class="well">
+
+                                                    <table>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>
+                                                                    <div class="slider slider-vertical"><input type="text" class="slider slider-danger" value="" data-slider-min="-20" data-slider-max="20" data-slider-step="1" data-slider-value="-13" data-slider-orientation="vertical" data-slider-selection="after" data-slider-handle="square" data-slider-tooltip="hide"><div class="slider-track"><div class="slider-selection" style="top: 17.5%; height: 82.5%;"></div><div class="slider-handle" style="top: 17.5%;"></div><div class="slider-handle hide" style="top: 100%;"></div></div><div class="tooltip right hide" style="left: 100%; top: 24.25px;"><div class="tooltip-arrow"></div><div class="tooltip-inner">-13</div></div></div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="slider slider-vertical"><input type="text" class="slider" value="" data-slider-min="-20" data-slider-max="20" data-slider-step="1" data-slider-value="-11" data-slider-orientation="vertical" data-slider-selection="after" data-slider-handle="triangle" data-slider-tooltip="hide"><div class="slider-track"><div class="slider-selection" style="top: 22.5%; height: 77.5%;"></div><div class="slider-handle triangle" style="top: 22.5%;"></div><div class="slider-handle triangle hide" style="top: 100%;"></div></div><div class="tooltip right hide" style="left: 100%; top: 34.75px;"><div class="tooltip-arrow"></div><div class="tooltip-inner">-11</div></div></div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="slider slider-vertical"><input type="text" class="slider" value="" data-slider-min="-20" data-slider-max="20" data-slider-step="1" data-slider-value="-6" data-slider-orientation="vertical" data-slider-selection="after" data-slider-tooltip="hide"><div class="slider-track"><div class="slider-selection" style="top: 35%; height: 65%;"></div><div class="slider-handle round" style="top: 35%;"></div><div class="slider-handle round hide" style="top: 100%;"></div></div><div class="tooltip right hide" style="left: 100%; top: 61px;"><div class="tooltip-arrow"></div><div class="tooltip-inner">-6</div></div></div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="slider slider-vertical"><input type="text" class="slider" value="" data-slider-min="-20" data-slider-max="20" data-slider-step="1" data-slider-value="-4" data-slider-orientation="vertical" data-slider-selection="after" data-slider-tooltip="hide"><div class="slider-track"><div class="slider-selection" style="top: 40%; height: 60%;"></div><div class="slider-handle round" style="top: 40%;"></div><div class="slider-handle round hide" style="top: 100%;"></div></div><div class="tooltip right hide" style="left: 100%; top: 71.5px;"><div class="tooltip-arrow"></div><div class="tooltip-inner">-4</div></div></div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="slider slider-vertical"><input type="text" class="slider" value="" data-slider-min="-20" data-slider-max="20" data-slider-step="1" data-slider-value="-6" data-slider-orientation="vertical" data-slider-selection="after" data-slider-tooltip="hide"><div class="slider-track"><div class="slider-selection" style="top: 35%; height: 65%;"></div><div class="slider-handle round" style="top: 35%;"></div><div class="slider-handle round hide" style="top: 100%;"></div></div><div class="tooltip right hide" style="left: 100%; top: 61px;"><div class="tooltip-arrow"></div><div class="tooltip-inner">-6</div></div></div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="slider slider-vertical"><input type="text" class="slider slider-warning" value="" data-slider-min="-20" data-slider-max="20" data-slider-step="1" data-slider-value="[-11, 19]" data-slider-orientation="vertical" data-slider-selection="after" data-slider-handle="triangle" data-slider-tooltip="show"><div class="slider-track"><div class="slider-selection" style="top: 22.5%; height: 75%;"></div><div class="slider-handle triangle" style="top: 22.5%;"></div><div class="slider-handle triangle" style="top: 97.5%;"></div></div><div class="tooltip right" style="left: 100%; top: 113.5px;"><div class="tooltip-arrow"></div><div class="tooltip-inner">-11 : 19</div></div></div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="slider slider-vertical"><input type="text" class="slider slider-success" value="" data-slider-min="-20" data-slider-max="20" data-slider-step="1" data-slider-value="-17" data-slider-orientation="vertical" data-slider-selection="after" data-slider-tooltip="show"><div class="slider-track"><div class="slider-selection" style="top: 7.5%; height: 92.5%;"></div><div class="slider-handle round" style="top: 7.5%;"></div><div class="slider-handle round hide" style="top: 100%;"></div></div><div class="tooltip right" style="left: 100%; top: 3.25px;"><div class="tooltip-arrow"></div><div class="tooltip-inner">-17</div></div></div>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                    </fieldset>
+
+
+                                </form>
+
+                            </div>
+                                <!-- end widget content -->
+
+                        </div>
+                            <!-- end widget div -->
+
+                    </div>
+                        <!-- end widget -->
+
+                </article>
+                    <!-- END COL -->
+
+            </div>
+
+                <!-- end row -->
+
+                <!-- START ROW -->
+
+            <div class="row">
+
+                    <!-- NEW COL START -->
+                <article class="col-sm-12 col-md-12 col-lg-6">
+
+                        <!-- Widget ID (each widget will need unique ID)-->
+                    <div class="jarviswidget" id="wid-id-2" data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-custombutton="false">
+                            <!-- widget options:
+				usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+
+				data-widget-colorbutton="false"
+				data-widget-editbutton="false"
+				data-widget-togglebutton="false"
+				data-widget-deletebutton="false"
+				data-widget-fullscreenbutton="false"
+				data-widget-custombutton="false"
+				data-widget-collapsed="true"
+				data-widget-sortable="false"
+
+				-->
+                        <header>
+                            <span class="widget-icon"> <i class="fa fa-edit"></i> </span>
+                            <h2>Plugins &amp; Enhancers </h2>
+
+                        </header>
+
+                            <!-- widget div-->
+                        <div>
+
+                                <!-- widget edit box -->
+                            <div class="jarviswidget-editbox">
+                                    <!-- This area used as dropdown edit box -->
+
+                            </div>
+                                <!-- end widget edit box -->
+
+                                <!-- widget content -->
+                            <div class="widget-body">
+
+                                <form class="">
+
+                                    <fieldset>
+                                        <legend>
+                                            Select 2
+                                        </legend>
+
+                                        <div class="form-group">
+                                            <label>Select2 Plugin (select)</label>
+                                            <div class="select2-container select2" id="s2id_autogen7" style="width: 100%;"><a href="javascript:void(0)" class="select2-choice" tabindex="-1">   <span class="select2-chosen" id="select2-chosen-8">Alaska</span><abbr class="select2-search-choice-close"></abbr>   <span class="select2-arrow" role="presentation"><b role="presentation"></b></span></a><label for="s2id_autogen8" class="select2-offscreen"></label><input class="select2-focusser select2-offscreen" type="text" aria-haspopup="true" role="button" aria-labelledby="select2-chosen-8" id="s2id_autogen8"><div class="select2-drop select2-display-none select2-with-searchbox">   <div class="select2-search">       <label for="s2id_autogen8_search" class="select2-offscreen"></label>       <input type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" class="select2-input" role="combobox" aria-expanded="true" aria-autocomplete="list" aria-owns="select2-results-8" id="s2id_autogen8_search" placeholder="">   </div>   <ul class="select2-results" role="listbox" id="select2-results-8">   </ul></div></div><select style="width:100%" class="select2 select2-offscreen" tabindex="-1" title="">
+                                            <optgroup label="Alaskan/Hawaiian Time Zone">
+                                                <option value="AK">Alaska</option>
+                                                <option value="HI">Hawaii</option>
+                                            </optgroup>
+                                            <optgroup label="Pacific Time Zone">
+                                                <option value="CA">California</option>
+                                                <option value="NV">Nevada</option>
+                                                <option value="OR">Oregon</option>
+                                                <option value="WA">Washington</option>
+                                            </optgroup>
+                                            <optgroup label="Mountain Time Zone">
+                                                <option value="AZ">Arizona</option>
+                                                <option value="CO">Colorado</option>
+                                                <option value="ID">Idaho</option>
+                                                <option value="MT">Montana</option><option value="NE">Nebraska</option>
+                                                <option value="NM">New Mexico</option>
+                                                <option value="ND">North Dakota</option>
+                                                <option value="UT">Utah</option>
+                                                <option value="WY">Wyoming</option>
+                                            </optgroup>
+                                            <optgroup label="Central Time Zone">
+                                                <option value="AL">Alabama</option>
+                                                <option value="AR">Arkansas</option>
+                                                <option value="IL">Illinois</option>
+                                                <option value="IA">Iowa</option>
+                                                <option value="KS">Kansas</option>
+                                                <option value="KY">Kentucky</option>
+                                                <option value="LA">Louisiana</option>
+                                                <option value="MN">Minnesota</option>
+                                                <option value="MS">Mississippi</option>
+                                                <option value="MO">Missouri</option>
+                                                <option value="OK">Oklahoma</option>
+                                                <option value="SD">South Dakota</option>
+                                                <option value="TX">Texas</option>
+                                                <option value="TN">Tennessee</option>
+                                                <option value="WI">Wisconsin</option>
+                                            </optgroup>
+                                            <optgroup label="Eastern Time Zone">
+                                                <option value="CT">Connecticut</option>
+                                                <option value="DE">Delaware</option>
+                                                <option value="FL">Florida</option>
+                                                <option value="GA">Georgia</option>
+                                                <option value="IN">Indiana</option>
+                                                <option value="ME">Maine</option>
+                                                <option value="MD">Maryland</option>
+                                                <option value="MA">Massachusetts</option>
+                                                <option value="MI">Michigan</option>
+                                                <option value="NH">New Hampshire</option><option value="NJ">New Jersey</option>
+                                                <option value="NY">New York</option>
+                                                <option value="NC">North Carolina</option>
+                                                <option value="OH">Ohio</option>
+                                                <option value="PA">Pennsylvania</option><option value="RI">Rhode Island</option><option value="SC">South Carolina</option>
+                                                <option value="VT">Vermont</option><option value="VA">Virginia</option>
+                                                <option value="WV">West Virginia</option>
+                                            </optgroup>
+                                        </select>
+
+                                            <div class="note">
+                                                <strong>Usage:</strong> &lt;select style="width:100%" class="select2" "&gt;...&lt;/select&gt;
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Select2 Plugin (multi-select)</label>
+                                            <div class="select2-container select2-container-multi select2" id="s2id_autogen9" style="width: 100%;"><ul class="select2-choices">  <li class="select2-search-choice">    <div>Nevada</div>    <a href="#" class="select2-search-choice-close" tabindex="-1"></a></li><li class="select2-search-choice">    <div>Montana</div>    <a href="#" class="select2-search-choice-close" tabindex="-1"></a></li><li class="select2-search-choice">    <div>Michigan</div>    <a href="#" class="select2-search-choice-close" tabindex="-1"></a></li><li class="select2-search-field">    <label for="s2id_autogen10" class="select2-offscreen"></label>    <input type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" class="select2-input" id="s2id_autogen10" placeholder="" style="width: 20px;">  </li></ul><div class="select2-drop select2-drop-multi select2-display-none">   <ul class="select2-results">   <li class="select2-no-results">No matches found</li></ul></div></div><select multiple="" style="width:100%" class="select2 select2-offscreen" tabindex="-1">
+                                            <optgroup label="Alaskan/Hawaiian Time Zone">
+                                                <option value="AK">Alaska</option>
+                                                <option value="HI">Hawaii</option>
+                                            </optgroup>
+                                            <optgroup label="Pacific Time Zone">
+                                                <option value="CA">California</option>
+                                                <option value="NV" selected="selected">Nevada</option>
+                                                <option value="OR">Oregon</option>
+                                                <option value="WA">Washington</option>
+                                            </optgroup>
+                                            <optgroup label="Mountain Time Zone">
+                                                <option value="AZ">Arizona</option>
+                                                <option value="CO">Colorado</option>
+                                                <option value="ID">Idaho</option>
+                                                <option value="MT" selected="selected">Montana</option><option value="NE">Nebraska</option>
+                                                <option value="NM">New Mexico</option>
+                                                <option value="ND">North Dakota</option>
+                                                <option value="UT">Utah</option>
+                                                <option value="WY">Wyoming</option>
+                                            </optgroup>
+                                            <optgroup label="Central Time Zone">
+                                                <option value="AL">Alabama</option>
+                                                <option value="AR">Arkansas</option>
+                                                <option value="IL">Illinois</option>
+                                                <option value="IA">Iowa</option>
+                                                <option value="KS">Kansas</option>
+                                                <option value="KY">Kentucky</option>
+                                                <option value="LA">Louisiana</option>
+                                                <option value="MN">Minnesota</option>
+                                                <option value="MS">Mississippi</option>
+                                                <option value="MO">Missouri</option>
+                                                <option value="OK">Oklahoma</option>
+                                                <option value="SD">South Dakota</option>
+                                                <option value="TX">Texas</option>
+                                                <option value="TN">Tennessee</option>
+                                                <option value="WI">Wisconsin</option>
+                                            </optgroup>
+                                            <optgroup label="Eastern Time Zone">
+                                                <option value="CT">Connecticut</option>
+                                                <option value="DE">Delaware</option>
+                                                <option value="FL">Florida</option>
+                                                <option value="GA">Georgia</option>
+                                                <option value="IN">Indiana</option>
+                                                <option value="ME">Maine</option>
+                                                <option value="MD">Maryland</option>
+                                                <option value="MA">Massachusetts</option>
+                                                <option value="MI" selected="selected">Michigan</option>
+                                                <option value="NH">New Hampshire</option>
+                                                <option value="NJ">New Jersey</option>
+                                                <option value="NY">New York</option>
+                                                <option value="NC">North Carolina</option>
+                                                <option value="OH">Ohio</option>
+                                                <option value="PA">Pennsylvania</option>
+                                                <option value="RI">Rhode Island</option>
+                                                <option value="SC">South Carolina</option>
+                                                <option value="VT">Vermont</option>
+                                                <option value="VA">Virginia</option>
+                                                <option value="WV">West Virginia</option>
+                                            </optgroup>
+                                        </select>
+
+                                            <div class="note">
+                                                <strong>Usage:</strong> &lt;select multiple style="width:100%" class="select2" &gt;...&lt;/select&gt;
+                                            </div>
+                                        </div>
+
+                                    </fieldset>
+
+                                    <fieldset>
+                                        <legend>
+                                            Date Picker (Jquery UI)
+                                        </legend>
+
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <div class="form-group">
+                                                    <label>Select a date (single):</label>
+                                                    <div class="input-group">
+                                                        <input type="text" name="mydate" placeholder="Select a date" class="form-control datepicker hasDatepicker" data-dateformat="dd/mm/yy" id="dp1408942959519">
+                                                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-12">
+                                                <label>Select a date (range):</label>
+                                            </div>
+                                            <div class="col-sm-6">
+
+                                                <div class="form-group">
+                                                    <div class="input-group">
+                                                        <input class="form-control hasDatepicker" id="from" type="text" placeholder="From">
+                                                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="col-sm-6">
+
+                                                <div class="form-group">
+                                                    <div class="input-group">
+                                                        <input class="form-control hasDatepicker" id="to" type="text" placeholder="Select a date">
+                                                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                    </fieldset>
+
+                                    <fieldset>
+                                        <legend>
+                                            Bootstrap Timepicker
+                                        </legend>
+
+                                        <div class="row">
+
+                                            <div class="col-sm-12">
+                                                <div class="row">
+
+                                                    <div class="col-sm-12">
+                                                        <div class="form-group">
+                                                            <label>Timepicker (default):</label>
+                                                            <div class="input-group">
+                                                                <input class="form-control" id="timepicker" type="text" placeholder="Select time">
+                                                                <span class="input-group-addon"><i class="fa fa-clock-o"></i></span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                    </fieldset>
+
+                                    <fieldset>
+                                        <legend>
+                                            Clockpicker
+                                        </legend>
+
+                                        <div class="row">
+
+                                            <div class="col-sm-12">
+                                                <div class="row">
+
+                                                    <div class="col-sm-12">
+                                                        <div class="form-group">
+                                                            <label>Clockpicker:</label>
+                                                            <div class="input-group">
+                                                                <input class="form-control" id="clockpicker" type="text" placeholder="Select time" data-autoclose="true">
+                                                                <span class="input-group-addon"><i class="fa fa-clock-o"></i></span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                    </fieldset>
+
+                                    <fieldset>
+                                        <legend>
+                                            Spinners
+                                        </legend>
+
+                                        <div class="row">
+
+                                            <div class="col-sm-6 col-md-4 col-lg-4">
+
+                                                <div class="form-group">
+                                                    <label>Default</label>
+                                                    <span class="ui-spinner ui-widget ui-widget-content ui-corner-all"><input class="form-control spinner-left ui-spinner-input" id="spinner" name="spinner" value="1" type="text" aria-valuenow="1" autocomplete="off" role="spinbutton"><a class="ui-spinner-button ui-spinner-up ui-corner-tr" tabindex="-1"><span class="ui-icon ui-icon-triangle-1-n">▲</span></a><a class="ui-spinner-button ui-spinner-down ui-corner-br" tabindex="-1"><span class="ui-icon ui-icon-triangle-1-s">▼</span></a></span>
+                                                </div>
+
+                                            </div>
+                                            <div class="col-sm-6 col-md-4 col-lg-4">
+                                                <div class="form-group">
+                                                    <label>Decimal spinner</label>
+                                                    <span class="ui-spinner ui-widget ui-widget-content ui-corner-all"><input class="form-control ui-spinner-input" id="spinner-decimal" name="spinner-decimal" value="7.99" aria-valuenow="7.99" autocomplete="off" role="spinbutton"><a class="ui-spinner-button ui-spinner-up ui-corner-tr" tabindex="-1"><span class="ui-icon ui-icon-triangle-1-n">▲</span></a><a class="ui-spinner-button ui-spinner-down ui-corner-br" tabindex="-1"><span class="ui-icon ui-icon-triangle-1-s">▼</span></a></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-12 col-md-4 col-lg-4">
+                                                <div class="form-group">
+                                                    <label>Increment spinner</label>
+                                                    <span class="ui-spinner ui-widget ui-widget-content ui-corner-all" style="height: 32px;"><input class="form-control spinner-both ui-spinner-input" id="spinner-currency" name="spinner-currency" value="5" aria-valuemin="5" aria-valuemax="2500" aria-valuenow="5" autocomplete="off" role="spinbutton"><a class="ui-spinner-button ui-spinner-up ui-corner-tr" tabindex="-1"><span class="ui-icon ui-icon-triangle-1-n">▲</span></a><a class="ui-spinner-button ui-spinner-down ui-corner-br" tabindex="-1"><span class="ui-icon ui-icon-triangle-1-s">▼</span></a></span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </fieldset>
+
+                                    <fieldset>
+                                        <legend>
+                                            Color Pickers
+                                        </legend>
+
+                                        <div class="row">
+
+                                            <div class="col-sm-6">
+
+                                                <div class="form-group">
+                                                    <label>Color Picker (HEX)</label>
+                                                    <input class="form-control" id="colorpicker-1" type="text" value="#8fff00">
+                                                </div>
+
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <label>Color Picker (RGBA)</label>
+                                                    <input class="form-control" id="colorpicker-2" type="text" value="rgba(0,194,255,0.78)" data-color-format="rgba">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </fieldset>
+
+                                    <fieldset>
+                                        <legend>
+                                            Tags
+                                        </legend>
+
+                                        <div class="row">
+
+                                            <div class="col-sm-12">
+                                                <div class="form-group">
+                                                    <label>Type and enter to add tag</label>
+                                                    <input class="form-control tagsinput" value="Amsterdam,Washington,Sydney,Beijing,Cairo" data-role="tagsinput" style="display: none;"><div class="bootstrap-tagsinput"><span class="tag label label-info">Amsterdam<span data-role="remove"></span></span> <span class="tag label label-info">Washington<span data-role="remove"></span></span> <span class="tag label label-info">Sydney<span data-role="remove"></span></span> <span class="tag label label-info">Beijing<span data-role="remove"></span></span> <span class="tag label label-info">Cairo<span data-role="remove"></span></span> <input size="1" type="text" placeholder=""></div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                    </fieldset>
+
+                                    <div class="form-actions">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <button class="btn btn-default" type="submit">
+                                                    Cancel
+                                                </button>
+                                                <button class="btn btn-primary" type="submit">
+                                                    <i class="fa fa-save"></i>
+                                                    Submit
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </form>
+
+                            </div>
+                                <!-- end widget content -->
+
+                        </div>
+                            <!-- end widget div -->
+
+                    </div>
+                        <!-- end widget -->
+
+                </article>
+                    <!-- END COL -->
+
+                    <!-- NEW COL START -->
+                <article class="col-sm-12 col-md-12 col-lg-6">
+
+                        <!-- Widget ID (each widget will need unique ID)-->
+                    <div class="jarviswidget" id="wid-id-3" data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-custombutton="false">
+                            <!-- widget options:
+				usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+
+				data-widget-colorbutton="false"
+				data-widget-editbutton="false"
+				data-widget-togglebutton="false"
+				data-widget-deletebutton="false"
+				data-widget-fullscreenbutton="false"
+				data-widget-custombutton="false"
+				data-widget-collapsed="true"
+				data-widget-sortable="false"
+
+				-->
+                        <header>
+                            <span class="widget-icon"> <i class="fa fa-edit"></i> </span>
+                            <h2>All Masking </h2>
+
+                        </header>
+
+                            <!-- widget div-->
+                        <div>
+
+                                <!-- widget edit box -->
+                            <div class="jarviswidget-editbox">
+                                    <!-- This area used as dropdown edit box -->
+
+                            </div>
+                                <!-- end widget edit box -->
+
+                                <!-- widget content -->
+                            <div class="widget-body">
+                                <p class="alert alert-info text-align-center">
+                                    USAGE: &lt;input type="text" <strong>data-mask="99/99/9999" data-mask-placeholder= "-"&gt;</strong>
+                                </p>
+
+                                <form>
+
+                                    <fieldset>
+                                        <legend>
+                                            Input Masking made easier!
+                                        </legend>
+
+                                        <div class="form-group">
+                                            <label>Date masking</label>
+                                            <div class="input-group">
+                                                <input type="text" class="form-control" data-mask="99/99/9999" data-mask-placeholder="-">
+                                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                            </div>
+                                            <p class="note">
+                                                Data format **/**/****
+                                            </p>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Phone masking</label>
+                                            <div class="input-group">
+                                                <input type="text" class="form-control" data-mask="(999) 999-9999" data-mask-placeholder="X">
+                                                <span class="input-group-addon"><i class="fa fa-phone"></i></span>
+                                            </div>
+                                            <p class="note">
+                                                Data format (XXX) XXX-XXXX
+                                            </p>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Credit card masking</label>
+                                            <div class="input-group">
+                                                <input type="text" class="form-control" data-mask="9999-9999-9999-9999" data-mask-placeholder="*">
+                                                <span class="input-group-addon"><i class="fa fa-credit-card"></i></span>
+                                            </div>
+                                            <p class="note">
+                                                Data format ****-****-****-****
+                                            </p>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Serial number masking</label>
+                                            <div class="input-group">
+                                                <input type="text" class="form-control" data-mask="***-***-***-***-***-***" data-mask-placeholder="_">
+                                                <span class="input-group-addon"><i class="fa fa-asterisk"></i></span>
+                                            </div>
+                                            <p class="note">
+                                                Data format ***-***-***-***-***-***
+                                            </p>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Tax ID masking</label>
+                                            <div class="input-group">
+                                                <input type="text" class="form-control" data-mask="99-9999999" data-mask-placeholder="X">
+                                                <span class="input-group-addon"><i class="fa fa-briefcase"></i></span>
+                                            </div>
+                                            <p class="note">
+                                                Data format 99-9999999
+                                            </p>
+                                        </div>
+
+                                        <div class="form-actions">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <button class="btn btn-default" type="submit">
+                                                        Cancel
+                                                    </button>
+                                                    <button class="btn btn-primary" type="submit">
+                                                        <i class="fa fa-save"></i>
+                                                        Submit
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </fieldset>
+                                </form>
+
+                            </div>
+                                <!-- end widget content -->
+
+                        </div>
+                            <!-- end widget div -->
+
+                    </div>
+                        <!-- end widget -->
+
+                        <!-- Widget ID (each widget will need unique ID)-->
+                    <div class="jarviswidget jarviswidget-color-darken" id="wid-id-5" data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-custombutton="false">
+                            <!-- widget options:
+				usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+
+				data-widget-colorbutton="false"
+				data-widget-editbutton="false"
+				data-widget-togglebutton="false"
+				data-widget-deletebutton="false"
+				data-widget-fullscreenbutton="false"
+				data-widget-custombutton="false"
+				data-widget-collapsed="true"
+				data-widget-sortable="false"
+
+				-->
+                        <header>
+                            <span class="widget-icon"> <i class="fa fa-edit"></i> </span>
+                            <h2>JS Knob </h2>
+
+                        </header>
+
+                            <!-- widget div-->
+                        <div>
+
+                                <!-- widget edit box -->
+                            <div class="jarviswidget-editbox">
+                                    <!-- This area used as dropdown edit box -->
+
+                            </div>
+                                <!-- end widget edit box -->
+
+                                <!-- widget content -->
+                            <div class="widget-body">
+
+                                <form>
+
+                                    <fieldset>
+                                        <legend>
+                                            JS Knob Input
+                                        </legend>
+
+                                        <div class="knobs-demo">
+
+                                            <div>
+                                                <div style="display: inline; width: 120px; height: 120px;"><canvas width="120" height="120"></canvas><input class="knob" data-width="120" data-height="120" data-displayinput="true" value="35" data-displayprevious="true" data-fgcolor="#428BCA" style="width: 64px; height: 40px; position: absolute; vertical-align: middle; margin-top: 40px; margin-left: -92px; border: 0px; background-image: none; font-weight: bold; font-style: normal; font-variant: normal; font-size: 24px; line-height: normal; font-family: Arial; text-align: center; color: rgb(66, 139, 202); padding: 0px; -webkit-appearance: none; background-position: initial initial; background-repeat: initial initial;"></div>
+                                            </div>
+
+                                            <div>
+                                                <div style="display: inline; width: 180px; height: 180px;"><canvas width="180" height="180"></canvas><input class="knob" data-width="180" data-height="180" data-cursor="true" data-fgcolor="#222222" data-thickness=".3" value="29" style="width: 94px; height: 60px; position: absolute; vertical-align: middle; margin-top: 60px; margin-left: -137px; border: 0px; background-image: none; font-weight: bold; font-style: normal; font-variant: normal; font-size: 36px; line-height: normal; font-family: Arial; text-align: center; color: rgb(34, 34, 34); padding: 0px; -webkit-appearance: none; background-position: initial initial; background-repeat: initial initial;"></div>
+                                            </div>
+
+                                            <div>
+                                                <div style="display: inline; width: 80px; height: 80px;"><canvas width="80" height="80"></canvas><input class="knob" data-width="80" data-height="80" data-fgcolor="#71843F" data-angleoffset="-125" data-anglearc="250" value="33" data-thickness=".3" style="width: 44px; height: 26px; position: absolute; vertical-align: middle; margin-top: 26px; margin-left: -62px; border: 0px; background-image: none; font-weight: bold; font-style: normal; font-variant: normal; font-size: 16px; line-height: normal; font-family: Arial; text-align: center; color: rgb(113, 132, 63); padding: 0px; -webkit-appearance: none; background-position: initial initial; background-repeat: initial initial;"></div>
+                                            </div>
+
+                                        </div>
+
+                                    </fieldset>
+                                    <div class="form-actions">
+
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <button class="btn btn-default" type="submit">
+                                                    Cancel
+                                                </button>
+                                                <button class="btn btn-primary" type="submit">
+                                                    <i class="fa fa-save"></i>
+                                                    Submit
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+
+                            </div>
+                                <!-- end widget content -->
+
+                        </div>
+                            <!-- end widget div -->
+
+                    </div>
+                        <!-- end widget -->
+
+                </article>
+                    <!-- END COL -->
+
+            </div>
+
+                <!-- END ROW -->
+
+        </section>
+            <!-- end widget grid -->
+
+        <script type="text/javascript">
+        /* DO NOT REMOVE : GLOBAL FUNCTIONS!
+         *
+         * pageSetUp(); WILL CALL THE FOLLOWING FUNCTIONS
+         *
+         * // activate tooltips
+         * $("[rel=tooltip]").tooltip();
+         *
+         * // activate popovers
+         * $("[rel=popover]").popover();
+         *
+         * // activate popovers with hover states
+         * $("[rel=popover-hover]").popover({ trigger: "hover" });
+         *
+         * // activate inline charts
+         * runAllCharts();
+         *
+         * // setup widgets
+         * setup_widgets_desktop();
+         *
+         * // run form elements
+         * runAllForms();
+         *
+         ********************************
+         *
+         * pageSetUp() is needed whenever you load a page.
+         * It initializes and checks for all basic elements of the page
+         * and makes rendering easier.
+         *
+         */
+
+        pageSetUp();
+
+        /*
+         * ALL PAGE RELATED SCRIPTS CAN GO BELOW HERE
+         * eg alert("my home function");
+         *
+         * var pagefunction = function() {
+         *   ...
+         * }
+         * loadScript("js/plugin/_PLUGIN_NAME_.js", pagefunction);
+         *
+         * TO LOAD A SCRIPT:
+         * var pagefunction = function (){
+         *  loadScript(".../plugin.js", run_after_loaded);
+         * }
+         *
+         * OR
+         *
+         * loadScript(".../plugin.js", run_after_loaded);
+         */
+
+        // pagefunction
+
+        var pagefunction = function() {
+
+        // Spinners
+        $("#spinner").spinner();
+        $("#spinner-decimal").spinner({
+        step: 0.01,
+        numberFormat: "n"
+        });
+
+        $("#spinner-currency").spinner({
+        min: 5,
+        max: 2500,
+        step: 25,
+        start: 1000,
+        numberFormat: "C"
+        });
+
+        //Maxlength
+        loadScript("js/plugin/maxlength/bootstrap-maxlength.min.js", runMaxLength);
+
+        function runMaxLength() {
+        $('input[maxlength]').maxlength({
+        warningClass: "label label-success",
+        limitReachedClass: "label label-important",
+        });
+
+        }
+
+        // START AND FINISH DATE
+        $('#startdate').datepicker({
+        dateFormat: 'dd.mm.yy',
+        prevText: '<i class="fa fa-chevron-left"></i>',
+        nextText: '<i class="fa fa-chevron-right"></i>',
+        onSelect: function (selectedDate) {
+        $('#finishdate').datepicker('option', 'minDate', selectedDate);
+        }
+        });
+        $('#finishdate').datepicker({
+        dateFormat: 'dd.mm.yy',
+        prevText: '<i class="fa fa-chevron-left"></i>',
+        nextText: '<i class="fa fa-chevron-right"></i>',
+        onSelect: function (selectedDate) {
+        $('#startdate').datepicker('option', 'maxDate', selectedDate);
+        }
+        });
+
+        // Date Range Picker
+        $("#from").datepicker({
+        defaultDate: "+1w",
+        changeMonth: true,
+        numberOfMonths: 3,
+        prevText: '<i class="fa fa-chevron-left"></i>',
+        nextText: '<i class="fa fa-chevron-right"></i>',
+        onClose: function (selectedDate) {
+        $("#to").datepicker("option", "maxDate", selectedDate);
+        }
+
+        });
+        $("#to").datepicker({
+        defaultDate: "+1w",
+        changeMonth: true,
+        numberOfMonths: 3,
+        prevText: '<i class="fa fa-chevron-left"></i>',
+        nextText: '<i class="fa fa-chevron-right"></i>',
+        onClose: function (selectedDate) {
+        $("#from").datepicker("option", "minDate", selectedDate);
+        }
+        });
+
+        /*
+         * TIMEPICKER
+         */
+
+        //Load time picker script
+
+        loadScript("js/plugin/bootstrap-timepicker/bootstrap-timepicker.min.js", runTimePicker);
+
+        function runTimePicker() {
+        $('#timepicker').timepicker();
+        }
+
+        /*
+         * CLOCKPICKER
+         */
+
+        // load clockpicker script
+
+        loadScript("js/plugin/clockpicker/clockpicker.min.js", runClockPicker);
+
+        function runClockPicker(){
+        $('#clockpicker').clockpicker({
+        placement: 'top',
+        donetext: 'Done'
+        });
+        }
+
+        /*
+         * JS SLIDER
+         */
+
+        loadScript("js/plugin/noUiSlider/jquery.nouislider.min.js", noUiSlider);
+
+        function noUiSlider() {
+
+        //* noUi Sliders
+        $("#nouislider-1").noUiSlider({
+        range: [2, 100],
+        start: 55,
+        handles: 1,
+        connect: true,
+        });
+
+        $("#nouislider-2").noUiSlider({
+        range: [0, 300],
+        start: [55, 130],
+        step: 60,
+        handles: 2,
+        connect: true
+        });
+
+        $("#nouislider-3").noUiSlider({
+        range: [0, 1000],
+        start: [264, 776],
+        step: 1,
+        connect: true,
+        slide: function () {
+        var values = $(this).val();
+        $(".nouislider-value").text(values[0] + " - " + values[1]);
+        }
+        });
+
+        $("#nouislider-4").noUiSlider({
+        range: [0, 100],
+        start: 50,
+        handles: 1
+        }).attr("disabled", "disabled");
+
+        } // end noUISlider
+
+        /*
+         * ION SLIDER
+         */
+        loadScript("js/plugin/ion-slider/ion.rangeSlider.min.js", ion_slider);
+
+        function ion_slider() {
+
+        //* ion Range Sliders
+
+        $("#range-slider-1").ionRangeSlider({
+        min: 0,
+        max: 5000,
+        from: 1000,
+        to: 4000,
+        type: 'double',
+        step: 1,
+        prefix: "$",
+        prettify: false,
+        hasGrid: true
+        });
+
+        $("#range-slider-2").ionRangeSlider();
+
+        $("#range-slider-3").ionRangeSlider({
+        min: 0,
+        from: 2.3,
+        max: 10,
+        type: 'single',
+        step: 0.1,
+        postfix: " mm",
+        prettify: false,
+        hasGrid: true
+        });
+
+        $("#range-slider-4").ionRangeSlider({
+        min: -50,
+        max: 50,
+        from: 5,
+        to: 25,
+        type: 'double',
+        step: 1,
+        postfix: "°",
+        prettify: false,
+        hasGrid: true
+        });
+
+        $("#range-slider-5").ionRangeSlider({
+        min: 0,
+        from: 0,
+        max: 10,
+        type: 'single',
+        step: 0.1,
+        postfix: " mm",
+        prettify: false,
+        hasGrid: true
+        });
+
+        }
+
+        /*
+         * COLOR PICKER
+         */
+        loadScript("js/plugin/colorpicker/bootstrap-colorpicker.min.js", initializeColorpicker);
+
+        function initializeColorpicker() {
+
+        if($('.colorpicker.dropdown-menu').length){
+        $('.colorpicker.dropdown-menu').remove();
+        }
+
+        $('#colorpicker-1').colorpicker()
+        $('#colorpicker-2').colorpicker()
+
+        }
+
+        /*
+         * TAGS
+         */
+
+        loadScript("js/plugin/bootstrap-tags/bootstrap-tagsinput.min.js");
+
+
+        /*
+         * KNOB
+         */
+        loadScript("js/plugin/knob/jquery.knob.min.js", startKnob);
+
+        function startKnob() {
+
+        $('.knob').knob({
+        change: function (value) {
+        //console.log("change : " + value);
+        },
+        release: function (value) {
+        //console.log(this.$.attr('value'));
+        //console.log("release : " + value);
+        },
+        cancel: function () {
+        //console.log("cancel : ", this);
+        }
+        });
+        }
+
+        /*
+         * X-Ediable
+         */
+
+        loadScript("js/plugin/x-editable/moment.min.js", loadMockJax);
+
+        function loadMockJax() {
+        loadScript("js/plugin/x-editable/jquery.mockjax.min.js", loadXeditable);
+        }
+
+        function loadXeditable() {
+        loadScript("js/plugin/x-editable/x-editable.min.js", loadTypeHead);
+        }
+
+        function loadTypeHead() {
+        loadScript("js/plugin/typeahead/typeahead.min.js", loadTypeaheadjs);
+        }
+
+        function loadTypeaheadjs() {
+        loadScript("js/plugin/typeahead/typeaheadjs.min.js", runXEditDemo);
+        }
+
+        function runXEditDemo() {
+
+        (function (e) {
+        "use strict";
+        var t = function (e) {
+        this.init("address", e, t.defaults)
+        };
+        e.fn.editableutils.inherit(t, e.fn.editabletypes.abstractinput);
+        e.extend(t.prototype, {
+        render: function () {
+        this.$input = this.$tpl.find("input")
+        },
+        value2html: function (t, n) {
+        if (!t) {
+        e(n).empty();
+        return
+        }
+        var r = e("<div>").text(t.city).html() + ", " + e("<div>").text(t.street).html() +
+        " st., bld. " + e("<div>").text(t.building).html();
+        e(n).html(r)
+        },
+        html2value: function (e) {
+        return null
+        },
+        value2str: function (e) {
+        var t = "";
+        if (e)
+        for (var n in e)
+        t = t + n + ":" + e[n] + ";";
+        return t
+        },
+        str2value: function (e) {
+        return e
+        },
+        value2input: function (e) {
+        if (!e)
+        return;
+        this.$input.filter('[name="city"]').val(e.city);
+        this.$input.filter('[name="street"]').val(e.street);
+        this.$input.filter('[name="building"]').val(e.building)
+        },
+        input2value: function () {
+        return {
+        city: this.$input.filter('[name="city"]').val(),
+        street: this.$input.filter('[name="street"]').val(),
+        building: this.$input.filter('[name="building"]').val()
+        }
+        },
+        activate: function () {
+        this.$input.filter('[name="city"]').focus()
+        },
+        autosubmit: function () {
+        this.$input.keydown(function (t) {
+        t.which === 13 && e(this).closest("form").submit()
+        })
+        }
+        });
+        t.defaults = e.extend({}, e.fn.editabletypes.abstractinput.defaults, {
+        tpl: '<div class="editable-address"><label><span>City: </span><input type="text" name="city" class="form-control"></label></div><div class="editable-address"><label><span>Street: </span><input type="text" name="street" class="form-control"></label></div><div class="editable-address"><label><span>Building: </span><input type="text" name="building" class="form-control"></label></div>',
+        inputclass: ""
+        });
+        e.fn.editabletypes.address = t
+        })(window.jQuery);
+
+        //ajax mocks
+        $.mockjaxSettings.responseTime = 500;
+
+        $.mockjax({
+        url: '/post',
+        response: function (settings) {
+        log(settings, this);
+        }
+        });
+
+        $.mockjax({
+        url: '/error',
+        status: 400,
+        statusText: 'Bad Request',
+        response: function (settings) {
+        this.responseText = 'Please input correct value';
+        log(settings, this);
+        }
+        });
+
+        $.mockjax({
+        url: '/status',
+        status: 500,
+        response: function (settings) {
+        this.responseText = 'Internal Server Error';
+        log(settings, this);
+        }
+        });
+
+        $.mockjax({
+        url: '/groups',
+        response: function (settings) {
+        this.responseText = [{
+        value: 0,
+        text: 'Guest'
+        }, {
+        value: 1,
+        text: 'Service'
+        }, {
+        value: 2,
+        text: 'Customer'
+        }, {
+        value: 3,
+        text: 'Operator'
+        }, {
+        value: 4,
+        text: 'Support'
+        }, {
+        value: 5,
+        text: 'Admin'
+        }];
+        log(settings, this);
+        }
+        });
+
+        //TODO: add this div to page
+        function log(settings, response) {
+        var s = [],
+        str;
+        s.push(settings.type.toUpperCase() + ' url = "' + settings.url + '"');
+        for (var a in settings.data) {
+        if (settings.data[a] && typeof settings.data[a] === 'object') {
+        str = [];
+        for (var j in settings.data[a]) {
+        str.push(j + ': "' + settings.data[a][j] + '"');
+        }
+        str = '{ ' + str.join(', ') + ' }';
+        } else {
+        str = '"' + settings.data[a] + '"';
+        }
+        s.push(a + ' = ' + str);
+        }
+        s.push('RESPONSE: status = ' + response.status);
+
+        if (response.responseText) {
+        if ($.isArray(response.responseText)) {
+        s.push('[');
+        $.each(response.responseText, function (i, v) {
+        s.push('{value: ' + v.value + ', text: "' + v.text + '"}');
+        });
+        s.push(']');
+        } else {
+        s.push($.trim(response.responseText));
+        }
+        }
+        s.push('--------------------------------------\n');
+        $('#console').val(s.join('\n') + $('#console').val());
+        }
+
+        /*
+         * X-EDITABLES
+         */
+
+        $('#inline').on('change', function (e) {
+        if ($(this).prop('checked')) {
+        window.location.href = '?mode=inline#ajax/plugins.html';
+        } else {
+        window.location.href = '?#ajax/plugins.html';
+        }
+        });
+
+        if (window.location.href.indexOf("?mode=inline") > -1) {
+        $('#inline').prop('checked', true);
+        $.fn.editable.defaults.mode = 'inline';
+        } else {
+        $('#inline').prop('checked', false);
+        $.fn.editable.defaults.mode = 'popup';
+        }
+
+        //defaults
+        $.fn.editable.defaults.url = '/post';
+        //$.fn.editable.defaults.mode = 'inline'; use this to edit inline
+
+        //enable / disable
+        $('#enable').click(function () {
+        $('#user .editable').editable('toggleDisabled');
+        });
+
+        //editables
+        $('#username').editable({
+        url: '/post',
+        type: 'text',
+        pk: 1,
+        name: 'username',
+        title: 'Enter username'
+        });
+
+        $('#firstname').editable({
+        validate: function (value) {
+        if ($.trim(value) == '')
+        return 'This field is required';
+        }
+        });
+
+        $('#sex').editable({
+        prepend: "not selected",
+        source: [{
+        value: 1,
+        text: 'Male'
+        }, {
+        value: 2,
+        text: 'Female'
+        }],
+        display: function (value, sourceData) {
+        var colors = {
+        "": "gray",
+        1: "green",
+        2: "blue"
+        }, elem = $.grep(sourceData, function (o) {
+        return o.value == value;
+        });
+
+        if (elem.length) {
+        $(this).text(elem[0].text).css("color", colors[value]);
+        } else {
+        $(this).empty();
+        }
+        }
+        });
+
+        $('#status').editable();
+
+        $('#group').editable({
+        showbuttons: false
+        });
+
+        $('#vacation').editable({
+        datepicker: {
+        todayBtn: 'linked'
+        }
+        });
+
+        $('#dob').editable();
+
+        $('#event').editable({
+        placement: 'right',
+        combodate: {
+        firstItem: 'name'
+        }
+        });
+
+        $('#meeting_start').editable({
+        format: 'yyyy-mm-dd hh:ii',
+        viewformat: 'dd/mm/yyyy hh:ii',
+        validate: function (v) {
+        if (v && v.getDate() == 10)
+        return 'Day cant be 10!';
+        },
+        datetimepicker: {
+        todayBtn: 'linked',
+        weekStart: 1
+        }
+        });
+
+        $('#comments').editable({
+        showbuttons: 'bottom'
+        });
+
+        $('#note').editable();
+        $('#pencil').click(function (e) {
+        e.stopPropagation();
+        e.preventDefault();
+        $('#note').editable('toggle');
+        });
+
+        $('#state').editable({
+        source: ["Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut",
+        "Delaware", "Florida", "Georgia", "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa", "Kansas",
+        "Kentucky", "Louisiana", "Maine", "Maryland", "Massachusetts", "Michigan", "Minnesota",
+        "Mississippi", "Missouri", "Montana", "Nebraska", "Nevada", "New Hampshire", "New Jersey",
+        "New Mexico", "New York", "North Dakota", "North Carolina", "Ohio", "Oklahoma", "Oregon",
+        "Pennsylvania", "Rhode Island", "South Carolina", "South Dakota", "Tennessee", "Texas",
+        "Utah", "Vermont", "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming"
+        ]
+        });
+
+        $('#state2').editable({
+        value: 'California',
+        typeahead: {
+        name: 'state',
+        local: ["Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut",
+        "Delaware", "Florida", "Georgia", "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa",
+        "Kansas", "Kentucky", "Louisiana", "Maine", "Maryland", "Massachusetts", "Michigan",
+        "Minnesota", "Mississippi", "Missouri", "Montana", "Nebraska", "Nevada", "New Hampshire",
+        "New Jersey", "New Mexico", "New York", "North Dakota", "North Carolina", "Ohio",
+        "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island", "South Carolina", "South Dakota",
+        "Tennessee", "Texas", "Utah", "Vermont", "Virginia", "Washington", "West Virginia",
+        "Wisconsin", "Wyoming"
+        ]
+        }
+        });
+
+        $('#fruits').editable({
+        pk: 1,
+        limit: 3,
+        source: [{
+        value: 1,
+        text: 'banana'
+        }, {
+        value: 2,
+        text: 'peach'
+        }, {
+        value: 3,
+        text: 'apple'
+        }, {
+        value: 4,
+        text: 'watermelon'
+        }, {
+        value: 5,
+        text: 'orange'
+        }]
+        });
+
+        $('#tags').editable({
+        inputclass: 'input-large',
+        select2: {
+        tags: ['html', 'javascript', 'css', 'ajax'],
+        tokenSeparators: [",", " "]
+        }
+        });
+
+        var countries = [];
+        $.each({
+        "BD": "Bangladesh",
+        "BE": "Belgium",
+        "BF": "Burkina Faso",
+        "BG": "Bulgaria",
+        "BA": "Bosnia and Herzegovina",
+        "BB": "Barbados",
+        "WF": "Wallis and Futuna",
+        "BL": "Saint Bartelemey",
+        "BM": "Bermuda",
+        "BN": "Brunei Darussalam",
+        "BO": "Bolivia",
+        "BH": "Bahrain",
+        "BI": "Burundi",
+        "BJ": "Benin",
+        "BT": "Bhutan",
+        "JM": "Jamaica",
+        "BV": "Bouvet Island",
+        "BW": "Botswana",
+        "WS": "Samoa",
+        "BR": "Brazil",
+        "BS": "Bahamas",
+        "JE": "Jersey",
+        "BY": "Belarus",
+        "O1": "Other Country",
+        "LV": "Latvia",
+        "RW": "Rwanda",
+        "RS": "Serbia",
+        "TL": "Timor-Leste",
+        "RE": "Reunion",
+        "LU": "Luxembourg",
+        "TJ": "Tajikistan",
+        "RO": "Romania",
+        "PG": "Papua New Guinea",
+        "GW": "Guinea-Bissau",
+        "GU": "Guam",
+        "GT": "Guatemala",
+        "GS": "South Georgia and the South Sandwich Islands",
+        "GR": "Greece",
+        "GQ": "Equatorial Guinea",
+        "GP": "Guadeloupe",
+        "JP": "Japan",
+        "GY": "Guyana",
+        "GG": "Guernsey",
+        "GF": "French Guiana",
+        "GE": "Georgia",
+        "GD": "Grenada",
+        "GB": "United Kingdom",
+        "GA": "Gabon",
+        "SV": "El Salvador",
+        "GN": "Guinea",
+        "GM": "Gambia",
+        "GL": "Greenland",
+        "GI": "Gibraltar",
+        "GH": "Ghana",
+        "OM": "Oman",
+        "TN": "Tunisia",
+        "JO": "Jordan",
+        "HR": "Croatia",
+        "HT": "Haiti",
+        "HU": "Hungary",
+        "HK": "Hong Kong",
+        "HN": "Honduras",
+        "HM": "Heard Island and McDonald Islands",
+        "VE": "Venezuela",
+        "PR": "Puerto Rico",
+        "PS": "Palestinian Territory",
+        "PW": "Palau",
+        "PT": "Portugal",
+        "SJ": "Svalbard and Jan Mayen",
+        "PY": "Paraguay",
+        "IQ": "Iraq",
+        "PA": "Panama",
+        "PF": "French Polynesia",
+        "BZ": "Belize",
+        "PE": "Peru",
+        "PK": "Pakistan",
+        "PH": "Philippines",
+        "PN": "Pitcairn",
+        "TM": "Turkmenistan",
+        "PL": "Poland",
+        "PM": "Saint Pierre and Miquelon",
+        "ZM": "Zambia",
+        "EH": "Western Sahara",
+        "RU": "Russian Federation",
+        "EE": "Estonia",
+        "EG": "Egypt",
+        "TK": "Tokelau",
+        "ZA": "South Africa",
+        "EC": "Ecuador",
+        "IT": "Italy",
+        "VN": "Vietnam",
+        "SB": "Solomon Islands",
+        "EU": "Europe",
+        "ET": "Ethiopia",
+        "SO": "Somalia",
+        "ZW": "Zimbabwe",
+        "SA": "Saudi Arabia",
+        "ES": "Spain",
+        "ER": "Eritrea",
+        "ME": "Montenegro",
+        "MD": "Moldova, Republic of",
+        "MG": "Madagascar",
+        "MF": "Saint Martin",
+        "MA": "Morocco",
+        "MC": "Monaco",
+        "UZ": "Uzbekistan",
+        "MM": "Myanmar",
+        "ML": "Mali",
+        "MO": "Macao",
+        "MN": "Mongolia",
+        "MH": "Marshall Islands",
+        "MK": "Macedonia",
+        "MU": "Mauritius",
+        "MT": "Malta",
+        "MW": "Malawi",
+        "MV": "Maldives",
+        "MQ": "Martinique",
+        "MP": "Northern Mariana Islands",
+        "MS": "Montserrat",
+        "MR": "Mauritania",
+        "IM": "Isle of Man",
+        "UG": "Uganda",
+        "TZ": "Tanzania, United Republic of",
+        "MY": "Malaysia",
+        "MX": "Mexico",
+        "IL": "Israel",
+        "FR": "France",
+        "IO": "British Indian Ocean Territory",
+        "FX": "France, Metropolitan",
+        "SH": "Saint Helena",
+        "FI": "Finland",
+        "FJ": "Fiji",
+        "FK": "Falkland Islands (Malvinas)",
+        "FM": "Micronesia, Federated States of",
+        "FO": "Faroe Islands",
+        "NI": "Nicaragua",
+        "NL": "Netherlands",
+        "NO": "Norway",
+        "NA": "Namibia",
+        "VU": "Vanuatu",
+        "NC": "New Caledonia",
+        "NE": "Niger",
+        "NF": "Norfolk Island",
+        "NG": "Nigeria",
+        "NZ": "New Zealand",
+        "NP": "Nepal",
+        "NR": "Nauru",
+        "NU": "Niue",
+        "CK": "Cook Islands",
+        "CI": "Cote d'Ivoire",
+        "CH": "Switzerland",
+        "CO": "Colombia",
+        "CN": "China",
+        "CM": "Cameroon",
+        "CL": "Chile",
+        "CC": "Cocos (Keeling) Islands",
+        "CA": "Canada",
+        "CG": "Congo",
+        "CF": "Central African Republic",
+        "CD": "Congo, The Democratic Republic of the",
+        "CZ": "Czech Republic",
+        "CY": "Cyprus",
+        "CX": "Christmas Island",
+        "CR": "Costa Rica",
+        "CV": "Cape Verde",
+        "CU": "Cuba",
+        "SZ": "Swaziland",
+        "SY": "Syrian Arab Republic",
+        "KG": "Kyrgyzstan",
+        "KE": "Kenya",
+        "SR": "Suriname",
+        "KI": "Kiribati",
+        "KH": "Cambodia",
+        "KN": "Saint Kitts and Nevis",
+        "KM": "Comoros",
+        "ST": "Sao Tome and Principe",
+        "SK": "Slovakia",
+        "KR": "Korea, Republic of",
+        "SI": "Slovenia",
+        "KP": "Korea, Democratic People's Republic of",
+        "KW": "Kuwait",
+        "SN": "Senegal",
+        "SM": "San Marino",
+        "SL": "Sierra Leone",
+        "SC": "Seychelles",
+        "KZ": "Kazakhstan",
+        "KY": "Cayman Islands",
+        "SG": "Singapore",
+        "SE": "Sweden",
+        "SD": "Sudan",
+        "DO": "Dominican Republic",
+        "DM": "Dominica",
+        "DJ": "Djibouti",
+        "DK": "Denmark",
+        "VG": "Virgin Islands, British",
+        "DE": "Germany",
+        "YE": "Yemen",
+        "DZ": "Algeria",
+        "US": "United States",
+        "UY": "Uruguay",
+        "YT": "Mayotte",
+        "UM": "United States Minor Outlying Islands",
+        "LB": "Lebanon",
+        "LC": "Saint Lucia",
+        "LA": "Lao People's Democratic Republic",
+        "TV": "Tuvalu",
+        "TW": "Taiwan",
+        "TT": "Trinidad and Tobago",
+        "TR": "Turkey",
+        "LK": "Sri Lanka",
+        "LI": "Liechtenstein",
+        "A1": "Anonymous Proxy",
+        "TO": "Tonga",
+        "LT": "Lithuania",
+        "A2": "Satellite Provider",
+        "LR": "Liberia",
+        "LS": "Lesotho",
+        "TH": "Thailand",
+        "TF": "French Southern Territories",
+        "TG": "Togo",
+        "TD": "Chad",
+        "TC": "Turks and Caicos Islands",
+        "LY": "Libyan Arab Jamahiriya",
+        "VA": "Holy See (Vatican City State)",
+        "VC": "Saint Vincent and the Grenadines",
+        "AE": "United Arab Emirates",
+        "AD": "Andorra",
+        "AG": "Antigua and Barbuda",
+        "AF": "Afghanistan",
+        "AI": "Anguilla",
+        "VI": "Virgin Islands, U.S.",
+        "IS": "Iceland",
+        "IR": "Iran, Islamic Republic of",
+        "AM": "Armenia",
+        "AL": "Albania",
+        "AO": "Angola",
+        "AN": "Netherlands Antilles",
+        "AQ": "Antarctica",
+        "AP": "Asia/Pacific Region",
+        "AS": "American Samoa",
+        "AR": "Argentina",
+        "AU": "Australia",
+        "AT": "Austria",
+        "AW": "Aruba",
+        "IN": "India",
+        "AX": "Aland Islands",
+        "AZ": "Azerbaijan",
+        "IE": "Ireland",
+        "ID": "Indonesia",
+        "UA": "Ukraine",
+        "QA": "Qatar",
+        "MZ": "Mozambique"
+        }, function (k, v) {
+        countries.push({
+        id: k,
+        text: v
+        });
+        });
+
+        $('#country').editable({
+        source: countries,
+        select2: {
+        width: 200
+        }
+        });
+
+        $('#address').editable({
+        url: '/post',
+        value: {
+        city: "Moscow",
+        street: "Lenina",
+        building: "12"
+        },
+        validate: function (value) {
+        if (value.city == '')
+        return 'city is required!';
+        },
+        display: function (value) {
+        if (!value) {
+        $(this).empty();
+        return;
+        }
+        var html = '<b>' + $('<div>').text(value.city).html() + '</b>, ' + $('<div>').text(value.street)
+        .html() + ' st., bld. ' + $('<div>').text(value.building).html();
+        $(this).html(html);
+        }
+        });
+
+        $('#user .editable').on('hidden', function (e, reason) {
+        if (reason === 'save' || reason === 'nochange') {
+        var $next = $(this).closest('tr').next().find('.editable');
+        if ($('#autoopen').is(':checked')) {
+        setTimeout(function () {
+        $next.editable('show');
+        }, 300);
+        } else {
+        $next.focus();
+        }
+        }
+        });
+
+        }
+
+
+        };
+
+        // end pagefunction
+
+        // run pagefunction
+
+        pagefunction();
+
+        </script>
+    </div>
+}
