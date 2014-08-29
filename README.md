@@ -11,7 +11,7 @@
 - kill -9 $(cat server.pid) //kill process in production mode
 
 #### ui2
-in play framework 2(Scala)
+- in play framework 2(Scala)
 - ./activator //open sbt console
 - ./play //open sbt console
 - //then
