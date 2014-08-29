@@ -1,6 +1,25 @@
 ### This is the Playful Prelaunch sample app.
 
 #### The stack:
+- PostgreSQL 9.1-901.jdbc4
+
+#### ui1
+in play framework 1
+play eclipsify //make .project for eclipse ide
+play run //run project in dev mode
+play start //run project in prod mode
+kill -9 $(cat server.pid) //kill process in production mode
+
+#### ui2
+in play framework 2(Scala)
+./activator //open sbt console
+./play //open sbt console
+//then
+~run //run command that compiles files when you save files
+run //run command that compiles when you refresh the browser
+start //run project in production mode
+digest //zip project as in production mode
+
 - Play Framework 2.3.0
 - Activator 1.2.10
 - Scala 2.11.0
@@ -20,14 +39,3 @@
 - sbt-imagemin 1.0.0
 - sbt-dustjs-linkedin 1.0.2
 - play-auto-refresh 0.0.10
-- PostgreSQL 9.1-901.jdbc4
-
-#### ui
-in play framework 2(Scala)
-./activator //open sbt console
-./play //open sbt console
-//then
-~run //run command that compiles files when you save files
-run //run command that compiles when you refresh the browser
-start //run project in production mode
-digest //zip project as in production mode
