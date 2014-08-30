@@ -1,5 +1,6 @@
 uis=Университетская информационная система
 SignIn = Войти
+SignOut = Выйти
 E-mail = E-mail
 Please_enter_email_address/username = Please enter email address/username
 password = Пароль
@@ -16,3 +17,4 @@ secure.remember=Remember me
 secure.signin=Sign in
 secure.error=Oops, unknown username or password.
 secure.logout=You have been logged out.
+find_reports_and_more = Поиск

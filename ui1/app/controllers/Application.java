@@ -1,6 +1,7 @@
 package controllers;
 
 import play.*;
+import play.i18n.Lang;
 import play.libs.Crypto;
 import play.mvc.*;
 
@@ -25,4 +26,13 @@ public class Application extends Controller {
         render();
     }
 
+    public static void changeLang(String lang) {
+        session.put("lang", lang);
+        Lang.change(lang);
+        String url = flash.get("url");
+        if(url == null) {
+            url = Play.ctxPath + "/";
+        }
+        redirect(url);
+    }
 }

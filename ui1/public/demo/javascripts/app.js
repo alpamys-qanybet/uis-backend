@@ -384,7 +384,7 @@ var calc_navbar_height = function() {
 
                     $.SmartMessageBox({
                         title: "<i class='fa fa-sign-out txt-color-orangeDark'></i> Logout <span class='txt-color-orangeDark'><strong>" + $("#show-shortcut").text() + "</strong></span> ?",
-                        content: a.data("logout-msg") || "You can improve your security further after logging out by closing this opened browser",
+                        content: a.data("logout-msg"),
                         buttons: "[No][Yes]"
                     }, function(a) {
                         "Yes" == a && ($.root_.addClass("animated fadeOutUp"), setTimeout(b, 1e3))
