@@ -1,6 +1,8 @@
 package controllers;
 
 import play.*;
+import play.i18n.Lang;
+import play.i18n.Messages;
 import play.mvc.*;
 
 import java.util.*;
@@ -10,7 +12,7 @@ import models.*;
 public class Demo extends Controller {
 	
 	public static void dashboard() {
-        render("Demo/dashboard.html");
+		render("Demo/dashboard.html");
     }
 	public static void inbox() {
         render("Demo/inbox.html");
@@ -121,7 +123,7 @@ public class Demo extends Controller {
         render("Demo/invoice.html");
     }
 	public static void login() {
-        render("Demo/login.html");
+		render("Demo/login.html");
     }
 	public static void register() {
         render("Demo/register.html");
