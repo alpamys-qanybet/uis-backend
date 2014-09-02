@@ -50,3 +50,9 @@ ui1/test-result
 ui1/server.pid
 ui1/*.iml
 ui1/*.eml
+
+# uis-api
+uis-api/.classpath
+uis-api/.project
+uis-api/.settings/
+uis-api/target/
