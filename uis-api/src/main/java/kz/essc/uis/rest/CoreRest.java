@@ -1,4 +1,4 @@
-package kz.essc.rest;
+package kz.essc.uis.rest;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
