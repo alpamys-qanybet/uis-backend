@@ -19,6 +19,7 @@ public class Application extends Controller {
         if(Security.isConnected()) {
 //            User user = User.find("byEmail", Security.connected()).first();
             renderArgs.put("user", "email");
+            Lang.change("ru");
         }
     }
 	
@@ -35,4 +36,7 @@ public class Application extends Controller {
         }
         redirect(url);
     }
+    
+
+    
 }

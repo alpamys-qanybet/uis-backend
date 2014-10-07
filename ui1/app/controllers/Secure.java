@@ -28,6 +28,8 @@ public class Secure extends Controller {
             check(check);
         }
     }
+
+
     public static void login() throws Throwable {
    	 Http.Cookie remember = request.cookies.get("rememberme");
         if(remember != null) {

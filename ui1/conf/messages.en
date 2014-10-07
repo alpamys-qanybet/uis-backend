@@ -19,3 +19,5 @@ secure.signin=Sign in
 secure.error=Oops, unknown username or password.
 secure.logout=You have been logged out.
 find_reports_and_more = Find reports and more
+
+Registration = Registration

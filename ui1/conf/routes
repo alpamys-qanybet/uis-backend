@@ -7,6 +7,8 @@ GET           /                             Application.index
 GET           /login                        Secure.login
 GET           /logout                       Secure.logout
 POST          /login                        Secure.authenticate
+GET           /register				        Home.register
+GET          /register12				    JSON.register12
 
 # Demo
 GET           /demo/dashboard               Demo.dashboard
