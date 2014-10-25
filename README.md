@@ -105,6 +105,7 @@ add in __standalone.xml__ inside _<security-domains>_ following:
 ~~~~
 
 in __UI__ use followings:
+ 
  to login:
 ~~~~
     <a href='http://localhost:8080/uis-api/login.html?url=back-url'>Login</a>
