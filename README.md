@@ -48,13 +48,13 @@ run command:
 
  `mvn eclipse:eclipse`
 
-set up jboss-home in pom.xml:
-edit __<jboss.home>__
+set up jboss-home in __pom.xml__:
+edit _<jboss.home>_
 (use content as sample)
 
 create a database and name it "uis"(you can use different name, just assign it in _<connection-url>_ below)
 
-set up your database settings within datasource in _<datasources>_ in _<JBOSS-HOME>/standalone/configuration/standalone.xml_
+set up your database settings within datasource in _<datasources>_ in ___<JBOSS-HOME>_/standalone/configuration/standalone.xml__
 ~~~~
     <datasource jndi-name="java:jboss/datasources/uisDatasource" pool-name="uisDatasource" enabled="true">
         <connection-url>jdbc:postgresql://localhost:5432/uis</connection-url>
@@ -71,7 +71,7 @@ set up your database settings within datasource in _<datasources>_ in _<JBOSS-HO
 ~~~~
 
 
-and driver in __<datasources>/<drivers>__ in the same file read [ this ](https://developer.jboss.org/blogs/amartin-blog/2012/02/08/how-to-set-up-a-postgresql-jdbc-driver-on-jboss-7)
+and driver in _<datasources>/<drivers>_ in the same file read [ this ](https://developer.jboss.org/blogs/amartin-blog/2012/02/08/how-to-set-up-a-postgresql-jdbc-driver-on-jboss-7)
 
 ~~~~
     <driver name="postgresql" module="org.postgresql">
