@@ -105,15 +105,12 @@ add in __standalone.xml__ inside _<security-domains>_ following:
 ~~~~
 
 __REST urls__:
-##secured:
+#secured:
 `rest/secure`
-
-##open
+#open
 `rest/`
 
-
 in __UI__ use followings:
-JAAS integration uses JSESSIONID inside cookie.
  to login:
 ~~~~
     <a href='http://localhost:8080/uis-api/login.html?url=back-url'>Login</a>
@@ -123,4 +120,6 @@ JAAS integration uses JSESSIONID inside cookie.
 ~~~~
   REST GET method 'secure/users/logout'
 ~~~~
+
+JAAS integration uses JSESSIONID inside cookie.
 
