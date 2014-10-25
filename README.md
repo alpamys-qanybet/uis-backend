@@ -111,7 +111,7 @@ in __UI__ use followings:
 ~~~~
 
  to logout:
- ~~~~
+~~~~
   REST GET method 'users/logout'
- ~~~~
+~~~~
 
