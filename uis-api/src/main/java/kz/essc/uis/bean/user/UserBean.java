@@ -70,7 +70,14 @@ public class UserBean {
 	}
 	
 	public UserWrapper edit(Long id, UserWrapper userWrapper) {
+		System.out.println("edit");
+		
 		try {
+			System.out.println("id " + id);
+			System.out.println("login " + userWrapper.getLogin());
+			System.out.println("name " + userWrapper.getName());
+			System.out.println("password " + userWrapper.getPassword());
+			
 			User user = (User) em.find(User.class, id);
 			user.setLogin(userWrapper.getLogin());
 			user.setName(userWrapper.getName());
