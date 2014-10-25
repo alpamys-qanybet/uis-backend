@@ -103,3 +103,15 @@ add in __standalone.xml__ inside _<security-domains>_ following:
         </authentication>
     </security-domain>
 ~~~~
+
+in __UI__ use followings:
+ to login:
+~~~~
+    <a href='http://localhost:8080/uis-api/login.html?url=__back-url__'>Login</a>
+~~~~
+
+ to logout:
+ ~~~~
+  REST GET method 'users/logout'
+ ~~~~
+
