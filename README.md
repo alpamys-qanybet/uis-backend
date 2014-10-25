@@ -61,8 +61,8 @@ set up your database settings within datasource in _<datasources>_ in _<JBOSS-HO
         <driver-class>org.postgresql.Driver</driver-class>
         <driver>postgresql</driver>
         <security>
-            <user-name>postgres</user-name>
-            <password>postgres</password>
+            <user-name>_yourusername_</user-name>
+            <password>_yourpassword_</password>
         </security>
         <validation>
             <check-valid-connection-sql>select 1</check-valid-connection-sql>
@@ -88,3 +88,18 @@ run commands:
 `mvn clean package jboss-as:deploy`
 
 (any time to deploy to server use this command, you can attach it to eclipse if you want by maven-eclipse-plugin)
+
+### Security JAAS JBoss security domain
+Rest api is divided into open and secured url methods:
+add in __standalone.xml__ inside _<security-domains>_ following:
+~~~~
+    <security-domain name="ls-system" cache-type="default">
+        <authentication>
+            <login-module code="Database" flag="required">
+                <module-option name="dsJndiName" value="java:jboss/datasources/uisDatasource"/>
+                <module-option name="principalsQuery" value="select U.PASSWORD_ from SC_USER U where U.LOGIN_=?"/>
+                <module-option name="rolesQuery" value="select NAME_, GROUP_ from USER_ROLE_SECURITY where USER_=?"/>
+            </login-module>
+        </authentication>
+    </security-domain>
+~~~~
