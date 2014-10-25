@@ -61,8 +61,8 @@ set up your database settings within datasource in _<datasources>_ in ___<JBOSS-
         <driver-class>org.postgresql.Driver</driver-class>
         <driver>postgresql</driver>
         <security>
-            <user-name>_yourusername_</user-name>
-            <password>_yourpassword_</password>
+            <user-name>yourusername</user-name>
+            <password>yourpassword</password>
         </security>
         <validation>
             <check-valid-connection-sql>select 1</check-valid-connection-sql>
@@ -104,8 +104,16 @@ add in __standalone.xml__ inside _<security-domains>_ following:
     </security-domain>
 ~~~~
 
+__REST urls__:
+##secured:
+`rest/secure`
+
+##open
+`rest/`
+
+
 in __UI__ use followings:
- 
+JAAS integration uses JSESSIONID inside cookie.
  to login:
 ~~~~
     <a href='http://localhost:8080/uis-api/login.html?url=back-url'>Login</a>
@@ -113,6 +121,6 @@ in __UI__ use followings:
 
  to logout:
 ~~~~
-  REST GET method 'users/logout'
+  REST GET method 'secure/users/logout'
 ~~~~
 
