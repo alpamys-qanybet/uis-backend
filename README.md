@@ -104,11 +104,9 @@ add in __standalone.xml__ inside _<security-domains>_ following:
     </security-domain>
 ~~~~
 
-__REST urls__:
-#secured:
-`rest/secure`
-#open
-`rest/`
+##REST urls:
+ - #secured: `rest/secure`
+ - #open `rest/`
 
 in __UI__ use followings:
  to login:
