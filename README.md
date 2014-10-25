@@ -52,9 +52,9 @@ set up jboss-home in pom.xml:
 edit __<jboss.home>__
 (use content as sample)
 
-create a database and name it "uis"(you can use different name, just assign it in `<connection-url>` below)
+create a database and name it "uis"(you can use different name, just assign it in _<connection-url>_ below)
 
-set up your database settings within datasource in __<datasources>__ in __<JBOSS-HOME>/standalone/configuration/standalone.xml__
+set up your database settings within datasource in _<datasources>_ in _<JBOSS-HOME>/standalone/configuration/standalone.xml_
 ~~~~
     <datasource jndi-name="java:jboss/datasources/uisDatasource" pool-name="uisDatasource" enabled="true">
         <connection-url>jdbc:postgresql://localhost:5432/uis</connection-url>
