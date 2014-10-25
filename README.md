@@ -42,35 +42,35 @@
 
 
 #### uis-api
-in uis-api/
-run command:
- `mvn eclipse:eclipse`
+in uis-api/ <br/>
+run command: <br/>
+ `mvn eclipse:eclipse` <br/>
 
-set up jboss-home in pom.xml:
-edit <jboss.home>
+set up jboss-home in pom.xml: \n
+edit `<jboss.home>` \n
 (use content as sample)
 
-create a database and name it "uis"(you can use different name, just assign it in <connection-url> below)
+create a database and name it "uis"(you can use different name, just assign it in `<connection-url>` below)
 
-set up your database settings within datasource in <datasources> in <JBOSS-HOME>/standalone/configuration/standalone.xml
-// <datasource jndi-name="java:jboss/datasources/uisDatasource" pool-name="uisDatasource" enabled="true">
-//     <connection-url>jdbc:postgresql://localhost:5432/uis</connection-url>
-//     <driver-class>org.postgresql.Driver</driver-class>
-//     <driver>postgresql</driver>
-//     <security>
-//         <user-name>postgres</user-name>
-//         <password>postgres</password>
-//     </security>
-//     <validation>
-//         <check-valid-connection-sql>select 1</check-valid-connection-sql>
-//     </validation>
-// </datasource>
+set up your database settings within datasource in `<datasources>` in `<JBOSS-HOME>/standalone/configuration/standalone.xml`
+`<datasource jndi-name="java:jboss/datasources/uisDatasource" pool-name="uisDatasource" enabled="true">
+    <connection-url>jdbc:postgresql://localhost:5432/uis</connection-url>
+    <driver-class>org.postgresql.Driver</driver-class>
+    <driver>postgresql</driver>
+    <security>
+        <user-name>postgres</user-name>
+        <password>postgres</password>
+    </security>
+    <validation>
+        <check-valid-connection-sql>select 1</check-valid-connection-sql>
+    </validation>
+</datasource>`
 
 
-and driver in <datasources>/<drivers> in the same file(read this https://developer.jboss.org/blogs/amartin-blog/2012/02/08/how-to-set-up-a-postgresql-jdbc-driver-on-jboss-7)
-// <driver name="postgresql" module="org.postgresql">
-//     <xa-datasource-class>org.postgresql.xa.PGXADataSource</xa-datasource-class>
-// </driver>
+and driver in `<datasources>/<drivers>` in the same file(read this https://developer.jboss.org/blogs/amartin-blog/2012/02/08/how-to-set-up-a-postgresql-jdbc-driver-on-jboss-7)
+`<driver name="postgresql" module="org.postgresql">
+    <xa-datasource-class>org.postgresql.xa.PGXADataSource</xa-datasource-class>
+</driver>`
 
 
 in uis-api/
