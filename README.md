@@ -104,6 +104,21 @@ add in __standalone.xml__ inside _<security-domains>_ following:
     </security-domain>
 ~~~~
 
+##DB:
+~~~~
+    CREATE TABLE user_role_security
+    (
+      group_ character varying(255),
+      name_ character varying(255),
+      user_ character varying(255)
+    )
+    WITH (
+      OIDS=FALSE
+    );
+    ALTER TABLE user_role_security
+      OWNER TO postgres;
+~~~~
+
 ##REST urls:
  - ##secured: `rest/secure`
  - ##open: `rest/`
