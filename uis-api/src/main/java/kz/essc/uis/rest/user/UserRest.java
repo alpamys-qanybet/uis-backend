@@ -20,8 +20,9 @@ import javax.ws.rs.core.MediaType;
 
 import kz.essc.uis.bean.user.UserBean;
 import kz.essc.uis.ejb.user.UserWrapper;
+import kz.essc.uis.rest.SecureRest;
 
-@Path("/users")
+@Path("/secure/users")
 @Produces({ MediaType.APPLICATION_JSON})
 @Consumes({ MediaType.APPLICATION_JSON})
 public class UserRest {
