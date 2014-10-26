@@ -13,7 +13,7 @@
 
   <properties>
   	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-  	<jboss.home>/home/sulta/Dropbox/programs/jboss-as-7.1.1.Final</jboss.home>
+  	<jboss.home>/home/alpamys/dev/server/jboss/jboss-as-7.1.1.Final</jboss.home>
   	<maven.build.timestamp.format>yyyyMMdd'T'HHmmss</maven.build.timestamp.format>
   </properties>
 
@@ -30,6 +30,13 @@
   </dependencyManagement>
 
   <dependencies>
+  	<dependency>
+		<groupId>kz.essc.uis</groupId>
+		<artifactId>uis-ui</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+		<type>war</type>
+    </dependency>
+  
   	<dependency>
   		<groupId>javax.enterprise</groupId>
   		<artifactId>cdi-api</artifactId>

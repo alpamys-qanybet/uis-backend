@@ -5,7 +5,6 @@ import java.util.List;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -20,44 +19,28 @@ import javax.ws.rs.core.MediaType;
 
 import kz.essc.uis.bean.user.UserBean;
 import kz.essc.uis.ejb.user.UserWrapper;
-import kz.essc.uis.rest.SecureRest;
 
 @Path("/secure/users")
 @Produces({ MediaType.APPLICATION_JSON})
 @Consumes({ MediaType.APPLICATION_JSON})
 public class UserRest {
+
+	@Context
+	HttpServletRequest request;
 	
 	@Inject
 	UserBean userBean;
 	
-	@Context
-	HttpServletRequest request;
-	
-	@Context
-	HttpServletResponse response;
-	
 	@GET
 	@Path("/")
 	public List<UserWrapper> getUsers() {
-		try {
-			return userBean.getUsers();
-		}
-		catch (Exception e) {
-			e.printStackTrace();
-			return null;
-		}
+		return userBean.getUsers();
 	}
 	
 	@GET
 	@Path("/{id}")
 	public UserWrapper get(@PathParam("id") Long id) {
-		try {
-			return userBean.get(id);
-		}
-		catch (Exception e) {
-			e.printStackTrace();
-			return null;
-		}
+		return userBean.get(id);
 	}
 	
 	
@@ -95,42 +78,12 @@ public class UserRest {
 	@GET
 	@Path("/login/{login}")
 	public UserWrapper getUserByLogin(@PathParam("login") String login) {
-		try {
-			return userBean.getUserByLogin(login);
-		}
-		catch (Exception e) {
-			e.printStackTrace();
-			return null;
-		}
+		return userBean.getUserByLogin(login);
 	}
-	
-	/*@POST
-	@Path("/login")
-	public boolean login(UserWrapper user) {
-		System.out.println("login");
-	
-		try {
-			HttpSession session = request.getSession();
-			
-			request.authenticate(response);
-
-			System.out.println(request.getUserPrincipal().getName());
-			System.out.println( session.getId() );
-			
-			return true;
-		}
-		catch (Exception e) {
-			e.printStackTrace();
-			
-			return false;
-		}
-	}*/
 	
 	@GET
 	@Path("/logout")
 	public boolean logout() {
-		System.out.println("logout");
-	
 		try {
 			HttpSession session = request.getSession();
 			System.out.println("before");
@@ -140,7 +93,7 @@ public class UserRest {
 			request.logout();
 
 			System.out.println("after");
-			System.out.println(request.getUserPrincipal().getName());
+			System.out.println(request.getUserPrincipal());
 			System.out.println( session.getId() );
 			
 			return true;
