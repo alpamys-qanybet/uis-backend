@@ -42,11 +42,11 @@
 
 
 #### uis-api
-###SOFT install:
+###SOFT to install:
  - __language__: Java JDK 1.7
- - __task and repository manager__: maven 3.04
+ - __task and repository manager__: maven 3.0.4
  - __server__: JBoss AS 7
- - __IDE__: eclipse indigo
+ - __IDE__(Preferred): eclipse indigo
 
 
 ###PROJECT:
@@ -54,7 +54,7 @@ in uis-api/
 
 run command:
 
- `mvn eclipse:eclipse`
+ `mvn eclipse:eclipse` (if you use another, run specified command)
 
 
 set up jboss-home in __pom.xml__:
@@ -103,8 +103,12 @@ run commands:
 (any time to deploy to server use this command, you can attach it to eclipse if you want by maven-eclipse-plugin)
 
 update uis-ui if needed:
+
 in [ uis-ui/ ](https://bitbucket.org/ZhSulta/ui) run:
+
 `mvn clean install`
+
+(you do not need to deploy the ui project as it is dependant to uis-api and locates within uis-api)
 
 
 ### Security JAAS JBoss security domain
