@@ -61,8 +61,8 @@ set up your database settings within datasource in _<datasources>_ in ___<JBOSS-
         <driver-class>org.postgresql.Driver</driver-class>
         <driver>postgresql</driver>
         <security>
-            <user-name>_yourusername_</user-name>
-            <password>_yourpassword_</password>
+            <user-name>yourusername</user-name>
+            <password>yourpassword</password>
         </security>
         <validation>
             <check-valid-connection-sql>select 1</check-valid-connection-sql>
@@ -104,6 +104,25 @@ add in __standalone.xml__ inside _<security-domains>_ following:
     </security-domain>
 ~~~~
 
+##DB:
+~~~~
+    CREATE TABLE user_role_security
+    (
+      group_ character varying(255),
+      name_ character varying(255),
+      user_ character varying(255)
+    )
+    WITH (
+      OIDS=FALSE
+    );
+    ALTER TABLE user_role_security
+      OWNER TO postgres;
+~~~~
+
+##REST urls:
+ - ##secured: `rest/secure`
+ - ##open: `rest/`
+
 in __UI__ use followings:
  
  to login:
@@ -113,6 +132,14 @@ in __UI__ use followings:
 
  to logout:
 ~~~~
-  REST GET method 'users/logout'
+  REST GET method 'secure/users/logout'
 ~~~~
 
+JAAS integration uses JSESSIONID inside cookie.
+
+##Browser:
+
+run browser in disabled security mode. In terminal(Ctrl+Alt+T):
+~~~~
+google-chrome --disable-web-security &
+~~~~

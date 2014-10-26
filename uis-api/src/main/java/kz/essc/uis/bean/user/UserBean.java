@@ -61,6 +61,11 @@ public class UserBean {
 			
 			em.persist(user);
 			
+			em.createNativeQuery("INSERT INTO user_role_security(group_, name_, user_) " +
+								 "VALUES ('Roles', 'authenticated', :login);")
+				.setParameter("login", user.getLogin())
+				.executeUpdate();
+			
 			return wrap(user);
 		}
 		catch (Exception e) {
@@ -74,12 +79,12 @@ public class UserBean {
 		
 		try {
 			System.out.println("id " + id);
-			System.out.println("login " + userWrapper.getLogin());
+//			System.out.println("login " + userWrapper.getLogin());
 			System.out.println("name " + userWrapper.getName());
 			System.out.println("password " + userWrapper.getPassword());
 			
 			User user = (User) em.find(User.class, id);
-			user.setLogin(userWrapper.getLogin());
+//			user.setLogin(userWrapper.getLogin());
 			user.setName(userWrapper.getName());
 			user.setPassword(userWrapper.getPassword());
 			
@@ -96,6 +101,10 @@ public class UserBean {
 	public int delete(Long id) {
 		try {
 			User user = (User) em.find(User.class, id);
+			em.createNativeQuery("DELETE FROM user_role_security " +
+								 "WHERE user_ = '" + user.getLogin() + "';")
+				.executeUpdate();
+			
 			em.remove(user);
 			
 			return 1;

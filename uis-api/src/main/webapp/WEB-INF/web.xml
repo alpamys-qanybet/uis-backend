@@ -17,7 +17,7 @@
     <security-constraint>
 		<web-resource-collection>
 			<web-resource-name>UIS API Application</web-resource-name>
-			<url-pattern>/rest/*</url-pattern>
+			<url-pattern>/rest/secure/*</url-pattern>
 		</web-resource-collection>
 		<auth-constraint>
 			<role-name>authenticated</role-name>
