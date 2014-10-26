@@ -1,4 +1,4 @@
-package kz.essc.uis.model.user;
+package kz.essc.uis.model.core;
 
 import java.util.List;
 
