@@ -43,6 +43,7 @@
 
 #### uis-api
 ###SOFT to install:
+ - __Preferred OS__: Linux, Mac
  - __language__: Java JDK 1.7
  - __task and repository manager__: maven 3.0.4
  - __server__: JBoss AS 7
@@ -88,6 +89,11 @@ and driver in _<datasources>/<drivers>_ in the same file read [ this ](https://d
         <xa-datasource-class>org.postgresql.xa.PGXADataSource</xa-datasource-class>
     </driver>
 ~~~~
+
+run server in standalone mode:
+
+`_<JBOSS-HOME>_/bin/standalone.sh`
+
 
 ### Tasks:
 in uis-api/
