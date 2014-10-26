@@ -60,8 +60,9 @@ run command:
 
 set up jboss-home in __~/.profile__ or __/etc/bash.bashrc__, add following to the end of file:
 ~~~~
-export JBOSS_HOME=/home/alpamys/dev/server/jboss/jboss-as-7.1.1.Final
+export JBOSS_HOME=<JBOSS-HOME>
 ~~~~
+
 
 ###SERVER:
 create a database and name it "uis"(you can use different name, just assign it in _<connection-url>_ below)
