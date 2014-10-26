@@ -137,3 +137,9 @@ in __UI__ use followings:
 
 JAAS integration uses JSESSIONID inside cookie.
 
+##Browser:
+
+run browser in disabled security mode. In terminal(Ctrl+Alt+T):
+~~~~
+google-chrome --disable-web-security &
+~~~~
