@@ -58,9 +58,10 @@ run command:
  `mvn eclipse:eclipse` (if you use another, run specified command)
 
 
-set up jboss-home in __pom.xml__:
-edit _<jboss.home>_
-(use content as sample)
+set up jboss-home in __~/.profile__ or __/etc/bash.bashrc__, add following to the end of file:
+~~~~
+export JBOSS_HOME=/home/alpamys/dev/server/jboss/jboss-as-7.1.1.Final
+~~~~
 
 ###SERVER:
 create a database and name it "uis"(you can use different name, just assign it in _<connection-url>_ below)
@@ -92,7 +93,7 @@ and driver in _<datasources>/<drivers>_ in the same file read [ this ](https://d
 
 run server in standalone mode:
 
-`_<JBOSS-HOME>_/bin/standalone.sh`
+`<JBOSS-HOME>/bin/standalone.sh`
 
 
 ### Tasks:
