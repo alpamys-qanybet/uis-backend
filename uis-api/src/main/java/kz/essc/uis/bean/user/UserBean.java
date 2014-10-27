@@ -4,9 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.Stateless;
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import kz.essc.uis.bean.core.SecurityBean;
 import kz.essc.uis.ejb.user.UserWrapper;
 import kz.essc.uis.model.user.User;
 
@@ -14,6 +16,9 @@ import kz.essc.uis.model.user.User;
 public class UserBean {
 	@PersistenceContext
 	EntityManager em;
+
+	@Inject
+	SecurityBean securityBean;
 	
 	public UserWrapper get(Long id) {
 		try {
@@ -57,7 +62,7 @@ public class UserBean {
 			User user = new User();
 			user.setLogin(userWrapper.getLogin());
 			user.setName(userWrapper.getName());
-			user.setPassword(userWrapper.getPassword());
+			user.setPassword( securityBean.hash(userWrapper.getLogin()) );
 			
 			em.persist(user);
 			
@@ -81,12 +86,12 @@ public class UserBean {
 			System.out.println("id " + id);
 //			System.out.println("login " + userWrapper.getLogin());
 			System.out.println("name " + userWrapper.getName());
-			System.out.println("password " + userWrapper.getPassword());
+//			System.out.println("password " + userWrapper.getPassword());
 			
 			User user = (User) em.find(User.class, id);
 //			user.setLogin(userWrapper.getLogin());
 			user.setName(userWrapper.getName());
-			user.setPassword(userWrapper.getPassword());
+//			user.setPassword(userWrapper.getPassword());
 			
 			em.merge(user);
 			

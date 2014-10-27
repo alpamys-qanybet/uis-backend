@@ -1,10 +1,13 @@
 package kz.essc.uis.bean.core;
 
 import java.math.BigInteger;
+import java.security.MessageDigest;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+
+import sun.misc.BASE64Encoder;
 
 import kz.essc.uis.model.user.Role;
 import kz.essc.uis.model.user.User;
@@ -14,6 +17,32 @@ public class SecurityBean {
 
 	@PersistenceContext
 	EntityManager em;
+	
+	public String hash(String input) {
+		// please note that we do not use digest, because if we
+		// cannot get digest, then the second time we have to call it
+		// again, which will fail again
+		MessageDigest digest = null;
+		
+		try {
+			digest = MessageDigest.getInstance("MD5");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		if (digest == null)
+			return input;
+		
+		// now everything is ok, go ahead
+		try {
+			digest.update(input.getBytes("UTF-8"));
+		} catch (java.io.UnsupportedEncodingException ex) {
+			ex.printStackTrace();
+		}
+		byte[] rawData = digest.digest();
+		BASE64Encoder bencoder = new BASE64Encoder();
+		return bencoder.encode(rawData);
+	}
 	
 	public boolean hasPermission(String username, String target, String action){
 		try {
