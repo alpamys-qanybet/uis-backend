@@ -66,7 +66,7 @@ public class UserBean {
 			
 			em.persist(user);
 			
-			em.createNativeQuery("INSERT INTO user_role_security(group_, name_, user_) " +
+			em.createNativeQuery("INSERT INTO sc_jaas_role(group_, name_, user_) " +
 								 "VALUES ('Roles', 'authenticated', :login);")
 				.setParameter("login", user.getLogin())
 				.executeUpdate();
@@ -106,7 +106,7 @@ public class UserBean {
 	public int delete(Long id) {
 		try {
 			User user = (User) em.find(User.class, id);
-			em.createNativeQuery("DELETE FROM user_role_security " +
+			em.createNativeQuery("DELETE FROM sc_jaas_role " +
 								 "WHERE user_ = '" + user.getLogin() + "';")
 				.executeUpdate();
 			
