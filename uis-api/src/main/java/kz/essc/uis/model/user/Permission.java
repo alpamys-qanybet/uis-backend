@@ -14,6 +14,7 @@ public class Permission {
 	private String action;
 	private String recipient;
 	private String target;
+	private String discriminator;
 
 	@Id
 	@Column(name="id_")
@@ -47,5 +48,13 @@ public class Permission {
 	}
 	public void setTarget(String target) {
 		this.target = target;
+	}
+
+	@Column(name="discriminator_", nullable=false)
+	public String getDiscriminator() {
+		return discriminator;
+	}
+	public void setDiscriminator(String discriminator) {
+		this.discriminator = discriminator;
 	}
 }

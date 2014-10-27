@@ -1,19 +1,21 @@
 package kz.essc.uis.model.user;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="sc_role")
-public class Role {
-
+public class Role implements Serializable {
+	
+	private static final long serialVersionUID = -5360799851217675397L;
+	
 	private String name;
-	private String conditional;
-	private String enabled;
+	private boolean conditional;
+	private boolean enabled;
 	
 	@Id
 	@Column(name="name_", nullable=false)
@@ -24,19 +26,19 @@ public class Role {
 		this.name = name;
 	}
 	
-	@Column(name="conditional_", nullable=false)
-	public String getConditional() {
+	@Column(name="conditional_")
+	public boolean isConditional() {
 		return conditional;
 	}
-	public void setConditional(String conditional) {
+	public void setConditional(boolean conditional) {
 		this.conditional = conditional;
 	}
 	
-	@Column(name="enabled_", nullable=false)
-	public String getEnabled() {
+	@Column(name="enabled_")
+	public boolean isEnabled() {
 		return enabled;
 	}
-	public void setEnabled(String enabled) {
+	public void setEnabled(boolean enabled) {
 		this.enabled = enabled;
 	}
 	

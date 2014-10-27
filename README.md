@@ -165,4 +165,9 @@ in __UI__ use followings:
   REST GET method 'secure/users/logout'
 ~~~~
 
+ to check if user is authorized(returns true/false in text):
+~~~~
+  REST GET method 'authorized'
+~~~~
+
 JAAS integration uses JSESSIONID inside cookie.

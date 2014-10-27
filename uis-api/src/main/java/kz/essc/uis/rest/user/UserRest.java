@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -17,6 +18,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 
+import kz.essc.uis.bean.core.SecurityBean;
 import kz.essc.uis.bean.user.UserBean;
 import kz.essc.uis.ejb.user.UserWrapper;
 
@@ -27,6 +29,12 @@ public class UserRest {
 
 	@Context
 	HttpServletRequest request;
+	
+	@Context
+	HttpServletResponse response;
+	
+	@Inject
+	SecurityBean securityBean;
 	
 	@Inject
 	UserBean userBean;
@@ -59,20 +67,38 @@ public class UserRest {
 	
 	@POST
 	@Path("/")
-	public UserWrapper add(UserWrapper userWrapper) {
-		return userBean.add(userWrapper);
+	public UserWrapper add(UserWrapper userWrapper) throws IOException {
+		if (securityBean.hasRole(request.getUserPrincipal().getName(), "dean")) {
+			return userBean.add(userWrapper);
+		}
+		else {
+			response.sendError(HttpServletResponse.SC_PRECONDITION_FAILED);
+			return null;
+		}
 	}
 	
 	@PUT
 	@Path("/{id}")
 	public UserWrapper edit(@PathParam("id") Long id, UserWrapper userWrapper) throws IOException {
-		return userBean.edit(id, userWrapper);
+		if (securityBean.hasRole(request.getUserPrincipal().getName(), "dean")) {
+			return userBean.edit(id, userWrapper);
+		}
+		else {
+			response.sendError(HttpServletResponse.SC_PRECONDITION_FAILED);
+			return null;
+		}
 	}
 	
 	@DELETE
 	@Path("/{id}")
-	public int delete(@PathParam("id") Long id) {
-		return userBean.delete(id);
+	public int delete(@PathParam("id") Long id) throws IOException {
+		if (securityBean.hasRole(request.getUserPrincipal().getName(), "dean")) {
+				return userBean.delete(id);
+		}
+		else {
+			response.sendError(HttpServletResponse.SC_PRECONDITION_FAILED);
+			return -3;
+		}
 	}
 	
 	@GET

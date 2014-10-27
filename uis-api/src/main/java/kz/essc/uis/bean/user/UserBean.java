@@ -6,10 +6,6 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import javax.ws.rs.core.Context;
 
 import kz.essc.uis.ejb.user.UserWrapper;
 import kz.essc.uis.model.user.User;
@@ -111,11 +107,11 @@ public class UserBean {
 			
 			em.remove(user);
 			
-			return 1;
+			return 0;
 		}
 		catch (Exception e) {
 			e.printStackTrace();
-			return 0;
+			return -1;
 		}
 	}
 	
