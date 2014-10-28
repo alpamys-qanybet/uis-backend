@@ -1,6 +1,6 @@
-package kz.essc.uis.model.testing;
+package kz.essc.uis.qu;
 
-import java.util.Date;
+import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,7 +13,9 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="qu_variant")
-public class Variant {
+public class Variant implements Serializable {
+	private static final long serialVersionUID = 3790455250222108883L;
+	
 	private long id;
 	private String name;
 	private boolean right;

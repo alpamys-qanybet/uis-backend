@@ -1,24 +1,25 @@
-package kz.essc.uis.model.testing;
+package kz.essc.uis.qa;
 
-import java.util.Date;
+import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="qu_question")
-public class Question {
+@Table(name="qa_archive")
+public class Archive implements Serializable {
+	private static final long serialVersionUID = 4595145584994502592L;
+	
 	private long id;
 	private String name;
-	private String type;
-	private Test test;
-	
+	private List<Category> categories;
+
 	@Id
 	@Column(name="id_")
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -36,21 +37,12 @@ public class Question {
 	public void setName(String name) {
 		this.name = name;
 	}
-
-	@Column(name="type_", nullable=false)
-	public String getType() {
-		return type;
-	}
-	public void setType(String type) {
-		this.type = type;
-	}
 	
-	@ManyToOne
-	@JoinColumn(name = "test_")
-	public Test getTest() {
-		return test;
+	@OneToMany(mappedBy = "archive")
+	public List<Category> getCategories() {
+		return categories;
 	}
-	public void setTest(Test test) {
-		this.test = test;
-	}
+	public void setCategories(List<Category> categories) {
+		this.categories = categories;
+	}	
 }

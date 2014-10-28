@@ -1,6 +1,6 @@
-package kz.essc.uis.model.orgManagement;
+package kz.essc.uis.ou;
 
-import java.util.Date;
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -15,7 +15,9 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="ou_speciality")
-public class Speciality {
+public class Speciality implements Serializable {
+	private static final long serialVersionUID = -8556283774435276008L;
+	
 	private long id;
 	private String name;
 	private String code;

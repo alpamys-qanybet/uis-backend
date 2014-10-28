@@ -1,6 +1,6 @@
-package kz.essc.uis.model.orgManagement;
+package kz.essc.uis.ou;
 
-import java.util.Date;
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -14,12 +14,15 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="ou_group")
-public class Group {
+@Table(name="ou_faculty")
+public class Faculty implements Serializable {
+	
+	private static final long serialVersionUID = -3900976627898346527L;
+	
 	private long id;
 	private String name;
-	private String code;
-	private Speciality speciality;;
+	private Organization organization;
+	private List<Speciality> specialities;
 	
 	@Id
 	@Column(name="id_")
@@ -38,22 +41,22 @@ public class Group {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
-	@Column(name="code_", nullable=false)
-	public String getCode() {
-		return code;
-	}
-	public void setCode(String code) {
-		this.code = code;
-	}
 
 	@ManyToOne
-	@JoinColumn(name = "speciality_")
-	public Speciality getSpeciality() {
-		return speciality;
+	@JoinColumn(name = "organization_")
+	public Organization getOrganization() {
+		return organization;
 	}
-	public void setSpeciality(Speciality speciality) {
-		this.speciality = speciality;
+	public void setOrganization(Organization organization) {
+		this.organization = organization;
 	}
-
+	
+	@OneToMany(mappedBy = "faculty")
+	public List<Speciality> getSpecialities() {
+		return specialities;
+	}
+	public void setSpecialities(List<Speciality> specialities) {
+		this.specialities = specialities;
+	}
+	
 }

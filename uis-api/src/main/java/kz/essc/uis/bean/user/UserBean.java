@@ -10,7 +10,7 @@ import javax.persistence.PersistenceContext;
 
 import kz.essc.uis.bean.core.SecurityBean;
 import kz.essc.uis.ejb.user.UserWrapper;
-import kz.essc.uis.model.user.User;
+import kz.essc.uis.sc.user.User;
 
 @Stateless
 public class UserBean {

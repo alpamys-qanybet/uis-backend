@@ -1,22 +1,26 @@
-package kz.essc.uis.model.core;
+package kz.essc.uis.ou;
 
-import java.util.List;
+import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="sc_lang")
-public class Language {
+@Table(name="ou_group")
+public class Group implements Serializable {
+	
+	private static final long serialVersionUID = 5762113324215506719L;
+	
 	private long id;
 	private String name;
 	private String code;
-	private List<Message> messages;
+	private Speciality speciality;;
 	
 	@Id
 	@Column(name="id_")
@@ -35,7 +39,7 @@ public class Language {
 	public void setName(String name) {
 		this.name = name;
 	}
-
+	
 	@Column(name="code_", nullable=false)
 	public String getCode() {
 		return code;
@@ -44,11 +48,13 @@ public class Language {
 		this.code = code;
 	}
 
-	@OneToMany(mappedBy = "lang")
-	public List<Message> getMessages() {
-		return messages;
+	@ManyToOne
+	@JoinColumn(name = "speciality_")
+	public Speciality getSpeciality() {
+		return speciality;
 	}
-	public void setMessages(List<Message> messages) {
-		this.messages = messages;
+	public void setSpeciality(Speciality speciality) {
+		this.speciality = speciality;
 	}
+
 }

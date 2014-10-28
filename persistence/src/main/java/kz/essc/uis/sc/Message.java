@@ -1,4 +1,6 @@
-package kz.essc.uis.model.core;
+package kz.essc.uis.sc;
+
+import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,7 +13,9 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="sc_message")
-public class Message {
+public class Message implements Serializable {
+	private static final long serialVersionUID = 3564968335760312057L;
+	
 	private long id;
 	private Language lang;
 	private String name;

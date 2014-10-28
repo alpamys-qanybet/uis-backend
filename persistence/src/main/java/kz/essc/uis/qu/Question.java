@@ -1,7 +1,6 @@
-package kz.essc.uis.model.orgManagement;
+package kz.essc.uis.qu;
 
-import java.util.Date;
-import java.util.List;
+import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,16 +9,17 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="ou_faculty")
-public class Faculty {
+@Table(name="qu_question")
+public class Question implements Serializable {
+	private static final long serialVersionUID = -1977907400534880908L;
+	
 	private long id;
 	private String name;
-	private Organization organization;
-	private List<Speciality> specialities;
+	private String type;
+	private Test test;
 	
 	@Id
 	@Column(name="id_")
@@ -39,21 +39,20 @@ public class Faculty {
 		this.name = name;
 	}
 
+	@Column(name="type_", nullable=false)
+	public String getType() {
+		return type;
+	}
+	public void setType(String type) {
+		this.type = type;
+	}
+	
 	@ManyToOne
-	@JoinColumn(name = "organization_")
-	public Organization getOrganization() {
-		return organization;
+	@JoinColumn(name = "test_")
+	public Test getTest() {
+		return test;
 	}
-	public void setOrganization(Organization organization) {
-		this.organization = organization;
+	public void setTest(Test test) {
+		this.test = test;
 	}
-	
-	@OneToMany(mappedBy = "faculty")
-	public List<Speciality> getSpecialities() {
-		return specialities;
-	}
-	public void setSpecialities(List<Speciality> specialities) {
-		this.specialities = specialities;
-	}
-	
 }

@@ -1,6 +1,6 @@
-package kz.essc.uis.model.orgManagement;
+package kz.essc.uis.ou;
 
-import java.util.Date;
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -13,7 +13,9 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="ou_organization")
-public class Organization {
+public class Organization implements Serializable {
+	private static final long serialVersionUID = 7453497944492765662L;
+	
 	private long id;
 	private String name;
 	private String address;

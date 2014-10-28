@@ -1,4 +1,6 @@
-package kz.essc.uis.model.user;
+package kz.essc.uis.sc.user;
+
+import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,7 +11,8 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="sc_permission")
-public class Permission {
+public class Permission implements Serializable {
+	private static final long serialVersionUID = -8204677389298340306L;
 	private long id;
 	private String action;
 	private String recipient;

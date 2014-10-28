@@ -7,10 +7,11 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import kz.essc.uis.sc.user.Role;
+import kz.essc.uis.sc.user.User;
+
 import sun.misc.BASE64Encoder;
 
-import kz.essc.uis.model.user.Role;
-import kz.essc.uis.model.user.User;
 
 @Stateless
 public class SecurityBean {

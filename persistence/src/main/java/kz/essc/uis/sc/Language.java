@@ -1,6 +1,6 @@
-package kz.essc.uis.model.testing;
+package kz.essc.uis.sc;
 
-import java.util.Date;
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -8,18 +8,19 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="qa_archive")
-public class Archive {
+@Table(name="sc_lang")
+public class Language implements Serializable {
+	private static final long serialVersionUID = 411106484821895007L;
+	
 	private long id;
 	private String name;
-	private List<Category> categories;
-
+	private String code;
+	private List<Message> messages;
+	
 	@Id
 	@Column(name="id_")
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -37,12 +38,20 @@ public class Archive {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
-	@OneToMany(mappedBy = "archive")
-	public List<Category> getCategories() {
-		return categories;
+
+	@Column(name="code_", nullable=false)
+	public String getCode() {
+		return code;
 	}
-	public void setCategories(List<Category> categories) {
-		this.categories = categories;
-	}	
+	public void setCode(String code) {
+		this.code = code;
+	}
+
+	@OneToMany(mappedBy = "lang")
+	public List<Message> getMessages() {
+		return messages;
+	}
+	public void setMessages(List<Message> messages) {
+		this.messages = messages;
+	}
 }

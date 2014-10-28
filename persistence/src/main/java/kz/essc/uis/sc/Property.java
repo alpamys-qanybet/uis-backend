@@ -1,15 +1,16 @@
-package kz.essc.uis.model.core;
+package kz.essc.uis.sc;
+
+import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="sc_property")
-public class Property {
+public class Property implements Serializable {
+	private static final long serialVersionUID = 1897468625183503638L;
 	
 	private String properties;
 	private String key;

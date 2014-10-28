@@ -1,4 +1,4 @@
-package kz.essc.uis.model.user;
+package kz.essc.uis.sc.user;
 
 import java.io.Serializable;
 

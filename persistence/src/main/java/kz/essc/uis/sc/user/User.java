@@ -1,5 +1,6 @@
-package kz.essc.uis.model.user;
+package kz.essc.uis.sc.user;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -16,7 +17,9 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="sc_user")
-public class User {
+public class User implements Serializable {
+	private static final long serialVersionUID = 1696932357727252111L;
+	
 	private long id;
 	private String login;
 	private String name;
@@ -68,4 +71,34 @@ public class User {
 	public void setRoles(Set<Role> roles) {
 		this.roles = roles;
 	}
+	
+	/*@Override
+	public String toString() {
+		return login;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((login == null) ? 0 : login.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		User other = (User) obj;
+		if (login == null) {
+			if (other.login != null)
+				return false;
+		} else if (!login.equals(other.login))
+			return false;
+		return true;
+	}*/
 }

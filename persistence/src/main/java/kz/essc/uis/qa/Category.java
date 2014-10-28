@@ -1,6 +1,6 @@
-package kz.essc.uis.model.testing;
+package kz.essc.uis.qa;
 
-import java.util.Date;
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -15,7 +15,10 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="qa_category")
-public class Category {
+public class Category implements Serializable {
+	
+	private static final long serialVersionUID = -5323431370519585275L;
+	
 	private long id;
 	private String name;
 	private Category parent;
