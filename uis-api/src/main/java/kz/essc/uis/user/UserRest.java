@@ -19,6 +19,8 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 
 import kz.essc.uis.core.SecurityBean;
+import kz.essc.uis.sc.user.Permission;
+import kz.essc.uis.sc.user.Role;
 
 @Path("/secure/users")
 @Produces({ MediaType.APPLICATION_JSON})
@@ -52,7 +54,7 @@ public class UserRest {
 	@POST
 	@Path("/")
 	public UserWrapper add(UserWrapper userWrapper) throws IOException {
-		if (securityBean.hasRole(request.getUserPrincipal().getName(), UserBean.Role.dean)) {
+		if (securityBean.hasRole(request.getUserPrincipal().getName(), Role.Name.dean)) {
 			return userBean.add(userWrapper);
 		}
 		else {
@@ -64,7 +66,7 @@ public class UserRest {
 	@PUT
 	@Path("/{id}")
 	public UserWrapper edit(@PathParam("id") Long id, UserWrapper userWrapper) throws IOException {
-		if (securityBean.hasRole(request.getUserPrincipal().getName(), UserBean.Role.dean)) {
+		if (securityBean.hasRole(request.getUserPrincipal().getName(), Role.Name.dean)) {
 			return userBean.edit(id, userWrapper);
 		}
 		else {
@@ -76,7 +78,7 @@ public class UserRest {
 	@DELETE
 	@Path("/{id}")
 	public int delete(@PathParam("id") Long id) throws IOException {
-		if (securityBean.hasRole(request.getUserPrincipal().getName(), UserBean.Role.dean)) {
+		if (securityBean.hasPermission(request.getUserPrincipal().getName(), Permission.Target.UserManagement, Permission.Action.write)) {
 				return userBean.delete(id);
 		}
 		else {

@@ -19,6 +19,22 @@ public class Permission implements Serializable {
 	private String target;
 	private String discriminator;
 
+//	INSERT INTO wx_permission(id_, action_, discriminator_, recipient_, target_)  VALUES (1, 'upload', 'user', '1', 'kz.bee.kudos.lms');
+
+	public enum Action {
+		write,
+		read
+	}
+	
+	public enum Discriminator {
+		user,
+		role
+	}
+	
+	public enum Target {
+		UserManagement
+	}
+	
 	@Id
 	@Column(name="id_")
 	@GeneratedValue(strategy=GenerationType.AUTO)

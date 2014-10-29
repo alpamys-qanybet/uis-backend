@@ -17,6 +17,13 @@ public class Role implements Serializable {
 	private boolean conditional;
 	private boolean enabled;
 	
+	public enum Name {
+		dean,
+		admin,
+		teacher,
+		student
+	};
+	
 	@Id
 	@Column(name="name_", nullable=false)
 	public String getName() {

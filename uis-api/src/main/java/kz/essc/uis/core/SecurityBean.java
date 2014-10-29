@@ -4,16 +4,13 @@ import java.math.BigInteger;
 import java.security.MessageDigest;
 
 import javax.ejb.Stateless;
-import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import kz.essc.uis.sc.user.Permission;
 import kz.essc.uis.sc.user.Role;
 import kz.essc.uis.sc.user.User;
-import kz.essc.uis.user.UserBean;
-
 import sun.misc.BASE64Encoder;
-
 
 @Stateless
 public class SecurityBean {
@@ -47,7 +44,7 @@ public class SecurityBean {
 		return bencoder.encode(rawData);
 	}
 	
-	public boolean hasPermission(String login, String target, String action) {
+	public boolean hasPermission(String login, Permission.Target target, Permission.Action action) {
 //		INSERT INTO wx_permission(id_, action_, discriminator_, recipient_, target_)  VALUES (1, 'upload', 'user', '1', 'kz.bee.kudos.lms');
 		
 		try {
@@ -67,21 +64,20 @@ public class SecurityBean {
 			          		"WHERE ( (p.action_= :action) OR (p.action_ = '*')) " +
 			          		"AND p.target_= :target " +
 			          		"AND ((discriminator_='user' AND p.recipient_=:id) OR (discriminator_='role' AND p.recipient_ in (:roles)))")
-			          		.setParameter("action", action)
-        		  			.setParameter("target", target)
+			          		.setParameter("action", action.toString())
+        		  			.setParameter("target", target.toString())
         		  			.setParameter("id", user.getId()+"")
         		  			.setParameter("roles", roles)
         		  			.getSingleResult();
           
 			return (count != BigInteger.ZERO);
 		}
-		finally {
-			if (em!=null)
-				em.close();
-		}		
+		catch (Exception e) {
+			return false;
+		}
 	}
 	
-	public boolean hasRole(String login, UserBean.Role role) {
+	public boolean hasRole(String login, Role.Name role) {
 		try {
 			User user = em.find(User.class, getIdByLogin(login) );
 			
