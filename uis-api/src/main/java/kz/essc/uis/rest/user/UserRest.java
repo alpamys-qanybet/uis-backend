@@ -54,7 +54,7 @@ public class UserRest {
 	@POST
 	@Path("/")
 	public UserWrapper add(UserWrapper userWrapper) throws IOException {
-		if (securityBean.hasRole(request.getUserPrincipal().getName(), "dean")) {
+		if (securityBean.hasRole(request.getUserPrincipal().getName(), UserBean.Role.dean)) {
 			return userBean.add(userWrapper);
 		}
 		else {
@@ -66,7 +66,7 @@ public class UserRest {
 	@PUT
 	@Path("/{id}")
 	public UserWrapper edit(@PathParam("id") Long id, UserWrapper userWrapper) throws IOException {
-		if (securityBean.hasRole(request.getUserPrincipal().getName(), "dean")) {
+		if (securityBean.hasRole(request.getUserPrincipal().getName(), UserBean.Role.dean)) {
 			return userBean.edit(id, userWrapper);
 		}
 		else {
@@ -78,7 +78,7 @@ public class UserRest {
 	@DELETE
 	@Path("/{id}")
 	public int delete(@PathParam("id") Long id) throws IOException {
-		if (securityBean.hasRole(request.getUserPrincipal().getName(), "dean")) {
+		if (securityBean.hasRole(request.getUserPrincipal().getName(), UserBean.Role.dean)) {
 				return userBean.delete(id);
 		}
 		else {

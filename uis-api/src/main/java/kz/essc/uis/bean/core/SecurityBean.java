@@ -47,9 +47,11 @@ public class SecurityBean {
 		return bencoder.encode(rawData);
 	}
 	
-	/*public boolean hasPermission(String username, String target, String action){
+	public boolean hasPermission(String login, String target, String action) {
+//		INSERT INTO wx_permission(id_, action_, discriminator_, recipient_, target_)  VALUES (1, 'upload', 'user', '1', 'kz.bee.kudos.lms');
+		
 		try {
-			User user = em.find(User.class, username);
+			User user = em.find(User.class, getIdByLogin(login));
 			String roles = "";
 			
 			for ( Role r: user.getRoles() )
@@ -62,12 +64,12 @@ public class SecurityBean {
 			BigInteger count = (BigInteger) em.createNativeQuery(
 							"SELECT COUNT (p) " +
 			          		"FROM sc_permission p " +
-			          		"WHERE ( (p.action_= :action) OR (p.action_ = '*'))  " +
+			          		"WHERE ( (p.action_= :action) OR (p.action_ = '*')) " +
 			          		"AND p.target_= :target " +
-			          		"AND ((discriminator_='user' AND p.recipient_=:username) OR (discriminator_='role' AND p.recipient_ in (:roles)))")
+			          		"AND ((discriminator_='user' AND p.recipient_=:id) OR (discriminator_='role' AND p.recipient_ in (:roles)))")
 			          		.setParameter("action", action)
         		  			.setParameter("target", target)
-        		  			.setParameter("username", username)
+        		  			.setParameter("id", user.getId()+"")
         		  			.setParameter("roles", roles)
         		  			.getSingleResult();
           
@@ -77,14 +79,14 @@ public class SecurityBean {
 			if (em!=null)
 				em.close();
 		}		
-	}*/
+	}
 	
-	public boolean hasRole(String login, String role) {
+	public boolean hasRole(String login, UserBean.Role role) {
 		try {
 			User user = em.find(User.class, getIdByLogin(login) );
 			
 			for ( Role r: user.getRoles() )
-				if (r.getName().equals(role) && r.isEnabled())
+				if (r.getName().equals(role.toString()) && r.isEnabled())
 					return true;
 			
 			return false;

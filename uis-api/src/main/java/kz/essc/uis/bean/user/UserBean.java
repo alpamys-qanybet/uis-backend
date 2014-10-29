@@ -20,6 +20,13 @@ public class UserBean {
 	@Inject
 	SecurityBean securityBean;
 	
+	public enum Role {
+		dean,
+		admin,
+		teacher,
+		student
+	};
+	
 	public UserWrapper get(Long id) {
 		try {
 			return wrap( (User) em.find(User.class, id) );
