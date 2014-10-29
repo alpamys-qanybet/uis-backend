@@ -51,20 +51,6 @@ public class UserRest {
 		return userBean.get(id);
 	}
 	
-	
-	@POST
-	@Path("/s")
-	public String get(@PathParam("user") String user) {
-		return "post"+user.toString();
-//		try {
-//			return userBean.get(id);
-//		}
-//		catch (Exception e) {
-//			e.printStackTrace();
-//			return null;
-//		}
-	}
-	
 	@POST
 	@Path("/")
 	public UserWrapper add(UserWrapper userWrapper) throws IOException {

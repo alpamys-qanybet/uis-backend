@@ -4,9 +4,11 @@ import java.math.BigInteger;
 import java.security.MessageDigest;
 
 import javax.ejb.Stateless;
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import kz.essc.uis.bean.user.UserBean;
 import kz.essc.uis.sc.user.Role;
 import kz.essc.uis.sc.user.User;
 
@@ -45,7 +47,7 @@ public class SecurityBean {
 		return bencoder.encode(rawData);
 	}
 	
-	public boolean hasPermission(String username, String target, String action){
+	/*public boolean hasPermission(String username, String target, String action){
 		try {
 			User user = em.find(User.class, username);
 			String roles = "";
@@ -75,11 +77,11 @@ public class SecurityBean {
 			if (em!=null)
 				em.close();
 		}		
-	}
+	}*/
 	
-	public boolean hasRole(String username, String role) {
+	public boolean hasRole(String login, String role) {
 		try {
-			User user = em.find(User.class, username);
+			User user = em.find(User.class, getIdByLogin(login) );
 			
 			for ( Role r: user.getRoles() )
 				if (r.getName().equals(role) && r.isEnabled())
@@ -89,6 +91,20 @@ public class SecurityBean {
 		}
 		catch (Exception e) {
 			return false;
+		}
+	}
+	
+	public long getIdByLogin(String login) {
+		try {
+			User user = (User) em.createQuery("from User where login = :login")
+								.setParameter("login", login)
+								.getSingleResult();
+			
+			return user.getId();
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+			return -1;
 		}
 	}
 }
