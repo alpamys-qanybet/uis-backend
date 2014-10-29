@@ -1,4 +1,4 @@
-package kz.essc.uis.ejb.user;
+package kz.essc.uis.user;
 
 import javax.ejb.Stateless;
 

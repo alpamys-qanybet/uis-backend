@@ -1,4 +1,4 @@
-package kz.essc.uis.bean.user;
+package kz.essc.uis.user;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,8 +8,7 @@ import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import kz.essc.uis.bean.core.SecurityBean;
-import kz.essc.uis.ejb.user.UserWrapper;
+import kz.essc.uis.core.SecurityBean;
 import kz.essc.uis.sc.user.User;
 
 @Stateless
@@ -26,6 +25,10 @@ public class UserBean {
 		teacher,
 		student
 	};
+	
+	public enum Permission {
+		
+	}
 	
 	public UserWrapper get(Long id) {
 		try {

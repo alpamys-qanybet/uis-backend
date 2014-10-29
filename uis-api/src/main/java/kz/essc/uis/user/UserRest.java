@@ -1,4 +1,4 @@
-package kz.essc.uis.rest.user;
+package kz.essc.uis.user;
 
 import java.io.IOException;
 import java.util.List;
@@ -18,9 +18,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 
-import kz.essc.uis.bean.core.SecurityBean;
-import kz.essc.uis.bean.user.UserBean;
-import kz.essc.uis.ejb.user.UserWrapper;
+import kz.essc.uis.core.SecurityBean;
 
 @Path("/secure/users")
 @Produces({ MediaType.APPLICATION_JSON})

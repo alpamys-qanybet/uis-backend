@@ -1,4 +1,4 @@
-package kz.essc.uis.bean.core;
+package kz.essc.uis.core;
 
 import java.math.BigInteger;
 import java.security.MessageDigest;
@@ -8,9 +8,9 @@ import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import kz.essc.uis.bean.user.UserBean;
 import kz.essc.uis.sc.user.Role;
 import kz.essc.uis.sc.user.User;
+import kz.essc.uis.user.UserBean;
 
 import sun.misc.BASE64Encoder;
 

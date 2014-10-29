@@ -1,4 +1,4 @@
-package kz.essc.uis.rest;
+package kz.essc.uis.core;
 
 import java.io.IOException;
 
