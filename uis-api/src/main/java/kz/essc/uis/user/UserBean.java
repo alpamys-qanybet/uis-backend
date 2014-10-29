@@ -8,7 +8,10 @@ import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import kz.essc.uis.core.PermissionWrapper;
+import kz.essc.uis.core.RoleWrapper;
 import kz.essc.uis.core.SecurityBean;
+import kz.essc.uis.sc.user.Permission;
 import kz.essc.uis.sc.user.User;
 
 @Stateless
@@ -19,42 +22,29 @@ public class UserBean {
 	@Inject
 	SecurityBean securityBean;
 	
-	public UserWrapper get(Long id) {
-		try {
-			return wrap( (User) em.find(User.class, id) );
-		}
-		catch (Exception e) {
-			e.printStackTrace();
-			return null;
-		}
-	}
-	
-	public UserWrapper getUserByLogin(String login) {
-		try {
-			User user = (User) em.createQuery("from User where login = :login")
-								.setParameter("login", login)
-								.getSingleResult();
-			
-			return wrap( user );
-		}
-		catch (Exception e) {
-			e.printStackTrace();
-			return null;
-		}
-	}
-	
-	public List<UserWrapper> getUsers() {
+	public List<UserWrapper> get() {
 		
 		try {
 			List<User> list = (ArrayList<User>) em.createQuery("from User")
 												  .getResultList();
-			return wrap(list);
+			return UserWrapper.wrap(list);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
 			return new ArrayList<UserWrapper>();
 		}
 	}
+	
+	public UserWrapper get(Long id) {
+		try {
+			return UserWrapper.wrap( (User) em.find(User.class, id) );
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
 	
 	public UserWrapper add(UserWrapper userWrapper) {
 		try {
@@ -70,7 +60,7 @@ public class UserBean {
 				.setParameter("login", user.getLogin())
 				.executeUpdate();
 			
-			return wrap(user);
+			return UserWrapper.wrap(user);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -94,7 +84,7 @@ public class UserBean {
 			
 			em.merge(user);
 			
-			return wrap(user);
+			return UserWrapper.wrap(user);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -119,14 +109,13 @@ public class UserBean {
 		}
 	}
 	
-	public UserWrapper wrap(User user){
+	public UserWrapper getUserByLogin(String login) {
 		try {
-			UserWrapper wrapper = new UserWrapper();
-			wrapper.setId(user.getId());
-			wrapper.setLogin(user.getLogin());
-			wrapper.setName(user.getName());
-			wrapper.setPassword(user.getPassword());
-			return wrapper;
+			User user = (User) em.createQuery("from User where login = :login")
+								.setParameter("login", login)
+								.getSingleResult();
+			
+			return UserWrapper.wrap( user );
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -134,11 +123,11 @@ public class UserBean {
 		}
 	}
 	
-	public List<UserWrapper> wrap(List<User> users){
-		List<UserWrapper> list = new ArrayList<UserWrapper>();
-		for (User user: users) 
-			list.add(wrap(user));
-		
-		return list;
+	public List<RoleWrapper> getRoles(String login) {
+		return RoleWrapper.wrap(securityBean.getRoles(login));
+	}
+	
+	public List<PermissionWrapper> getPermissions(String login) {
+		return PermissionWrapper.wrap(securityBean.getPermissions(login));
 	}
 }

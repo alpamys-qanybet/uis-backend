@@ -2,6 +2,8 @@ package kz.essc.uis.core;
 
 import java.math.BigInteger;
 import java.security.MessageDigest;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -63,7 +65,7 @@ public class SecurityBean {
 			          		"FROM sc_permission p " +
 			          		"WHERE ( (p.action_= :action) OR (p.action_ = '*')) " +
 			          		"AND p.target_= :target " +
-			          		"AND ((discriminator_='user' AND p.recipient_=:id) OR (discriminator_='role' AND p.recipient_ in (:roles)))")
+			          		"AND ((p.discriminator_='user' AND p.recipient_=:id) OR (p.discriminator_='role' AND p.recipient_ in (:roles)))")
 			          		.setParameter("action", action.toString())
         		  			.setParameter("target", target.toString())
         		  			.setParameter("id", user.getId()+"")
@@ -89,6 +91,41 @@ public class SecurityBean {
 		}
 		catch (Exception e) {
 			return false;
+		}
+	}
+	
+	public List<Role> getRoles(String login) {
+		try {
+			User user = em.find(User.class, getIdByLogin(login) );
+			return new ArrayList<Role>(user.getRoles());
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	public List<Permission> getPermissions(String login) {
+		try {
+			User user = em.find(User.class, getIdByLogin(login) );
+			
+			String roles = "";
+			
+			for ( Role r: user.getRoles() )
+				if (r.isEnabled()) {
+					if (!roles.isEmpty())
+						roles += ",";
+					roles += r.getName();
+				}
+			
+			return (List<Permission>) em.createQuery("from Permission " +
+									          		"where ((discriminator='user' AND recipient=:id) OR (discriminator='role' AND recipient in (:roles)))")
+			          		.setParameter("id", user.getId()+"")
+        		  			.setParameter("roles", roles)
+        		  			.getResultList();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
 		}
 	}
 	

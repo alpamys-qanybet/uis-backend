@@ -15,9 +15,9 @@ public class Permission implements Serializable {
 	private static final long serialVersionUID = -8204677389298340306L;
 	private long id;
 	private String action;
+	private String discriminator;
 	private String recipient;
 	private String target;
-	private String discriminator;
 
 //	INSERT INTO wx_permission(id_, action_, discriminator_, recipient_, target_)  VALUES (1, 'upload', 'user', '1', 'kz.bee.kudos.lms');
 
@@ -53,6 +53,14 @@ public class Permission implements Serializable {
 		this.action = action;
 	}
 	
+	@Column(name="discriminator_", nullable=false)
+	public String getDiscriminator() {
+		return discriminator;
+	}
+	public void setDiscriminator(String discriminator) {
+		this.discriminator = discriminator;
+	}
+	
 	@Column(name="recipient_", nullable=false)
 	public String getRecipient() {
 		return recipient;
@@ -67,13 +75,5 @@ public class Permission implements Serializable {
 	}
 	public void setTarget(String target) {
 		this.target = target;
-	}
-
-	@Column(name="discriminator_", nullable=false)
-	public String getDiscriminator() {
-		return discriminator;
-	}
-	public void setDiscriminator(String discriminator) {
-		this.discriminator = discriminator;
 	}
 }

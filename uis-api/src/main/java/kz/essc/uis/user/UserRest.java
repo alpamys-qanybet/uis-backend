@@ -1,6 +1,7 @@
 package kz.essc.uis.user;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -18,6 +19,8 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 
+import kz.essc.uis.core.PermissionWrapper;
+import kz.essc.uis.core.RoleWrapper;
 import kz.essc.uis.core.SecurityBean;
 import kz.essc.uis.sc.user.Permission;
 import kz.essc.uis.sc.user.Role;
@@ -41,8 +44,8 @@ public class UserRest {
 	
 	@GET
 	@Path("/")
-	public List<UserWrapper> getUsers() {
-		return userBean.getUsers();
+	public List<UserWrapper> get() {
+		return userBean.get();
 	}
 	
 	@GET
@@ -91,6 +94,26 @@ public class UserRest {
 	@Path("/login/{login}")
 	public UserWrapper getUserByLogin(@PathParam("login") String login) {
 		return userBean.getUserByLogin(login);
+	}
+	
+	@GET
+	@Path("/roles")
+	public List<RoleWrapper> getRoles() throws IOException {
+		if (request.getUserPrincipal() != null) {
+			return userBean.getRoles(request.getUserPrincipal().getName());
+		}
+		response.sendError(HttpServletResponse.SC_BAD_REQUEST);
+		return null;
+	}
+	
+	@GET
+	@Path("/permissions")
+	public List<PermissionWrapper> getPermissions() throws IOException {
+		if (request.getUserPrincipal() != null) {
+			return userBean.getPermissions(request.getUserPrincipal().getName());
+		}
+		response.sendError(HttpServletResponse.SC_BAD_REQUEST);
+		return null;
 	}
 	
 	@GET
