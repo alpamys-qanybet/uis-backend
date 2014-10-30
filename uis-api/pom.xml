@@ -31,13 +31,6 @@
 
   <dependencies>
   	<dependency>
-		<groupId>kz.essc.uis</groupId>
-		<artifactId>uis-ui</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
-		<type>war</type>
-    </dependency>
-  
-  	<dependency>
   		<groupId>javax.enterprise</groupId>
   		<artifactId>cdi-api</artifactId>
   		<scope>provided</scope>
@@ -73,7 +66,22 @@
         <version>3.0.1</version>
         <scope>provided</scope>
 	</dependency>
-    
+	
+	
+	<dependency>
+		<groupId>kz.essc.uis</groupId>
+		<artifactId>persistence</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+		<type>jar</type>
+	</dependency>
+  
+	<dependency>
+		<groupId>kz.essc.uis</groupId>
+		<artifactId>uis-ui</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+		<type>war</type>
+    </dependency>
+  
   </dependencies>
   <build>
     <finalName>${project.artifactId}</finalName>

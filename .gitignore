@@ -56,3 +56,9 @@ uis-api/.classpath
 uis-api/.project
 uis-api/.settings/
 uis-api/target/
+
+# persistence
+persistence/.classpath
+persistence/.project
+persistence/.settings/
+persistence/target/

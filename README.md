@@ -128,7 +128,9 @@ add in __standalone.xml__ inside _<security-domains>_ following:
             <login-module code="Database" flag="required">
                 <module-option name="dsJndiName" value="java:jboss/datasources/uisDatasource"/>
                 <module-option name="principalsQuery" value="select U.PASSWORD_ from SC_USER U where U.LOGIN_=?"/>
-                <module-option name="rolesQuery" value="select NAME_, GROUP_ from USER_ROLE_SECURITY where USER_=?"/>
+                <module-option name="rolesQuery" value="select NAME_, GROUP_ from SC_JAAS_ROLE where USER_=?"/>
+                <module-option name="hashAlgorithm" value="MD5"/>
+                <module-option name="hashEncoding" value="base64"/> 
             </login-module>
         </authentication>
     </security-domain>
