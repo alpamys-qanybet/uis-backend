@@ -86,18 +86,10 @@ public class UserBean {
 	}
 	
 	public UserWrapper edit(Long id, UserWrapper userWrapper) {
-		System.out.println("edit");
-		
 		try {
-			System.out.println("id " + id);
-//			System.out.println("login " + userWrapper.getLogin());
-			System.out.println("name " + userWrapper.getName());
-//			System.out.println("password " + userWrapper.getPassword());
 			
 			User user = (User) em.find(User.class, id);
-//			user.setLogin(userWrapper.getLogin());
 			user.setName(userWrapper.getName());
-//			user.setPassword(userWrapper.getPassword());
 			
 			em.merge(user);
 			
@@ -139,6 +131,26 @@ public class UserBean {
 			return null;
 		}
 	}
+	
+	public boolean changePassword(Long id, UserWrapper userWrapper) {
+		try {
+			User user = (User) em.find(User.class, id);
+			
+			if (user.getPassword().equals( securityBean.hash(userWrapper.getOld()) )) {
+				user.setPassword( securityBean.hash(userWrapper.getPassword()));
+				em.merge(user);
+			
+				return true;
+			}
+			
+			return false;
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+	
 	
 	public List<RoleWrapper> getRoles(String login) {
 		return RoleWrapper.wrap(securityBean.getRoles(login));

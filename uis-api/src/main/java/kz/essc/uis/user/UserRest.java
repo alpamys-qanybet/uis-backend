@@ -90,10 +90,24 @@ public class UserRest {
 		}
 	}
 	
+	
+	@GET
+	@Path("/current")
+	public UserWrapper getCurrent() {
+		return userBean.getUserByLogin(request.getUserPrincipal().getName());
+	}
+	
 	@GET
 	@Path("/login/{login}")
 	public UserWrapper getUserByLogin(@PathParam("login") String login) {
 		return userBean.getUserByLogin(login);
+	}
+	
+	@PUT
+	@Path("/password/change")
+	public boolean changePassword(UserWrapper userWrapper) throws IOException {
+		Long id = securityBean.getIdByLogin(request.getUserPrincipal().getName());
+		return userBean.changePassword(id, userWrapper);
 	}
 	
 	@GET
