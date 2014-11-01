@@ -138,18 +138,19 @@ add in __standalone.xml__ inside _<security-domains>_ following:
 
 ##DB:
 ~~~~
-    CREATE TABLE user_role_security
-    (
-      group_ character varying(255),
-      name_ character varying(255),
-      user_ character varying(255)
-    )
-    WITH (
-      OIDS=FALSE
-    );
-    ALTER TABLE user_role_security
-      OWNER TO postgres;
+    CREATE TABLE sc_jaas_role
+	(
+	  group_ character varying(255),
+	  name_ character varying(255),
+	  user_ character varying(255)
+	)
+	WITH (
+	  OIDS=FALSE
+	);
+	ALTER TABLE sc_jaas_role
+	  OWNER TO postgres;
 ~~~~
+
 
 ##REST urls:
  - ##secured: `rest/secure`
@@ -173,3 +174,41 @@ in __UI__ use followings:
 ~~~~
 
 JAAS integration uses JSESSIONID inside cookie.
+
+
+##SENDING E-MAIL USING GOOGLE SMTP AND JBOSS AS 7
+If you don’t have your own SMTP server, you can use Google’s in a pinch. This tutorial will show you how to do that using JBoss AS 7.
+
+First, we will need to configure a mail session. Stop JBoss if it is running. Open JBOSS/standalone/configuration/standalone.xml. Search for smtp. You will see a sample mail session defined like this:
+~~~~
+<mail-session jndi-name="java:jboss/mail/Default">
+	<smtp-server outbound-socket-binding-ref="mail-smtp"/>
+</mail-session>
+~~~~
+Change it like this. I have highlighted the relevant changes.
+
+~~~~
+<mail-session jndi-name="java:jboss/mail/Default">
+ 	<smtp-server ssl="true" outbound-socket-binding-ref="mail-smtp">
+    	<login name="portal.sdu" password="myportalsmtp"/>
+	</smtp-server>
+</mail-session>
+~~~~
+Basically, you are enabling SSL and entering your Google account information.
+
+Keep searching for smtp and you will see how the SMTP server address is defined.
+
+~~~~
+<outbound-socket-binding name="mail-smtp">
+	<remote-destination host="localhost" port="25"/>
+</outbound-socket-binding>
+~~~~
+Change it as follows.
+
+~~~~
+<outbound-socket-binding name="mail-smtp">
+	<remote-destination host="smtp.gmail.com" port="465"/>
+</outbound-socket-binding>
+~~~~
+
+Save changes. Start the server.

@@ -8,10 +8,11 @@ import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import kz.essc.uis.core.MailBean;
+import kz.essc.uis.core.PasswordManager;
 import kz.essc.uis.core.PermissionWrapper;
 import kz.essc.uis.core.RoleWrapper;
 import kz.essc.uis.core.SecurityBean;
-import kz.essc.uis.sc.user.Permission;
 import kz.essc.uis.sc.user.User;
 
 @Stateless
@@ -21,6 +22,12 @@ public class UserBean {
 
 	@Inject
 	SecurityBean securityBean;
+	
+	@Inject
+	PasswordManager passwordManager;
+	
+	@Inject
+	MailBean mailBean;
 	
 	public List<UserWrapper> get() {
 		
@@ -51,7 +58,9 @@ public class UserBean {
 			User user = new User();
 			user.setLogin(userWrapper.getLogin());
 			user.setName(userWrapper.getName());
-			user.setPassword( securityBean.hash(userWrapper.getLogin()) );
+			
+			String password = passwordManager.generate();
+			user.setPassword( securityBean.hash(password) );
 			
 			em.persist(user);
 			
@@ -59,6 +68,14 @@ public class UserBean {
 								 "VALUES ('Roles', 'authenticated', :login);")
 				.setParameter("login", user.getLogin())
 				.executeUpdate();
+			
+			String content = "<h2>Admin! Notification</h2>";
+			content += "<p>New user has been added to university portal</p>";
+			content += "<p>Login: " + user.getLogin() + "</p>";
+			content += "<p>Password: " + password + "</p><br/>";
+			content += "Please, notify him/her to login, change password.";
+			
+			mailBean.send("alpamys.kanibetov@gmail.com", "SDU University Portal", content);
 			
 			return UserWrapper.wrap(user);
 		}
