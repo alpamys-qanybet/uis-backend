@@ -13,6 +13,7 @@ import kz.essc.uis.core.PasswordManager;
 import kz.essc.uis.core.PermissionWrapper;
 import kz.essc.uis.core.RoleWrapper;
 import kz.essc.uis.core.SecurityBean;
+import kz.essc.uis.core.queue.MailMessageProducer;
 import kz.essc.uis.sc.user.User;
 
 @Stateless
@@ -28,6 +29,9 @@ public class UserBean {
 	
 	@Inject
 	MailBean mailBean;
+	
+	@Inject
+	MailMessageProducer mailMessageProducer;
 	
 	public List<UserWrapper> get() {
 		
@@ -69,13 +73,7 @@ public class UserBean {
 				.setParameter("login", user.getLogin())
 				.executeUpdate();
 			
-			String content = "<h2>Admin! Notification</h2>";
-			content += "<p>New user has been added to university portal</p>";
-			content += "<p>Login: " + user.getLogin() + "</p>";
-			content += "<p>Password: " + password + "</p><br/>";
-			content += "Please, notify him/her to login, change password.";
-			
-			mailBean.send("alpamys.kanibetov@gmail.com", "SDU University Portal. New user", content);
+			mailMessageProducer.send(user.getLogin(), password);
 			
 			return UserWrapper.wrap(user);
 		}
