@@ -75,7 +75,7 @@ public class UserBean {
 			content += "<p>Password: " + password + "</p><br/>";
 			content += "Please, notify him/her to login, change password.";
 			
-			mailBean.send("alpamys.kanibetov@gmail.com", "SDU University Portal", content);
+			mailBean.send("alpamys.kanibetov@gmail.com", "SDU University Portal. New user", content);
 			
 			return UserWrapper.wrap(user);
 		}
@@ -148,6 +148,31 @@ public class UserBean {
 		catch (Exception e) {
 			e.printStackTrace();
 			return false;
+		}
+	}
+	
+	public int resetPassword(Long id) {
+		try {
+			User user = (User) em.find(User.class, id);
+			
+			String password = passwordManager.generate();
+			user.setPassword( securityBean.hash(password) );
+			
+			em.merge(user);
+			
+			String content = "<h2>Admin! Notification</h2>";
+			content += "<p>User password was reset</p>";
+			content += "<p>Login: " + user.getLogin() + "</p>";
+			content += "<p>Password: " + password + "</p><br/>";
+			content += "Please, notify him/her to login, change password.";
+			
+			mailBean.send("alpamys.kanibetov@gmail.com", "SDU University Portal. Reset password", content);
+			
+			return 0;
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+			return -1;
 		}
 	}
 	

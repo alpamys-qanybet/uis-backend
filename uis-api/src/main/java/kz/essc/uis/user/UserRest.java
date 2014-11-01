@@ -1,7 +1,6 @@
 package kz.essc.uis.user;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -111,6 +110,18 @@ public class UserRest {
 	}
 	
 	@GET
+	@Path("/{id}/password/reset")
+	public int resetPassword(@PathParam("id") Long id) throws IOException {
+		if (securityBean.hasPermission(request.getUserPrincipal().getName(), Permission.Target.UserManagement, Permission.Action.write)) {
+			return userBean.resetPassword(id);
+		}
+		else {
+			response.sendError(HttpServletResponse.SC_PRECONDITION_FAILED);
+			return -3;
+		}
+	}
+	
+	@GET
 	@Path("/roles")
 	public List<RoleWrapper> getRoles() throws IOException {
 		if (request.getUserPrincipal() != null) {
@@ -134,22 +145,11 @@ public class UserRest {
 	@Path("/logout")
 	public boolean logout() {
 		try {
-			HttpSession session = request.getSession();
-			System.out.println("before");
-			System.out.println(request.getUserPrincipal().getName());
-			System.out.println( session.getId() );
-			
 			request.logout();
-
-			System.out.println("after");
-			System.out.println(request.getUserPrincipal());
-			System.out.println( session.getId() );
-			
 			return true;
 		}
 		catch (Exception e) {
 			e.printStackTrace();
-			
 			return false;
 		}
 	}
