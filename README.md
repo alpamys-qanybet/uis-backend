@@ -176,10 +176,12 @@ in __UI__ use followings:
 JAAS integration uses JSESSIONID inside cookie.
 
 
-##SENDING E-MAIL USING GOOGLE SMTP AND JBOSS AS 7
-If you don’t have your own SMTP server, you can use Google’s in a pinch. This tutorial will show you how to do that using JBoss AS 7.
+##SENDING E-MAIL USING GOOGLE SMTP
+If you don’t have your own SMTP server, you can use Google’s in a pinch.
 
-First, we will need to configure a mail session. Stop JBoss if it is running. Open JBOSS/standalone/configuration/standalone.xml. Search for smtp. You will see a sample mail session defined like this:
+First, we will need to configure a mail session.
+Stop JBoss if it is running.
+Open __standalone.xml__. Search for smtp. You will see a sample mail session defined like this:
 ~~~~
 <mail-session jndi-name="java:jboss/mail/Default">
 	<smtp-server outbound-socket-binding-ref="mail-smtp"/>
