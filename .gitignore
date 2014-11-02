@@ -62,3 +62,9 @@ persistence/.classpath
 persistence/.project
 persistence/.settings/
 persistence/target/
+
+# queue
+queue/.classpath
+queue/.project
+queue/.settings/
+queue/target/

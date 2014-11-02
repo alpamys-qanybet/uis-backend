@@ -8,12 +8,11 @@ import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import kz.essc.uis.core.MailBean;
 import kz.essc.uis.core.PasswordManager;
 import kz.essc.uis.core.PermissionWrapper;
 import kz.essc.uis.core.RoleWrapper;
 import kz.essc.uis.core.SecurityBean;
-import kz.essc.uis.core.queue.MailMessageProducer;
+import kz.essc.uis.queue.mail.MailMessageProducer;
 import kz.essc.uis.sc.user.User;
 
 @Stateless
@@ -26,9 +25,6 @@ public class UserBean {
 	
 	@Inject
 	PasswordManager passwordManager;
-	
-	@Inject
-	MailBean mailBean;
 	
 	@Inject
 	MailMessageProducer mailMessageProducer;
@@ -73,7 +69,16 @@ public class UserBean {
 				.setParameter("login", user.getLogin())
 				.executeUpdate();
 			
-			mailMessageProducer.send(user.getLogin(), password);
+			String toAddress = "alpamys.kanibetov@gmail.com";
+			String subject = "SDU University Portal. New user.";
+			StringBuilder content = new StringBuilder("");
+			content.append("<h2>Admin! Notification</h2>");
+			content.append("<p>New user has been added to university portal</p>");
+			content.append("<p>Login: " + user.getLogin() + "</p>");
+			content.append("<p>Password: " + password + "</p><br/>");
+			content.append("Please, notify him/her to login, change password.");
+			
+			mailMessageProducer.send(toAddress, subject, content.toString());
 			
 			return UserWrapper.wrap(user);
 		}
@@ -158,13 +163,16 @@ public class UserBean {
 			
 			em.merge(user);
 			
-			String content = "<h2>Admin! Notification</h2>";
-			content += "<p>User password was reset</p>";
-			content += "<p>Login: " + user.getLogin() + "</p>";
-			content += "<p>Password: " + password + "</p><br/>";
-			content += "Please, notify him/her to login, change password.";
+			String toAddress = "alpamys.kanibetov@gmail.com";
+			String subject = "SDU University Portal. Reset password.";
+			StringBuilder content = new StringBuilder("");
+			content.append("<h2>Admin! Notification</h2>");
+			content.append("<p>User password was reset</p>");
+			content.append("<p>Login: " + user.getLogin() + "</p>");
+			content.append("<p>Password: " + password + "</p><br/>");
+			content.append("Please, notify him/her to login, change password.");
 			
-			mailBean.send("alpamys.kanibetov@gmail.com", "SDU University Portal. Reset password", content);
+			mailMessageProducer.send(toAddress, subject, content.toString());
 			
 			return 0;
 		}

@@ -1,4 +1,4 @@
-package kz.essc.uis.core;
+package kz.essc.uis.mail;
 
 import javax.annotation.Resource;
 import javax.ejb.Stateless;

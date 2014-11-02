@@ -1,6 +1,4 @@
-package kz.essc.uis.core.queue;
-
-import java.io.PrintWriter;
+package kz.essc.uis.queue.mail;
 
 import javax.ejb.Stateless;
 import javax.jms.Connection;
@@ -10,7 +8,6 @@ import javax.jms.MapMessage;
 import javax.jms.MessageProducer;
 import javax.jms.Queue;
 import javax.jms.Session;
-import javax.jms.TextMessage;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
@@ -23,7 +20,7 @@ public class MailMessageProducer {
  
     Connection connection = null;
 
-    public void send(String login, String password) throws NamingException {
+    public void send(String toAddress, String subject, String content) throws NamingException {
     	 
         ic = new InitialContext();
         cf = (ConnectionFactory) ic.lookup("/ConnectionFactory");
@@ -40,14 +37,12 @@ public class MailMessageProducer {
             MessageProducer publisher = session.createProducer(queue);
  
             connection.start();
-//            TextMessage message = session.createTextMessage(login + ":"+password);
             
             MapMessage m = session.createMapMessage();
-            m.setStringProperty("login", login);
-            m.setStringProperty("password", password);
-            m.setStringProperty("toAddress", "alpamys.kanibetov@gmail.com");
+            m.setStringProperty("toAddress", toAddress);
+            m.setStringProperty("subject", subject);
+            m.setStringProperty("content", content);
 
-            // publish the message to the defined Queue
             publisher.send(m);
         } catch (Exception exc) {
             exc.printStackTrace();

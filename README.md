@@ -67,7 +67,7 @@ export JBOSS_HOME=<JBOSS-HOME>
 ###SERVER:
 create a database and name it "uis"(you can use different name, just assign it in _<connection-url>_ below)
 
-set up your database settings within datasource in _<datasources>_ in ___<JBOSS-HOME>_/standalone/configuration/standalone.xml__
+set up your database settings within datasource in _<datasources>_ in ___<JBOSS-HOME>_/standalone/configuration/standalone-full.xml__
 ~~~~
     <datasource jndi-name="java:jboss/datasources/uisDatasource" pool-name="uisDatasource" enabled="true">
         <connection-url>jdbc:postgresql://localhost:5432/uis</connection-url>
@@ -92,36 +92,9 @@ and driver in _<datasources>/<drivers>_ in the same file read [ this ](https://d
     </driver>
 ~~~~
 
-run server in standalone mode:
-
-`<JBOSS-HOME>/bin/standalone.sh`
-
-
-### Tasks:
-in uis-api/
-
-run commands:
-
-`mvn install`: download dependencies and locate into repo
-
-`mvn clean package`: build project into target
-
-`jboss-as:deploy`: deploy to server
-
-(any time to deploy to server use this command, you can attach it to eclipse if you want by maven-eclipse-plugin)
-
-update uis-ui if needed:
-
-in [ uis-ui/ ](https://bitbucket.org/ZhSulta/ui) run:
-
-`mvn clean install`
-
-(you do not need to deploy the ui project as it is dependant to uis-api and locates within uis-api)
-
-
 ### Security JAAS JBoss security domain
 Rest api is divided into open and secured url methods:
-add in __standalone.xml__ inside _<security-domains>_ following:
+add in __standalone-full.xml__ inside _<security-domains>_ following:
 ~~~~
     <security-domain name="ls-system" cache-type="default">
         <authentication>
@@ -152,36 +125,9 @@ add in __standalone.xml__ inside _<security-domains>_ following:
 ~~~~
 
 
-##REST urls:
- - ##secured: `rest/secure`
- - ##open: `rest/`
-
-in __UI__ use followings:
- 
- to login:
-~~~~
-    <a href='http://localhost:8080/uis-api/login.html?url=back-url'>Login</a>
-~~~~
-
- to logout:
-~~~~
-  REST GET method 'secure/users/logout'
-~~~~
-
- to check if user is authorized(returns true/false in text):
-~~~~
-  REST GET method 'authorized'
-~~~~
-
-JAAS integration uses JSESSIONID inside cookie.
-
-
 ##SENDING E-MAIL USING GOOGLE SMTP
 If you don’t have your own SMTP server, you can use Google’s in a pinch.
-
-First, we will need to configure a mail session.
-Stop JBoss if it is running.
-Open __standalone.xml__. Search for smtp. You will see a sample mail session defined like this:
+Open __standalone-full.xml__. Search for smtp. You will see a sample mail session defined like this:
 ~~~~
 <mail-session jndi-name="java:jboss/mail/Default">
 	<smtp-server outbound-socket-binding-ref="mail-smtp"/>
@@ -213,4 +159,73 @@ Change it as follows.
 </outbound-socket-binding>
 ~~~~
 
-Save changes. Start the server.
+more [ info ](http://mobiarch.wordpress.com/2013/01/11/sending-e-mail-using-google-smtp-and-jboss-as-7/).
+
+
+###JMS
+
+add to _<jms-destinations>_
+
+~~~~
+<jms-queue name="mailQueue">
+    <entry name="queue/mail"/>
+    <entry name="java:jboss/exported/jms/queue/mail"/>
+</jms-queue>
+~~~~
+
+more [ info ](https://javafindings.wordpress.com/2013/05/16/java-messaging-service-jms-with-jboss-7-1-1-new/).
+
+
+run server in standalone mode:
+
+`<JBOSS-HOME>/bin/standalone.sh –server-config=/standalone-full.xml`
+
+or rename __standalone-full.xml__ to __standalone.xml__ and run
+
+`<JBOSS-HOME>/bin/standalone.sh`
+
+### Tasks:
+in uis-api/
+
+run commands:
+
+`mvn install`: download dependencies and locate into repo
+
+`mvn clean package`: build project into target
+
+`jboss-as:deploy`: deploy to server
+
+(any time to deploy to server use this command, you can attach it to eclipse if you want by maven-eclipse-plugin)
+
+update uis-ui if needed:
+
+in [ uis-ui/ ](https://bitbucket.org/ZhSulta/ui) run:
+
+`mvn clean install`
+
+(you do not need to deploy the ui project as it is dependant to uis-api and locates within uis-api)
+
+
+
+##REST urls:
+ - ##secured: `rest/secure`
+ - ##open: `rest/`
+
+in __UI__ use followings:
+ 
+ to login:
+~~~~
+    <a href='http://localhost:8080/uis-api/login.html?url=back-url'>Login</a>
+~~~~
+
+ to logout:
+~~~~
+  REST GET method 'secure/users/logout'
+~~~~
+
+ to check if user is authorized(returns true/false in text):
+~~~~
+  REST GET method 'authorized'
+~~~~
+
+JAAS integration uses JSESSIONID inside cookie.
