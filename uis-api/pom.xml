@@ -1,134 +1,155 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-
-  <groupId>kz.essc.uis</groupId>
-  <artifactId>uis-api</artifactId>
-  <packaging>war</packaging>
-  <version>0.0.1-SNAPSHOT</version>
-
-  <name>UIS API</name>
-  <description>University's Information System API</description>
-  <url>http://maven.apache.org</url>
-
-  <properties>
-  	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-  	<jboss.home>>${env.JBOSS_HOME}</jboss.home>
-  	<maven.build.timestamp.format>yyyyMMdd'T'HHmmss</maven.build.timestamp.format>
-  </properties>
-
-  <dependencyManagement>
-  	<dependencies>
-  		<dependency>
-  			<groupId>org.jboss.spec</groupId>
-  			<artifactId>jboss-javaee-web-6.0</artifactId>
-  			<version>2.0.0.Final</version>
-  			<type>pom</type>
-  			<scope>import</scope>
-  		</dependency>
-  	</dependencies>
-  </dependencyManagement>
-
-  <dependencies>
-  	<dependency>
-  		<groupId>javax.enterprise</groupId>
-  		<artifactId>cdi-api</artifactId>
-  		<scope>provided</scope>
-  	</dependency>
-
-    <dependency>
-    	<groupId>org.jboss.spec.javax.annotation</groupId>
-    	<artifactId>jboss-annotations-api_1.1_spec</artifactId>
-    	<scope>provided</scope>
-    </dependency>
-
-    <dependency>
-    	<groupId>org.jboss.spec.javax.ws.rs</groupId>
-    	<artifactId>jboss-jaxrs-api_1.1_spec</artifactId>
-    	<scope>provided</scope>
-    </dependency>
-
-    <dependency>
-    	<groupId>org.hibernate.javax.persistence</groupId>
-    	<artifactId>hibernate-jpa-2.0-api</artifactId>
-    	<scope>provided</scope>
-    </dependency>
-
-    <dependency>
-    	<groupId>org.jboss.spec.javax.ejb</groupId>
-    	<artifactId>jboss-ejb-api_3.1_spec</artifactId>
-    	<scope>provided</scope>
-    </dependency>
-    
-    <dependency>
-        <groupId>javax.servlet</groupId>
-        <artifactId>javax.servlet-api</artifactId>
-        <version>3.0.1</version>
-        <scope>provided</scope>
-	</dependency>
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
 	
+	<groupId>kz.essc.uis</groupId>
+	<artifactId>uis-api</artifactId>
+	<packaging>war</packaging>
+	<version>0.0.1-SNAPSHOT</version>
 	
-	<dependency>
-		<groupId>kz.essc.uis</groupId>
-		<artifactId>persistence</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
-		<type>jar</type>
-	</dependency>
-  
-	<dependency>
-		<groupId>kz.essc.uis</groupId>
-		<artifactId>uis-ui</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
-		<type>war</type>
-    </dependency>
-  
-  </dependencies>
-  <build>
-    <finalName>${project.artifactId}</finalName>
-    <plugins>
-    	<plugin>
-    		<artifactId>maven-compiler-plugin</artifactId>
-    		<version>3.1</version>
-    		<configuration>
-    			<source>1.6</source>
-  				<target>1.6</target>
-    		</configuration>
-    	</plugin>
-
-    	<plugin>
-    		<artifactId>maven-war-plugin</artifactId>
-    		<version>2.4</version>
-    		<configuration>
-  				<failOnMissingWebXml>false</failOnMissingWebXml>
-    		</configuration>
-    	</plugin>
-
-    	<plugin>
-    		<groupId>org.jboss.as.plugins</groupId>
-    		<artifactId>jboss-as-maven-plugin</artifactId>
-    		<version>7.1.1.Final</version>
-    	</plugin>
-    </plugins>
-  </build>
-
-  <profiles>
-	  <profile>
-	  	<id>default</id>
-	  	<activation>
-	  		<activeByDefault>true</activeByDefault>
-	  	</activation>
-	  	<build>
-	  		<plugins>
-	  			<plugin>
-	  				<artifactId>maven-surefire-plugin</artifactId>
-	  				<version>2.4.3</version>
-	  				<configuration>
-	  					<skip>true</skip>
-	  				</configuration>
-	  			</plugin>
-	  		</plugins>
-	  	</build>
-
-	  </profile>
-   </profiles>
+	<name>UIS API</name>
+	<description>University's Information System API</description>
+	<url>http://maven.apache.org</url>
+	  
+	<repositories>
+		<repository>
+			<id>central</id>
+			<name>Central Repository</name>
+			<url>http://repo.maven.apache.org/maven2</url>
+			<layout>default</layout>
+		</repository>
+		    
+		<repository>
+			<id>repository.jboss.org-public</id>
+			<name>JBoss.org Maven repository</name>
+			<url>https://repository.jboss.org/nexus/content/groups/public</url>
+		</repository>
+	</repositories>
+	
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<jboss.home>>${env.JBOSS_HOME}</jboss.home>
+		<maven.build.timestamp.format>yyyyMMdd'T'HHmmss</maven.build.timestamp.format>
+	</properties>
+	
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.jboss.spec</groupId>
+				<artifactId>jboss-javaee-web-6.0</artifactId>
+				<version>2.0.0.Final</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+	
+	<dependencies>
+		<dependency>
+			<groupId>javax.enterprise</groupId>
+			<artifactId>cdi-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.jboss.spec.javax.annotation</groupId>
+			<artifactId>jboss-annotations-api_1.1_spec</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.jboss.spec.javax.ws.rs</groupId>
+			<artifactId>jboss-jaxrs-api_1.1_spec</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.hibernate.javax.persistence</groupId>
+			<artifactId>hibernate-jpa-2.0-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.jboss.spec.javax.ejb</groupId>
+			<artifactId>jboss-ejb-api_3.1_spec</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		   
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>3.0.1</version>
+			<scope>provided</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>kz.essc.uis</groupId>
+			<artifactId>persistence</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+			<type>jar</type>
+		</dependency>
+		 	
+		<dependency>
+			<groupId>kz.essc.uis</groupId>
+			<artifactId>queue</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+			<type>jar</type>
+		</dependency>
+		 
+		 
+		<dependency>
+			<groupId>kz.essc.uis</groupId>
+			<artifactId>uis-ui</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+			<type>war</type>
+		</dependency>
+	</dependencies>
+	
+	<build>
+		<finalName>${project.artifactId}</finalName>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.1</version>
+				<configuration>
+					<source>1.7</source>
+					<target>1.7</target>
+				</configuration>
+			</plugin>
+			
+			<plugin>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>2.4</version>
+				<configuration>
+					<failOnMissingWebXml>false</failOnMissingWebXml>
+				</configuration>
+			</plugin>
+			
+			<plugin>
+				<groupId>org.jboss.as.plugins</groupId>
+				<artifactId>jboss-as-maven-plugin</artifactId>
+				<version>7.1.1.Final</version>
+			</plugin>
+		</plugins>
+	</build>
+	
+	<profiles>
+		<profile>
+			<id>default</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<artifactId>maven-surefire-plugin</artifactId>
+						<version>2.4.3</version>
+						<configuration>
+							<skip>true</skip>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
 </project>

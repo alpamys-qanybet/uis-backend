@@ -1,7 +1,6 @@
 package kz.essc.uis.user;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -24,6 +23,7 @@ import kz.essc.uis.core.RoleWrapper;
 import kz.essc.uis.core.SecurityBean;
 import kz.essc.uis.sc.user.Permission;
 import kz.essc.uis.sc.user.Role;
+
 
 @Path("/secure/users")
 @Produces({ MediaType.APPLICATION_JSON})
@@ -90,52 +90,59 @@ public class UserRest {
 		}
 	}
 	
+	
+	@GET
+	@Path("/current")
+	public UserWrapper getCurrent() {
+		return userBean.getUserByLogin(request.getUserPrincipal().getName());
+	}
+	
 	@GET
 	@Path("/login/{login}")
 	public UserWrapper getUserByLogin(@PathParam("login") String login) {
 		return userBean.getUserByLogin(login);
 	}
 	
+	@PUT
+	@Path("/password/change")
+	public boolean changePassword(UserWrapper userWrapper) throws IOException {
+		Long id = securityBean.getIdByLogin(request.getUserPrincipal().getName());
+		return userBean.changePassword(id, userWrapper);
+	}
+	
+	@GET
+	@Path("/{id}/password/reset")
+	public int resetPassword(@PathParam("id") Long id) throws IOException {
+		if (securityBean.hasPermission(request.getUserPrincipal().getName(), Permission.Target.UserManagement, Permission.Action.write)) {
+			return userBean.resetPassword(id);
+		}
+		else {
+			response.sendError(HttpServletResponse.SC_PRECONDITION_FAILED);
+			return -3;
+		}
+	}
+	
 	@GET
 	@Path("/roles")
 	public List<RoleWrapper> getRoles() throws IOException {
-		if (request.getUserPrincipal() != null) {
-			return userBean.getRoles(request.getUserPrincipal().getName());
-		}
-		response.sendError(HttpServletResponse.SC_BAD_REQUEST);
-		return null;
+		return userBean.getRoles(request.getUserPrincipal().getName());
 	}
 	
 	@GET
 	@Path("/permissions")
 	public List<PermissionWrapper> getPermissions() throws IOException {
-		if (request.getUserPrincipal() != null) {
-			return userBean.getPermissions(request.getUserPrincipal().getName());
-		}
-		response.sendError(HttpServletResponse.SC_BAD_REQUEST);
-		return null;
+		return userBean.getPermissions(request.getUserPrincipal().getName());
 	}
 	
 	@GET
 	@Path("/logout")
 	public boolean logout() {
 		try {
-			HttpSession session = request.getSession();
-			System.out.println("before");
-			System.out.println(request.getUserPrincipal().getName());
-			System.out.println( session.getId() );
-			
 			request.logout();
-
-			System.out.println("after");
-			System.out.println(request.getUserPrincipal());
-			System.out.println( session.getId() );
-			
 			return true;
 		}
 		catch (Exception e) {
 			e.printStackTrace();
-			
 			return false;
 		}
 	}

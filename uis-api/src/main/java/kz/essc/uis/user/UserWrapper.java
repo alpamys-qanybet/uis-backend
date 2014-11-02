@@ -14,6 +14,7 @@ public class UserWrapper {
 	private String login;
 	private String name;
 	private String password;
+	private String old;
 
 	public long getId() {
 		return id;
@@ -21,23 +22,33 @@ public class UserWrapper {
 	public void setId(long id) {
 		this.id = id;
 	}
+	
 	public String getLogin() {
 		return login;
 	}
 	public void setLogin(String login) {
 		this.login = login;
 	}
+	
 	public String getName() {
 		return name;
 	}
 	public void setName(String name) {
 		this.name = name;
 	}
+	
 	public String getPassword() {
 		return password;
 	}
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	
+	public String getOld() {
+		return old;
+	}
+	public void setOld(String old) {
+		this.old = old;
 	}
 	
 	public static UserWrapper wrap(User user){
@@ -46,7 +57,7 @@ public class UserWrapper {
 			wrapper.setId(user.getId());
 			wrapper.setLogin(user.getLogin());
 			wrapper.setName(user.getName());
-			wrapper.setPassword(user.getPassword());
+//			wrapper.setPassword(user.getPassword());
 			return wrapper;
 		}
 		catch (Exception e) {

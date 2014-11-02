@@ -67,7 +67,7 @@ export JBOSS_HOME=<JBOSS-HOME>
 ###SERVER:
 create a database and name it "uis"(you can use different name, just assign it in _<connection-url>_ below)
 
-set up your database settings within datasource in _<datasources>_ in ___<JBOSS-HOME>_/standalone/configuration/standalone.xml__
+set up your database settings within datasource in _<datasources>_ in ___<JBOSS-HOME>_/standalone/configuration/standalone-full.xml__
 ~~~~
     <datasource jndi-name="java:jboss/datasources/uisDatasource" pool-name="uisDatasource" enabled="true">
         <connection-url>jdbc:postgresql://localhost:5432/uis</connection-url>
@@ -92,10 +92,97 @@ and driver in _<datasources>/<drivers>_ in the same file read [ this ](https://d
     </driver>
 ~~~~
 
+### Security JAAS JBoss security domain
+Rest api is divided into open and secured url methods:
+add in __standalone-full.xml__ inside _<security-domains>_ following:
+~~~~
+    <security-domain name="ls-system" cache-type="default">
+        <authentication>
+            <login-module code="Database" flag="required">
+                <module-option name="dsJndiName" value="java:jboss/datasources/uisDatasource"/>
+                <module-option name="principalsQuery" value="select U.PASSWORD_ from SC_USER U where U.LOGIN_=?"/>
+                <module-option name="rolesQuery" value="select NAME_, GROUP_ from SC_JAAS_ROLE where USER_=?"/>
+                <module-option name="hashAlgorithm" value="MD5"/>
+                <module-option name="hashEncoding" value="base64"/> 
+            </login-module>
+        </authentication>
+    </security-domain>
+~~~~
+
+##DB:
+~~~~
+    CREATE TABLE sc_jaas_role
+	(
+	  group_ character varying(255),
+	  name_ character varying(255),
+	  user_ character varying(255)
+	)
+	WITH (
+	  OIDS=FALSE
+	);
+	ALTER TABLE sc_jaas_role
+	  OWNER TO postgres;
+~~~~
+
+
+##SENDING E-MAIL USING GOOGLE SMTP
+If you don’t have your own SMTP server, you can use Google’s in a pinch.
+Open __standalone-full.xml__. Search for smtp. You will see a sample mail session defined like this:
+~~~~
+<mail-session jndi-name="java:jboss/mail/Default">
+	<smtp-server outbound-socket-binding-ref="mail-smtp"/>
+</mail-session>
+~~~~
+Change it like this. I have highlighted the relevant changes.
+
+~~~~
+<mail-session jndi-name="java:jboss/mail/Default">
+ 	<smtp-server ssl="true" outbound-socket-binding-ref="mail-smtp">
+    	<login name="portal.sdu" password="myportalsmtp"/>
+	</smtp-server>
+</mail-session>
+~~~~
+Basically, you are enabling SSL and entering your Google account information.
+
+Keep searching for smtp and you will see how the SMTP server address is defined.
+
+~~~~
+<outbound-socket-binding name="mail-smtp">
+	<remote-destination host="localhost" port="25"/>
+</outbound-socket-binding>
+~~~~
+Change it as follows.
+
+~~~~
+<outbound-socket-binding name="mail-smtp">
+	<remote-destination host="smtp.gmail.com" port="465"/>
+</outbound-socket-binding>
+~~~~
+
+more [ info ](http://mobiarch.wordpress.com/2013/01/11/sending-e-mail-using-google-smtp-and-jboss-as-7/).
+
+
+###JMS
+
+add to _<jms-destinations>_
+
+~~~~
+<jms-queue name="mailQueue">
+    <entry name="queue/mail"/>
+    <entry name="java:jboss/exported/jms/queue/mail"/>
+</jms-queue>
+~~~~
+
+more [ info ](https://javafindings.wordpress.com/2013/05/16/java-messaging-service-jms-with-jboss-7-1-1-new/).
+
+
 run server in standalone mode:
 
-`<JBOSS-HOME>/bin/standalone.sh`
+`<JBOSS-HOME>/bin/standalone.sh –server-config=/standalone-full.xml`
 
+or rename __standalone-full.xml__ to __standalone.xml__ and run
+
+`<JBOSS-HOME>/bin/standalone.sh`
 
 ### Tasks:
 in uis-api/
@@ -119,37 +206,6 @@ in [ uis-ui/ ](https://bitbucket.org/ZhSulta/ui) run:
 (you do not need to deploy the ui project as it is dependant to uis-api and locates within uis-api)
 
 
-### Security JAAS JBoss security domain
-Rest api is divided into open and secured url methods:
-add in __standalone.xml__ inside _<security-domains>_ following:
-~~~~
-    <security-domain name="ls-system" cache-type="default">
-        <authentication>
-            <login-module code="Database" flag="required">
-                <module-option name="dsJndiName" value="java:jboss/datasources/uisDatasource"/>
-                <module-option name="principalsQuery" value="select U.PASSWORD_ from SC_USER U where U.LOGIN_=?"/>
-                <module-option name="rolesQuery" value="select NAME_, GROUP_ from SC_JAAS_ROLE where USER_=?"/>
-                <module-option name="hashAlgorithm" value="MD5"/>
-                <module-option name="hashEncoding" value="base64"/> 
-            </login-module>
-        </authentication>
-    </security-domain>
-~~~~
-
-##DB:
-~~~~
-    CREATE TABLE user_role_security
-    (
-      group_ character varying(255),
-      name_ character varying(255),
-      user_ character varying(255)
-    )
-    WITH (
-      OIDS=FALSE
-    );
-    ALTER TABLE user_role_security
-      OWNER TO postgres;
-~~~~
 
 ##REST urls:
  - ##secured: `rest/secure`
