@@ -5,14 +5,14 @@
   </component>
   <component name="EclipseModuleManager">
     <varelement var="file://$M2_REPO$/javax/enterprise/cdi-api/1.0-SP4/cdi-api-1.0-SP4.jar" value="M2_REPO/javax/enterprise/cdi-api/1.0-SP4/cdi-api-1.0-SP4.jar" />
-    <varelement var="file://$M2_REPO$/javax/enterprise/cdi-api/1.0-SP4/cdi-api-1.0-SP4-sources.jar" kind="src:" value="M2_REPO/javax/enterprise/cdi-api/1.0-SP4/cdi-api-1.0-SP4-sources.jar" />
+    <varelement var="file://$M2_REPO$/javax/enterprise/cdi-api/1.0-SP4/cdi-api-1.0-SP4-sources.jar" value="src:M2_REPO/javax/enterprise/cdi-api/1.0-SP4/cdi-api-1.0-SP4-sources.jar" />
     <varelement var="file://$M2_REPO$/javax/inject/javax.inject/1/javax.inject-1.jar" value="M2_REPO/javax/inject/javax.inject/1/javax.inject-1.jar" />
-    <varelement var="file://$M2_REPO$/javax/inject/javax.inject/1/javax.inject-1-sources.jar" kind="src:" value="M2_REPO/javax/inject/javax.inject/1/javax.inject-1-sources.jar" />
+    <varelement var="file://$M2_REPO$/javax/inject/javax.inject/1/javax.inject-1-sources.jar" value="src:M2_REPO/javax/inject/javax.inject/1/javax.inject-1-sources.jar" />
     <varelement var="file://$M2_REPO$/org/jboss/spec/javax/interceptor/jboss-interceptors-api_1.1_spec/1.0.0.Final/jboss-interceptors-api_1.1_spec-1.0.0.Final.jar" value="M2_REPO/org/jboss/spec/javax/interceptor/jboss-interceptors-api_1.1_spec/1.0.0.Final/jboss-interceptors-api_1.1_spec-1.0.0.Final.jar" />
     <varelement var="file://$M2_REPO$/org/jboss/spec/javax/annotation/jboss-annotations-api_1.1_spec/1.0.0.Final/jboss-annotations-api_1.1_spec-1.0.0.Final.jar" value="M2_REPO/org/jboss/spec/javax/annotation/jboss-annotations-api_1.1_spec/1.0.0.Final/jboss-annotations-api_1.1_spec-1.0.0.Final.jar" />
     <varelement var="file://$M2_REPO$/org/jboss/spec/javax/ws/rs/jboss-jaxrs-api_1.1_spec/1.0.0.Final/jboss-jaxrs-api_1.1_spec-1.0.0.Final.jar" value="M2_REPO/org/jboss/spec/javax/ws/rs/jboss-jaxrs-api_1.1_spec/1.0.0.Final/jboss-jaxrs-api_1.1_spec-1.0.0.Final.jar" />
     <varelement var="file://$M2_REPO$/org/hibernate/javax/persistence/hibernate-jpa-2.0-api/1.0.1.Final/hibernate-jpa-2.0-api-1.0.1.Final.jar" value="M2_REPO/org/hibernate/javax/persistence/hibernate-jpa-2.0-api/1.0.1.Final/hibernate-jpa-2.0-api-1.0.1.Final.jar" />
-    <varelement var="file://$M2_REPO$/org/hibernate/javax/persistence/hibernate-jpa-2.0-api/1.0.1.Final/hibernate-jpa-2.0-api-1.0.1.Final-sources.jar" kind="src:" value="M2_REPO/org/hibernate/javax/persistence/hibernate-jpa-2.0-api/1.0.1.Final/hibernate-jpa-2.0-api-1.0.1.Final-sources.jar" />
+    <varelement var="file://$M2_REPO$/org/hibernate/javax/persistence/hibernate-jpa-2.0-api/1.0.1.Final/hibernate-jpa-2.0-api-1.0.1.Final-sources.jar" value="src:M2_REPO/org/hibernate/javax/persistence/hibernate-jpa-2.0-api/1.0.1.Final/hibernate-jpa-2.0-api-1.0.1.Final-sources.jar" />
     <varelement var="file://$M2_REPO$/org/jboss/spec/javax/ejb/jboss-ejb-api_3.1_spec/1.0.1.Final/jboss-ejb-api_3.1_spec-1.0.1.Final.jar" value="M2_REPO/org/jboss/spec/javax/ejb/jboss-ejb-api_3.1_spec/1.0.1.Final/jboss-ejb-api_3.1_spec-1.0.1.Final.jar" />
     <conelement value="org.scala-ide.sdt.launching.SCALA_CONTAINER" />
     <src_description expected_position="0">

@@ -21,7 +21,7 @@
                 <div class="form-signin" role="form">
                     <input type="text" name="j_username" class="form-control" placeholder="Логин" required autofocus>
                     <input type="password" name="j_password" class="form-control" placeholder="Пароль" required>
-                    <button class="btn btn-lg btn-primary btn-block" onclick="login();">Войти</button>
+                    <button class="btn btn-lg btn-primary btn-block" onclick="loginClick();">Войти</button>
                     <!--<label class="checkbox pull-left">-->
                     <!--<input type="checkbox" value="remember-me">-->
                     <!--Remember me-->
@@ -39,6 +39,20 @@
 
 <script>
     jQuery('#errmsg').hide();
+    var login = jQuery('input[name=j_username]');
+    var password = jQuery('input[name=j_password]');
+    var $focused = $(':focus');
+    var hasFocus = null;
+    var url = getQueryVariable('url');
+
+    $(document).keypress(function(e) {
+        hasFocus = password.is(':focus');
+        if(hasFocus){
+            if(e.which == 13) {
+                loginClick();
+            }
+        }
+    });
 
     function getQueryVariable(variable) {
         var query = window.location.search.substring(1);
@@ -53,14 +67,12 @@
         }
     }
 
-    var url = getQueryVariable('url');
+    function loginClick() {
+        var loginVal = login.val();
+        var passwordVal = password.val();
 
-    function login() {
-        var login = jQuery('input[name=j_username]').val();
-        var password = jQuery('input[name=j_password]').val();
-
-        var dataString = 'j_username=' + login
-                + '&j_password=' + password;
+        var dataString = 'j_username=' + loginVal
+                + '&j_password=' + passwordVal;
 
         jQuery.ajax({
             type: "POST",
@@ -80,8 +92,7 @@
                 }
             }
         });
-    }
-    ;
+    };
 
     jQuery.ajax({
         type: "GET",
