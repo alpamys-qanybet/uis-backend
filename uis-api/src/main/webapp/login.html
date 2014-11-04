@@ -101,7 +101,24 @@
         //data: "url=http://localhost/es/ui/app",
         success: function (data) {
             console.log(data);
+            goToSystem();
         }
     });
+    
+    function goToSystem() {
+    	jQuery.ajax({
+            type: "GET",
+            url: "http://localhost:8080/uis-api/rest/authorized",
+            success: function (data) {
+                /* console.log(data);
+                console.log(data === 'true');
+                console.log(data == true);
+                console.log(data); */
+                if (data === 'true') {
+                	window.location = 'http://localhost:8080/uis-api/ui/app';
+                }
+            }
+        });
+    }
 </script>
 </html>
