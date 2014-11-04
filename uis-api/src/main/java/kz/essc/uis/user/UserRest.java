@@ -45,20 +45,20 @@ public class UserRest {
 	@GET
 	@Path("/")
 	public List<UserWrapper> get() {
-		return userBean.get();
+		return UserWrapper.wrap( userBean.get() );
 	}
 	
 	@GET
 	@Path("/{id}")
 	public UserWrapper get(@PathParam("id") Long id) {
-		return userBean.get(id);
+		return UserWrapper.wrap( userBean.get(id) );
 	}
 	
 	@POST
 	@Path("/")
 	public UserWrapper add(UserWrapper userWrapper) throws IOException {
 		if (securityBean.hasRole(request.getUserPrincipal().getName(), Role.Name.dean)) {
-			return userBean.add(userWrapper);
+			return UserWrapper.wrap( userBean.add(userWrapper) );
 		}
 		else {
 			response.sendError(HttpServletResponse.SC_PRECONDITION_FAILED);
@@ -70,7 +70,7 @@ public class UserRest {
 	@Path("/{id}")
 	public UserWrapper edit(@PathParam("id") Long id, UserWrapper userWrapper) throws IOException {
 		if (securityBean.hasRole(request.getUserPrincipal().getName(), Role.Name.dean)) {
-			return userBean.edit(id, userWrapper);
+			return UserWrapper.wrap( userBean.edit(id, userWrapper) );
 		}
 		else {
 			response.sendError(HttpServletResponse.SC_PRECONDITION_FAILED);
@@ -94,13 +94,13 @@ public class UserRest {
 	@GET
 	@Path("/current")
 	public UserWrapper getCurrent() {
-		return userBean.getUserByLogin(request.getUserPrincipal().getName());
+		return UserWrapper.wrap( userBean.getUserByLogin(request.getUserPrincipal().getName()) );
 	}
 	
 	@GET
 	@Path("/login/{login}")
 	public UserWrapper getUserByLogin(@PathParam("login") String login) {
-		return userBean.getUserByLogin(login);
+		return UserWrapper.wrap( userBean.getUserByLogin(login) );
 	}
 	
 	@PUT
@@ -123,15 +123,53 @@ public class UserRest {
 	}
 	
 	@GET
-	@Path("/roles")
-	public List<RoleWrapper> getRoles() throws IOException {
-		return userBean.getRoles(request.getUserPrincipal().getName());
+	@Path("/{id}/roles")
+	public List<RoleWrapper> getRoles(@PathParam("id") Long id) throws IOException {
+		String login = request.getUserPrincipal().getName();
+		if (securityBean.hasRole(login, Role.Name.admin) || id == securityBean.getIdByLogin(login)) {
+			return RoleWrapper.wrap( securityBean.getRoles(id) );
+		}
+		else {
+			response.sendError(HttpServletResponse.SC_PRECONDITION_FAILED);
+			return null;
+		}
 	}
 	
 	@GET
-	@Path("/permissions")
-	public List<PermissionWrapper> getPermissions() throws IOException {
-		return userBean.getPermissions(request.getUserPrincipal().getName());
+	@Path("{id}/permissions")
+	public List<PermissionWrapper> getPermissions(@PathParam("id") Long id) throws IOException {
+		String login = request.getUserPrincipal().getName();
+		if (securityBean.hasRole(login, Role.Name.admin) || id == securityBean.getIdByLogin(login)) {
+			return PermissionWrapper.wrap( securityBean.getPermissions(id) );
+		}
+		else {
+			response.sendError(HttpServletResponse.SC_PRECONDITION_FAILED);
+			return null;
+		}
+	}
+	
+	@POST
+	@Path("/{id}/roles")
+	public boolean addRole(@PathParam("id") Long id, RoleWrapper wrapper) throws IOException {
+		if (securityBean.hasRole(request.getUserPrincipal().getName(), Role.Name.admin)) {
+			return securityBean.addRole(id, wrapper);
+		}
+		else {
+			response.sendError(HttpServletResponse.SC_PRECONDITION_FAILED);
+			return false;
+		}
+	}
+	
+	@DELETE
+	@Path("/{id}/roles/{role}")
+	public boolean deleteRole(@PathParam("id") Long id, @PathParam("role") String role) throws IOException {
+		if (securityBean.hasRole(request.getUserPrincipal().getName(), Role.Name.admin)) {
+			return securityBean.removeRole(id, role);
+		}
+		else {
+			response.sendError(HttpServletResponse.SC_PRECONDITION_FAILED);
+			return false;
+		}
 	}
 	
 	@GET
