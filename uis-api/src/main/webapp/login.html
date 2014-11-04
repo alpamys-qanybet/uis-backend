@@ -43,7 +43,7 @@
     var password = jQuery('input[name=j_password]');
     var $focused = $(':focus');
     var hasFocus = null;
-    var url = getQueryVariable('url');
+    var url = document.referrer;//getQueryVariable('url');
 
     $(document).keypress(function(e) {
         hasFocus = password.is(':focus');
@@ -84,6 +84,7 @@
 
                 if (data === 'success') {
                     window.location = url;
+                    //history.go(-1);
                 }
 
                 if (data === 'error') {
