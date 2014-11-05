@@ -94,19 +94,79 @@ public class SecurityBean {
 		}
 	}
 	
-	public List<Role> getRoles(String login) {
+	public List<String> getRoles() {
 		try {
-			User user = em.find(User.class, getIdByLogin(login) );
-			return new ArrayList<Role>(user.getRoles());
+			List<String> list = new ArrayList<String>();
+			
+			for (Role.Name role: Role.Name.values())
+				list.add(role.toString());
+			
+			return list;
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
 		}
 	}
 	
-	public List<Permission> getPermissions(String login) {
+	public List<String> getPermissions() {
 		try {
-			User user = em.find(User.class, getIdByLogin(login) );
+			List<String> list = new ArrayList<String>();
+			
+			for (Permission.Target role: Permission.Target.values())
+				list.add(role.toString());
+			
+			return list;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	public List<Role> getRoles(Long userId) {
+		try {
+			User user = em.find(User.class, userId);
+			
+			List<Role> roles = new ArrayList<Role>();
+			
+			for (Role role: user.getRoles())
+				if (role.isEnabled()) {
+					roles.add(role);
+				}
+			
+			return roles;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	public boolean addRole(Long userId, RoleWrapper roleWrapper) {
+		User user = em.find(User.class, userId);
+		Role role = em.find(Role.class, roleWrapper.getName());
+		
+		if (!user.getRoles().contains(role)) {
+			user.getRoles().add(role);
+			em.merge(user);
+		}
+		
+		return true;
+	}
+	
+	public boolean removeRole(Long userId, String rolename) {
+		User user = em.find(User.class, userId);
+		Role role = em.find(Role.class, rolename);
+		
+		if (user.getRoles().contains(role)) {
+			user.getRoles().remove(role);
+			em.merge(user);
+		}
+		
+		return true;
+	}
+	
+	public List<Permission> getPermissions(Long userId) {
+		try {
+			User user = em.find(User.class, userId);
 			
 			String roles = "";
 			

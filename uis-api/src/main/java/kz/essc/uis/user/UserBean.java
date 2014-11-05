@@ -9,8 +9,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import kz.essc.uis.core.PasswordManager;
-import kz.essc.uis.core.PermissionWrapper;
-import kz.essc.uis.core.RoleWrapper;
 import kz.essc.uis.core.SecurityBean;
 import kz.essc.uis.queue.mail.MailMessageProducer;
 import kz.essc.uis.sc.user.User;
@@ -29,22 +27,21 @@ public class UserBean {
 	@Inject
 	MailMessageProducer mailMessageProducer;
 	
-	public List<UserWrapper> get() {
+	public List<User> get() {
 		
 		try {
-			List<User> list = (ArrayList<User>) em.createQuery("from User")
-												  .getResultList();
-			return UserWrapper.wrap(list);
+			return (ArrayList<User>) em.createQuery("from User")
+										.getResultList();
 		}
 		catch (Exception e) {
 			e.printStackTrace();
-			return new ArrayList<UserWrapper>();
+			return null;
 		}
 	}
 	
-	public UserWrapper get(Long id) {
+	public User get(Long id) {
 		try {
-			return UserWrapper.wrap( (User) em.find(User.class, id) );
+			return (User) em.find(User.class, id);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -53,7 +50,7 @@ public class UserBean {
 	}
 	
 	
-	public UserWrapper add(UserWrapper userWrapper) {
+	public User add(UserWrapper userWrapper) {
 		try {
 			User user = new User();
 			user.setLogin(userWrapper.getLogin());
@@ -80,7 +77,7 @@ public class UserBean {
 			
 			mailMessageProducer.send(toAddress, subject, content.toString());
 			
-			return UserWrapper.wrap(user);
+			return user;
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -88,7 +85,7 @@ public class UserBean {
 		}
 	}
 	
-	public UserWrapper edit(Long id, UserWrapper userWrapper) {
+	public User edit(Long id, UserWrapper userWrapper) {
 		try {
 			
 			User user = (User) em.find(User.class, id);
@@ -96,7 +93,7 @@ public class UserBean {
 			
 			em.merge(user);
 			
-			return UserWrapper.wrap(user);
+			return user;
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -121,13 +118,11 @@ public class UserBean {
 		}
 	}
 	
-	public UserWrapper getUserByLogin(String login) {
+	public User getUserByLogin(String login) {
 		try {
-			User user = (User) em.createQuery("from User where login = :login")
-								.setParameter("login", login)
-								.getSingleResult();
-			
-			return UserWrapper.wrap( user );
+			return (User) em.createQuery("from User where login = :login")
+							.setParameter("login", login)
+							.getSingleResult();
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -180,14 +175,5 @@ public class UserBean {
 			e.printStackTrace();
 			return -1;
 		}
-	}
-	
-	
-	public List<RoleWrapper> getRoles(String login) {
-		return RoleWrapper.wrap(securityBean.getRoles(login));
-	}
-	
-	public List<PermissionWrapper> getPermissions(String login) {
-		return PermissionWrapper.wrap(securityBean.getPermissions(login));
 	}
 }
