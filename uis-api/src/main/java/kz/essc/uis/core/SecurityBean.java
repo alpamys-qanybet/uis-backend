@@ -94,10 +94,28 @@ public class SecurityBean {
 		}
 	}
 	
-	public List<Role> getRoles() {
+	public List<String> getRoles() {
 		try {
-			return (ArrayList<Role>) em.createQuery("from Role")
-										.getResultList();
+			List<String> list = new ArrayList<String>();
+			
+			for (Role.Name role: Role.Name.values())
+				list.add(role.toString());
+			
+			return list;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	public List<String> getPermissions() {
+		try {
+			List<String> list = new ArrayList<String>();
+			
+			for (Permission.Target role: Permission.Target.values())
+				list.add(role.toString());
+			
+			return list;
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;

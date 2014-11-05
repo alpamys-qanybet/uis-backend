@@ -44,8 +44,14 @@ public class SecureRest {
 	
 	@GET
 	@Path("/roles")
-	public List<RoleWrapper> getRoles() throws IOException {
-		return RoleWrapper.wrap(securityBean.getRoles());
+	public List<String> getRoles() throws IOException {
+		return securityBean.getRoles();
+	}
+	
+	@GET
+	@Path("/permissions")
+	public List<String> getPermissions() throws IOException {
+		return securityBean.getPermissions();
 	}
 	
 	/*@GET
